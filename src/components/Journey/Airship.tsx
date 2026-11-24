@@ -7,9 +7,11 @@ import { EngineContext, useView } from './Layer';
  * scarf, a bow lantern and a stern propeller. Origin = the route point
  * (the gondola's deck). Faces right; the journey runs left → right.
  *
- * Position, pitch and bob come from the engine every frame (one transform
- * write). Reactions (`mood`) are one-shot framer-motion sequences on an
- * inner group, replayed only when `reactKey` changes.
+ * Position, pitch, bob and engine glow come from the engine every frame
+ * (direct DOM writes). The glow, jet flame and aura take the colour and
+ * power of the answer that launched the ship. Reactions (`mood`) are
+ * one-shot framer-motion sequences on an inner group, replayed only when
+ * `reactKey` changes.
  * ============================================================ */
 
 export type ExplorerMood = 'idle' | 'travel' | 'cheer' | 'celebrate' | 'miss';
@@ -23,35 +25,64 @@ export const Airship = memo(function Airship({ mood, reactKey, night, rim, reduc
   const view = useView();
   const outer = useRef<HTMLDivElement>(null);
   const prop = useRef<SVGEllipseElement>(null);
+  const jet = useRef<SVGGElement>(null);
+  const jetFill = useRef<SVGPathElement>(null);
+  const glow = useRef<HTMLDivElement>(null);
+  const aura = useRef<HTMLDivElement>(null);
   const body = useAnimationControls();
   const arm = useAnimationControls();
   const k = view.portrait ? 1.25 : 1; // a touch larger on phones, where the world is zoomed out
 
-  useEffect(() => engine.subscribe((f) => {
-    const el = outer.current;
-    if (!el) return;
-    const x = (view.ax + f.ex - f.camX) * view.s;
-    const y = (view.ay + f.ey - f.camY + f.bob) * view.s;
-    el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${f.tilt.toFixed(2)}deg)`;
-    if (prop.current) prop.current.style.opacity = String(Math.min(0.85, Math.abs(f.vx) / 500));
-  }), [engine, view]);
+  useEffect(() => {
+    let color = '';
+    return engine.subscribe((f) => {
+      const el = outer.current;
+      if (!el) return;
+      const x = (view.ax + f.ex - f.camX) * view.s;
+      const y = (view.ay + f.ey - f.camY + f.bob) * view.s;
+      const p = f.style.power;
+      // wind-up squash: the ship gathers itself before it launches
+      const sq = f.charge * (0.03 + 0.05 * p);
+      el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${f.tilt.toFixed(2)}deg) scale(${(1 + sq).toFixed(4)}, ${(1 - sq * 1.2).toFixed(4)})`;
+      if (prop.current) prop.current.style.opacity = String(Math.min(0.85, Math.abs(f.vx) / 500 + f.boost * 0.5));
+      if (f.style.color !== color) {
+        color = f.style.color;
+        el.style.setProperty('--glow', color);
+        jetFill.current?.setAttribute('fill', color);
+      }
+      const b = reducedMotion ? 0 : f.boost;
+      if (jet.current) {
+        jet.current.setAttribute('transform', `translate(-46 12) scale(${(0.25 + b * (0.6 + 1.3 * p)).toFixed(3)} ${(0.7 + b * 0.5).toFixed(3)})`);
+        jet.current.style.opacity = String(Math.min(1, b * 1.6));
+      }
+      if (glow.current) glow.current.style.opacity = String(Math.min(1, b * 1.3));
+      if (aura.current) aura.current.style.opacity = String(Math.min(0.9, b * p * 0.9 + f.flash * 0.6));
+    });
+  }, [engine, view, reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion || !reactKey) return;
+    // the pilot reacts to the verdict first; the engine (see engine.ts) then winds up and launches
     if (mood === 'celebrate') {
-      void body.start({ y: [0, -30, 0, -12, 0], rotate: [0, -9, 7, -3, 0], transition: { duration: 1.5, ease: 'easeOut' } });
-      void arm.start({ rotate: [0, -70, -30, -75, -30, -70, 0], transition: { duration: 1.8, ease: 'easeInOut' } });
+      void body.start({ y: [0, -14, 0, -6, 0], rotate: [0, -5, 3, -1, 0], transition: { duration: 1.1, ease: 'easeOut', delay: 0.5 } });
+      void arm.start({ rotate: [0, -70, -30, -75, -30, -70, -30, -70, 0], transition: { duration: 2.2, ease: 'easeInOut' } });
     } else if (mood === 'cheer') {
-      void body.start({ y: [0, -16, 0], rotate: [0, -4, 0], transition: { duration: 0.9, ease: 'easeOut' } });
+      void body.start({ y: [0, -8, 0], rotate: [0, -3, 0], transition: { duration: 0.8, ease: 'easeOut', delay: 0.4 } });
       void arm.start({ rotate: [0, -65, -30, -65, 0], transition: { duration: 1.3, ease: 'easeInOut' } });
+    } else if (mood === 'travel') {
+      void arm.start({ rotate: [0, -40, 0], transition: { duration: 0.8, ease: 'easeInOut' } });
     } else if (mood === 'miss') {
-      void body.start({ y: [0, 10, 4, 0], rotate: [0, 5, -2, 0], transition: { duration: 1.4, ease: 'easeOut' } });
+      void body.start({ y: [0, 8, 3, 0], rotate: [0, 4, -2, 0], transition: { duration: 1.2, ease: 'easeOut' } });
     }
   }, [reactKey, mood, reducedMotion, body, arm]);
 
   const s = view.s * k;
   return (
-    <div ref={outer} className="pointer-events-none absolute left-0 top-0" style={{ willChange: 'transform', zIndex: 30 }} aria-hidden>
+    <div ref={outer} className="pointer-events-none absolute left-0 top-0" style={{ willChange: 'transform', zIndex: 30, ['--glow' as string]: '#F6CD7E' }} aria-hidden>
+      {/* aura: the whole ship lights up on strong answers */}
+      <div ref={aura} className="absolute rounded-full" style={{ width: 320 * s, height: 220 * s, left: -160 * s, top: -150 * s, opacity: 0, background: 'radial-gradient(closest-side, color-mix(in srgb, var(--glow) 55%, transparent), transparent)', willChange: 'opacity' }} />
+      {/* engine glow at the stern */}
+      <div ref={glow} className="absolute rounded-full" style={{ width: 120 * s, height: 120 * s, left: -106 * s, top: -48 * s, opacity: 0, background: 'radial-gradient(closest-side, #FFF8E6 0%, var(--glow) 32%, transparent 100%)', willChange: 'opacity' }} />
       <svg
         width={VB.w * s}
         height={VB.h * s}
@@ -156,6 +187,12 @@ export const Airship = memo(function Airship({ mood, reactKey, night, rim, reduc
           <path d="M42 0 L48 4" stroke="#3A2A24" strokeWidth="1.4" />
           <rect x="44.5" y="5" width="7" height="10" rx="1.5" fill="#FFE2A0" stroke="#4A3426" strokeWidth="1" />
           <path d="M44 5 L52 5 L48 2 Z" fill="#4A3426" />
+
+          {/* jet flame: length and brightness follow the engine's boost */}
+          <g ref={jet} transform="translate(-46 12) scale(0.25 0.7)" style={{ opacity: 0 }}>
+            <path ref={jetFill} d="M0 0 C -10 -8, -34 -6, -58 0 C -34 6, -10 8, 0 0 Z" fill="#F6CD7E" opacity="0.85" />
+            <path d="M0 0 C -6 -4, -18 -3, -30 0 C -18 3, -6 4, 0 0 Z" fill="#FFF8E6" />
+          </g>
 
           {/* propeller */}
           <g transform="translate(-44 12)">

@@ -19,6 +19,7 @@ export default {
         display: ['Fraunces', 'Georgia', 'serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        pixel: ['"Pixelify Sans"', '"DM Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         paper: '0 1px 0 rgba(255,255,255,.6) inset, 0 18px 40px -18px rgba(8,14,20,.75), 0 2px 6px rgba(8,14,20,.35)',

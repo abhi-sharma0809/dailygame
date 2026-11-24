@@ -113,73 +113,18 @@ function pick(cat: CategoryId, k: number, salt: string): QuestionDef {
   return categorySequence(cat, Math.floor(k / len), salt)[k % len];
 }
 
+/**
+ * Seed for the daily draw. Frozen on purpose: it predates the SIMMLY name, and
+ * changing it would reshuffle every past and present daily quest (and orphan
+ * any quest in progress).
+ */
+export const DAILY_SEED = 'kinship-daily-v1';
+
 /** The same seven questions for everyone on a date, easiest first. */
-export function dailyQuestionIds(key: string, salt = 'kinship-daily-v1'): string[] {
+export function dailyQuestionIds(key: string, salt = DAILY_SEED): string[] {
   const n = Math.max(0, dayNumber(key));
   return dailyCategories(n)
     .map((cat, i) => ({ q: pick(cat, usesBefore(cat, n), salt), i }))
     .sort((a, b) => DIFF_RANK[a.q.difficulty] - DIFF_RANK[b.q.difficulty] || a.i - b.i)
     .map(({ q }) => q.id);
-}
-
-/* ------------------------------------------------------------ expeditions */
-
-export interface Expedition {
-  id: string;
-  title: string;
-  tagline: string;
-  landmark: number;
-  filter: (q: QuestionDef) => boolean;
-}
-
-export const EXPEDITIONS: Expedition[] = [
-  { id: 'wild-connections', title: 'Wild Connections', tagline: 'Creatures and their unlikely cousins.', landmark: 0, filter: (q) => q.category === 'animals' },
-  { id: 'screen-legends', title: 'Screen Legends', tagline: 'Shows and films that share a soul.', landmark: 2, filter: (q) => q.category === 'tv' || q.category === 'movies' },
-  { id: 'around-the-world', title: 'Around the World', tagline: 'Countries and cities with common ground.', landmark: 1, filter: (q) => q.category === 'geography' },
-  { id: 'pixel-universe', title: 'Pixel Universe', tagline: 'Games that play alike.', landmark: 4, filter: (q) => q.category === 'games' },
-  { id: 'food-for-thought', title: 'Food for Thought', tagline: 'Dishes, drinks and their relatives.', landmark: 1, filter: (q) => q.category === 'food' },
-  { id: 'fictional-worlds', title: 'Fictional Worlds', tagline: 'Heroes, villains and their echoes.', landmark: 5, filter: (q) => q.category === 'characters' },
-  { id: 'famous-faces', title: 'Famous Faces', tagline: 'Public personas and their peers.', landmark: 3, filter: (q) => q.category === 'people' },
-  { id: 'sporting-spirit', title: 'Sporting Spirit', tagline: 'Games of skill and their siblings.', landmark: 6, filter: (q) => q.category === 'sports' },
-  { id: 'everyday-wonders', title: 'Everyday Wonders', tagline: 'Ordinary objects, surprising relatives.', landmark: 3, filter: (q) => q.category === 'objects' },
-];
-
-export function expeditionQuestions(id: string): QuestionDef[] {
-  const ex = EXPEDITIONS.find((p) => p.id === id);
-  if (!ex) return [];
-  const rand = mulberry32(hashString(`expedition:${id}`));
-  return shuffle(QUESTIONS.filter(ex.filter).sort((a, b) => a.id.localeCompare(b.id)), rand);
-}
-
-export function expeditionSessionCount(id: string): number {
-  return Math.max(1, Math.floor(expeditionQuestions(id).length / 7));
-}
-
-/** Session i of an expedition: a distinct block of seven, easiest first. */
-export function expeditionSessionIds(id: string, i: number): string[] {
-  const qs = expeditionQuestions(id);
-  const n = expeditionSessionCount(id);
-  const start = (i % n) * 7;
-  let block = qs.slice(start, start + 7);
-  if (block.length < 7) block = [...block, ...qs.filter((q) => !block.includes(q)).slice(0, 7 - block.length)];
-  return block.sort((a, b) => DIFF_RANK[a.difficulty] - DIFF_RANK[b.difficulty]).map((q) => q.id);
-}
-
-/* ------------------------------------------------------------ endless / practice */
-
-export function nextOpenQuestion(opts: { rand: () => number; recent: string[]; category?: CategoryId | 'all'; lastCategory?: CategoryId }): string | undefined {
-  const recent = new Set(opts.recent);
-  let pool = QUESTIONS.filter((q) => (opts.category && opts.category !== 'all' ? q.category === opts.category : true));
-  if (!pool.length) return undefined;
-  const fresh = pool.filter((q) => !recent.has(q.id));
-  if (fresh.length) pool = fresh;
-  else {
-    const order = new Map(opts.recent.map((id, i) => [id, i]));
-    pool = [...pool].sort((a, b) => (order.get(a.id) ?? -1) - (order.get(b.id) ?? -1)).slice(0, Math.max(1, Math.ceil(pool.length / 2)));
-  }
-  if ((!opts.category || opts.category === 'all') && opts.lastCategory) {
-    const other = pool.filter((q) => q.category !== opts.lastCategory);
-    if (other.length) pool = other;
-  }
-  return pool[Math.floor(opts.rand() * pool.length)]?.id;
 }

@@ -2,17 +2,23 @@ import { AnimatePresence, animate, motion } from 'framer-motion';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { navigate } from '../hooks/useHashRoute';
 import { usePlayer } from '../state/PlayerContext';
+import { PixelIcon } from './PixelIcon';
 
 /* ------------------------------------------------------------ wordmark */
 
+/**
+ * SIMMLY. The full stop is a gold route marker — the same diamond that marks
+ * each destination on the journey and each question in the HUD.
+ */
 export function Wordmark({ size = 'md', onClick }: { size?: 'sm' | 'md' | 'xl'; onClick?: () => void }) {
-  const cls = size === 'xl' ? 'text-[clamp(3.4rem,10vw,6.5rem)]' : size === 'md' ? 'text-3xl' : 'text-[1.6rem]';
+  const cls = size === 'xl' ? 'text-[clamp(3.4rem,13vw,6.8rem)]' : size === 'md' ? 'text-3xl' : 'text-[1.6rem]';
   const content = (
-    <span className={`font-display font-semibold leading-none tracking-[0.06em] ${cls}`} style={{ fontVariationSettings: "'SOFT' 100, 'opsz' 144" }}>
-      KINSHIP<span className="text-gold">.</span>
+    <span className={`inline-flex items-baseline font-display font-semibold leading-none tracking-[0.07em] ${cls}`} style={{ fontVariationSettings: "'SOFT' 100, 'opsz' 144" }} aria-label="SIMMLY">
+      <span aria-hidden>SIMMLY</span>
+      <span aria-hidden className="ml-[0.1em] inline-block h-[0.17em] w-[0.17em] rotate-45 rounded-[0.02em] bg-gold shadow-[0_0_0.25em_rgba(233,182,92,.55)]" />
     </span>
   );
-  return onClick ? <button onClick={onClick} className="rounded-md" aria-label="KINSHIP — home">{content}</button> : content;
+  return onClick ? <button onClick={onClick} className="btn-ghost wordmark-btn" aria-label="SIMMLY — home">{content}</button> : content;
 }
 
 export function TopBar({ title, right }: { title?: string; right?: ReactNode }) {
@@ -90,7 +96,7 @@ export function Modal({ open, onClose, title, children, wide }: { open: boolean;
           >
             <div className="mb-3 flex items-start justify-between gap-4">
               <h2 className="font-display text-3xl font-semibold text-ink">{title}</h2>
-              <button onClick={onClose} className="-mr-1 rounded-full px-2 py-1 text-xl leading-none text-ink/60 hover:text-ink" aria-label="Close">×</button>
+              <button onClick={onClose} className="btn-paper btn-sm btn-icon mr-0.5 mt-0.5 shrink-0" aria-label="Close"><PixelIcon name="close" size={11} /></button>
             </div>
             <div className="rule-ink mb-4" />
             {children}
@@ -119,8 +125,8 @@ function Toast({ a, delay, onDone }: { a: { title: string; description: string; 
   d.current = onDone;
   useEffect(() => { const t = setTimeout(() => d.current(), 4400 + delay); return () => clearTimeout(t); }, [delay]);
   return (
-    <motion.button layout onClick={onDone} className="paper pointer-events-auto flex w-full max-w-xs items-center gap-3 px-4 py-3 text-left" initial={{ y: 24, opacity: 0, rotate: 1 }} animate={{ y: 0, opacity: 1, rotate: 0, transition: { delay: delay / 1000 } }} exit={{ x: 40, opacity: 0 }}>
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink font-display text-xl text-gold">{a.glyph}</span>
+    <motion.button layout onClick={onDone} className="tile tile-paper pointer-events-auto flex w-full max-w-xs items-center gap-3 px-4 py-3 text-left" initial={{ y: 24, opacity: 0, rotate: 1 }} animate={{ y: 0, opacity: 1, rotate: 0, transition: { delay: delay / 1000 } }} exit={{ x: 40, opacity: 0 }}>
+      <span className="relative grid h-10 w-10 shrink-0 place-items-center"><span className="absolute inset-[6px] rotate-45 bg-ink" /><span className="relative font-display text-lg text-gold">{a.glyph}</span></span>
       <span className="min-w-0">
         <span className="eyebrow block text-[10px] text-gold-deep">Achievement</span>
         <span className="block font-display text-lg font-semibold leading-tight text-ink">{a.title}</span>

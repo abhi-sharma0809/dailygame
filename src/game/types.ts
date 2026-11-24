@@ -1,5 +1,5 @@
 /* ============================================================
- * KINSHIP — core domain types
+ * SIMMLY — core domain types
  * ============================================================ */
 
 export type CategoryId =

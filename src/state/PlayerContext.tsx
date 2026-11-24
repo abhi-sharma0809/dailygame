@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { play, setSoundEnabled } from '../audio/sfx';
 import type { SessionState } from '../game/engine/session';
-import { browserStore, emptyPlayer, loadPlayer, savePlayer, type AnswerReport, type PlayerData, type Settings } from '../game/persistence/store';
+import { STORAGE_KEY, browserStore, loadPlayer, savePlayer, type AnswerReport, type PlayerData, type Settings } from '../game/persistence/store';
 import { recordSession, type AchievementDef } from '../game/progression';
 import { dateKey } from '../game/selection';
 
@@ -14,7 +14,6 @@ interface Ctx {
   saveProgress: (slot: string, s: SessionState | null) => void;
   finishSession: (slot: string, s: SessionState) => void;
   addReport: (r: Omit<AnswerReport, 'id' | 'timestamp' | 'status'>) => void;
-  resetAll: () => void;
   toasts: AchievementDef[];
   dismissToast: (id: string) => void;
 }
@@ -54,7 +53,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
 
   // keep tabs in sync
   useEffect(() => {
-    const on = (e: StorageEvent) => { if (e.key && e.key.startsWith('kinship:')) setData(loadPlayer(browserStore)); };
+    const on = (e: StorageEvent) => { if (e.key === STORAGE_KEY) setData(loadPlayer(browserStore)); };
     window.addEventListener('storage', on);
     return () => window.removeEventListener('storage', on);
   }, []);
@@ -87,7 +86,6 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       }
     },
     addReport: (r) => commit({ ...dataRef.current, reports: [...dataRef.current.reports, { ...r, id: `r_${Date.now().toString(36)}`, timestamp: Date.now(), status: 'pending' }] }),
-    resetAll: () => commit({ ...emptyPlayer(), settings: { ...dataRef.current.settings, seenIntro: true } }),
     toasts,
     dismissToast: (id) => setToasts((t) => t.filter((x) => x.id !== id)),
   }), [data, today, reducedMotion, toasts, commit]);

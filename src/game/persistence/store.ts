@@ -27,14 +27,15 @@ export const browserStore: KeyValueStore = {
 
 /* ------------------------------------------------------------ schema */
 
-export const STORAGE_KEY = 'kinship:player';
+export const STORAGE_KEY = 'simmly:player';
+/** Where progress was saved before the game was renamed SIMMLY; migrated on first load. */
+export const LEGACY_STORAGE_KEYS = ['kinship:player'];
 export const SCHEMA_VERSION = 1;
 
 export interface Settings {
   sound: boolean;
   motion: 'system' | 'reduced' | 'full';
   seenIntro: boolean;
-  playerName: string;
 }
 
 export interface RoundSummary {
@@ -53,14 +54,11 @@ export interface SessionSummary {
   mode: SessionState['config']['mode'];
   label: string;
   dateKey?: string;
-  expeditionId?: string;
-  expeditionSession?: number;
   startedAt: number;
   endedAt: number;
   rounds: RoundSummary[];
   total: number;
   maxTotal: number;
-  challenge?: { fromName?: string; fromScore?: number };
 }
 
 export interface AnswerReport {
@@ -87,11 +85,26 @@ export interface PlayerData {
   reports: AnswerReport[];
   /** valid-but-unranked answers players submitted, kept for curation */
   unranked: { questionId: string; questionVersion: number; entityId: string; name: string; timestamp: number }[];
-  /** resumable sessions keyed by slot (e.g. "daily:2026-11-16") */
+  /** resumable sessions keyed by slot ("daily:2026-11-16" or "archive:2026-11-16") */
   inProgress: Record<string, SessionState>;
 }
 
-export const DEFAULT_SETTINGS: Settings = { sound: true, motion: 'system', seenIntro: false, playerName: '' };
+export const DEFAULT_SETTINGS: Settings = { sound: true, motion: 'system', seenIntro: false };
+
+/** Only daily and archive quests can be resumed; older saves may hold runs from removed modes. */
+const resumable = (slot: string) => /^(daily|archive):\d{4}-\d{2}-\d{2}$/.test(slot);
+
+/** Move progress saved under a previous name to the current key (once). */
+function migrateLegacy(store: KeyValueStore): string | null {
+  for (const k of LEGACY_STORAGE_KEYS) {
+    const raw = store.get(k);
+    if (raw == null) continue;
+    store.set(STORAGE_KEY, raw);
+    store.remove(k);
+    return raw;
+  }
+  return null;
+}
 
 export function emptyPlayer(now = Date.now()): PlayerData {
   return { version: SCHEMA_VERSION, createdAt: now, settings: { ...DEFAULT_SETTINGS }, sessions: [], dailies: {}, achievements: {}, recentQuestions: [], reports: [], unranked: [], inProgress: {} };
@@ -99,7 +112,7 @@ export function emptyPlayer(now = Date.now()): PlayerData {
 
 /** Load, tolerating corrupt or older data (unknown fields are dropped, missing ones defaulted). */
 export function loadPlayer(store: KeyValueStore): PlayerData {
-  const raw = store.get(STORAGE_KEY);
+  const raw = store.get(STORAGE_KEY) ?? migrateLegacy(store);
   if (!raw) return emptyPlayer();
   try {
     const d = JSON.parse(raw) as Partial<PlayerData>;
@@ -115,7 +128,7 @@ export function loadPlayer(store: KeyValueStore): PlayerData {
       recentQuestions: Array.isArray(d.recentQuestions) ? d.recentQuestions : [],
       reports: Array.isArray(d.reports) ? d.reports : [],
       unranked: Array.isArray(d.unranked) ? d.unranked : [],
-      inProgress: d.inProgress ?? {},
+      inProgress: Object.fromEntries(Object.entries(d.inProgress ?? {}).filter(([slot]) => resumable(slot))),
     };
   } catch {
     return emptyPlayer();

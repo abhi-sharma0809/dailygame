@@ -6,33 +6,26 @@ import { buildQuestion, evaluate, rejectionReason } from './questions';
  * Session state machine (pure, deterministic, serializable)
  *
  *   answering ──LOCK──▶ revealing ──NEXT──▶ answering … ──▶ complete
- *       │  └─SKIP/TIMEOUT─┘                    ▲
- *       └──────────────── END (endless/practice)┘
+ *          └─SKIP/TIMEOUT─┘          (after the seventh question)
  *
  * Time is injected (`now`) so every transition is testable. Deadlines are
  * absolute timestamps stored in state, so re-renders or reloads can never
  * restart a timer.
  * ============================================================ */
 
-export type SessionMode = 'daily' | 'archive' | 'endless' | 'practice' | 'expedition' | 'challenge';
+/** Today's Daily Quest, or a past one replayed from the Archives. */
+export type SessionMode = 'daily' | 'archive';
 
 export interface SessionConfig {
   mode: SessionMode;
-  /** question ids, in order; endless/practice sessions append as they go */
+  /** question ids, in order; the session completes after the last one */
   questionIds: string[];
-  /** seconds per question; null = untimed */
-  seconds: number | null;
-  /** fixed-length sessions complete after the last question */
-  fixedLength: boolean;
-  /** date key for daily/archive sessions */
+  /** seconds per question */
+  seconds: number;
+  /** the quest's date */
   dateKey?: string;
-  expeditionId?: string;
-  expeditionSession?: number;
   bankVersion?: string;
-  challenge?: { fromName?: string; fromScore?: number };
   label: string;
-  /** identifies an open-ended run so a reload resumes the same one */
-  token?: string;
 }
 
 export type RoundStatus = 'answered' | 'skipped' | 'timeout';
@@ -63,8 +56,7 @@ export type SessionAction =
   | { type: 'LOCK'; entityId: string; input: string; now: number }
   | { type: 'SKIP'; now: number }
   | { type: 'TIMEOUT'; now: number }
-  | { type: 'NEXT'; now: number; nextQuestionId?: string }
-  | { type: 'END'; now: number };
+  | { type: 'NEXT'; now: number };
 
 export function createSession(config: SessionConfig, now: number, id = `s_${now.toString(36)}`): SessionState {
   if (!config.questionIds.length) throw new Error('A session needs at least one question');
@@ -114,28 +106,13 @@ export function sessionReducer(state: SessionState, action: SessionAction): Sess
     case 'NEXT': {
       if (state.phase !== 'revealing') return state;
       const { config } = state;
-      const isLast = config.fixedLength && state.index >= config.questionIds.length - 1;
-      if (isLast) return { ...state, phase: 'complete', endedAt: action.now };
-      let questionIds = config.questionIds;
-      let nextId = questionIds[state.index + 1];
-      if (!config.fixedLength) {
-        nextId = action.nextQuestionId ?? questionIds[state.index + 1];
-        if (!nextId || !QUESTION_BY_ID.has(nextId)) return { ...state, phase: 'complete', endedAt: action.now };
-        questionIds = [...questionIds.slice(0, state.index + 1), nextId];
-      }
+      if (state.index >= config.questionIds.length - 1) return { ...state, phase: 'complete', endedAt: action.now };
       return {
         ...state,
-        config: { ...config, questionIds },
         index: state.index + 1,
-        rounds: [...state.rounds, openRound(config, nextId, action.now)],
+        rounds: [...state.rounds, openRound(config, config.questionIds[state.index + 1], action.now)],
         phase: 'answering',
       };
-    }
-    case 'END': {
-      if (state.phase === 'complete') return state;
-      // drop an unanswered open round in open-ended modes
-      const rounds = round.status ? state.rounds : state.rounds.slice(0, -1);
-      return { ...state, rounds, index: Math.max(0, rounds.length - 1), phase: 'complete', endedAt: action.now };
     }
   }
 }

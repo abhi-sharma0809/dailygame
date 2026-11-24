@@ -2,16 +2,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { play } from '../audio/sfx';
 import { ConnectionReveal } from '../components/ConnectionReveal';
-import { JourneyWorld, type ExplorerMood } from '../components/Journey/JourneyWorld';
+import { JourneyWorld, type ExplorerMood, type TravelStyle } from '../components/Journey/JourneyWorld';
+import { DEFAULT_STYLE, styleForTier } from '../components/Journey/motion';
 import { DestinationCard, JourneyHud, type DestinationNote } from '../components/JourneyHud';
+import { PixelIcon } from '../components/PixelIcon';
 import { QuestionDock } from '../components/QuestionScreen';
 import { ReportDialog } from '../components/ReportDialog';
 import { QUESTION_BY_ID } from '../data/atlas';
 import { buildQuestion } from '../game/engine/questions';
 import { createSession, currentRound, isExpired, sessionReducer, totalScore, type SessionAction, type SessionConfig, type SessionState } from '../game/engine/session';
 import { DESTINATIONS, destinationIndex } from '../game/scoring';
-import { nextOpenQuestion } from '../game/selection';
-import type { CategoryId, Entity } from '../game/types';
+import type { Entity, ResultTier } from '../game/types';
 import { useDeadline, useSecondsLeft } from '../hooks/useCountdown';
 import { navigate } from '../hooks/useHashRoute';
 import { usePlayer } from '../state/PlayerContext';
@@ -19,7 +20,6 @@ import { usePlayer } from '../state/PlayerContext';
 export interface PlaySpec {
   slot: string;
   makeConfig: () => SessionConfig;
-  open?: { category: CategoryId | 'all' };
 }
 
 /** Lift the dock above an on-screen keyboard (visualViewport-aware browsers). */
@@ -36,13 +36,19 @@ function useKeyboardInset() {
   return inset;
 }
 
+const moodFor = (tier: ResultTier): ExplorerMood => (tier === 'perfect' ? 'celebrate' : tier === 'nearly' || tier === 'family' ? 'cheer' : tier === 'none' ? 'miss' : 'travel');
+
+/**
+ * One quest (today's, or a past one from the Archives): seven questions, and
+ * after each answer the airship flies on by exactly the points it earned.
+ */
 export function Play({ spec }: { spec: PlaySpec }) {
   const { data, saveProgress, finishSession, reducedMotion } = usePlayer();
 
   const [state, setState] = useState<SessionState>(() => {
     const saved = data.inProgress[spec.slot];
     const fresh = spec.makeConfig();
-    if (saved && saved.phase !== 'complete' && (fresh.fixedLength ? saved.config.questionIds.join() === fresh.questionIds.join() : saved.config.token === fresh.token)) return saved;
+    if (saved && saved.phase !== 'complete' && saved.config.questionIds.join() === fresh.questionIds.join()) return saved;
     return createSession(fresh, Date.now());
   });
   const stateRef = useRef(state);
@@ -52,24 +58,27 @@ export function Play({ spec }: { spec: PlaySpec }) {
   const total = totalScore(state);
   const round = currentRound(state);
   const answering = state.phase === 'answering' && !round.status;
-  // the world shows the score *before* this round's reveal until the explorer travels
-  const settledTotal = answering || state.phase !== 'revealing' ? total : total - (round.result?.points ?? 0);
-  const [mapScore, setMapScore] = useState(settledTotal);
+  // Resumed in the middle of a reveal (left and came back): show it finished, ship already in place.
+  const [resumedReveal] = useState(() => (state.phase === 'revealing' ? state.index : -1));
+  // otherwise the world shows the score *before* this round's reveal until the ship launches
+  const [mapScore, setMapScore] = useState(total);
   const [mood, setMood] = useState<ExplorerMood>('idle');
+  const [travel, setTravel] = useState<TravelStyle>(DEFAULT_STYLE);
   const [reactKey, setReactKey] = useState(0);
+  const reactKeyRef = useRef(0);
+  const [launchedRound, setLaunchedRound] = useState(-1);
+  const [settledKey, setSettledKey] = useState(0);
   useEffect(() => { if (answering) { setMapScore(total); setMood('idle'); } }, [answering, total]);
 
   const dispatch = useCallback((a: SessionAction) => {
     const prev = stateRef.current;
     const next = sessionReducer(prev, a);
-    if ((window as unknown as { __KINSHIP_DEBUG?: boolean }).__KINSHIP_DEBUG) console.log(`[kinship] ${a.type} idx=${prev.index} ${prev.phase}→${next.phase}${next === prev ? ' (ignored)' : ''}`);
+    if ((window as unknown as { __SIMMLY_DEBUG?: boolean }).__SIMMLY_DEBUG) console.log(`[simmly] ${a.type} idx=${prev.index} ${prev.phase}→${next.phase}${next === prev ? ' (ignored)' : ''}`);
     if (next === prev) return;
     stateRef.current = next;
     setState(next);
-    if (next.phase === 'complete') {
-      if (next.rounds.some((r) => r.status)) { finishSession(spec.slot, next); navigate(`/results/${next.id}`, true); }
-      else { saveProgress(spec.slot, null); navigate('/', true); }
-    } else saveProgress(spec.slot, next);
+    if (next.phase === 'complete') { finishSession(spec.slot, next); navigate(`/results/${next.id}`, true); }
+    else saveProgress(spec.slot, next);
   }, [finishSession, saveProgress, spec.slot]);
 
   // persist immediately so a refresh can never re-roll the session
@@ -86,32 +95,39 @@ export function Play({ spec }: { spec: PlaySpec }) {
   useEffect(() => { if (secs != null && secs > 0 && secs <= 5) play('tick'); }, [secs]);
 
   const cfg = state.config;
-  const fixed = cfg.fixedLength;
-  const journeyScore = fixed ? (cfg.questionIds.length === 7 ? mapScore : (mapScore / cfg.questionIds.length) * 7) : mapScore % 700;
+  const count = cfg.questionIds.length;
+  // the world is drawn for seven 100-point legs
+  const journeyScore = count === 7 ? mapScore : (mapScore / count) * 7;
   const dest = DESTINATIONS[destinationIndex(journeyScore)];
-  const stageLabel = fixed ? `Leg ${state.index + 1} of ${cfg.questionIds.length}` : `Endless · leg ${state.index + 1}`;
+  const stageLabel = `Question ${state.index + 1} of ${count}`;
 
   const onLock = (e: Entity, input: string) => dispatch({ type: 'LOCK', entityId: e.id, input, now: Date.now() });
   const onPass = () => dispatch({ type: 'SKIP', now: Date.now() });
+
+  /** The reveal hands over to the ship: launch it in the style of this answer's tier. */
   const onTravel = () => {
-    const r = currentRound(stateRef.current).result;
-    const pts = r?.points ?? 0;
-    setMapScore(totalScore(stateRef.current));
-    setMood(r?.tier === 'perfect' ? 'celebrate' : pts >= 65 ? 'cheer' : pts > 0 ? 'travel' : 'miss');
-    setReactKey((k) => k + 1);
-  };
-  const onNext = useCallback(() => {
     const s = stateRef.current;
-    let nextQuestionId: string | undefined;
-    if (!s.config.fixedLength) {
-      nextQuestionId = nextOpenQuestion({ rand: Math.random, recent: [...data.recentQuestions, ...s.config.questionIds], category: spec.open?.category, lastCategory: QUESTION_BY_ID.get(currentRound(s).questionId)?.category });
-    }
+    const r = currentRound(s);
+    const tier: ResultTier = r.status === 'answered' && r.result ? r.result.tier : 'none';
+    setTravel(styleForTier(tier));
+    setMapScore(totalScore(s));
+    setMood(moodFor(tier));
+    setLaunchedRound(s.index);
+    reactKeyRef.current += 1;
+    setReactKey(reactKeyRef.current);
+  };
+  const onLaunch = useCallback((style: TravelStyle, moving: boolean) => { if (moving) play('launch', style.power); }, []);
+  const onSettle = useCallback(() => setSettledKey(reactKeyRef.current), []);
+  const settled = launchedRound === state.index && settledKey === reactKey && reactKey > 0;
+
+  const onNext = useCallback(() => {
     play('click');
-    dispatch({ type: 'NEXT', now: Date.now(), nextQuestionId });
-  }, [data.recentQuestions, dispatch, spec.open]);
-  const retry = () => { play('click'); dispatch({ type: 'NEXT', now: Date.now(), nextQuestionId: currentRound(stateRef.current).questionId }); };
+    dispatch({ type: 'NEXT', now: Date.now() });
+  }, [dispatch]);
 
   /* ------------------------------------------------ destination notes */
+  const journeyScoreRef = useRef(journeyScore);
+  journeyScoreRef.current = journeyScore;
   const [note, setNote] = useState<DestinationNote | null>(() => ({ key: 0, kind: 'start', index: destinationIndex(journeyScore) }));
   const noteTimer = useRef(0);
   const showNote = useCallback((n: Omit<DestinationNote, 'key'>, ms = 3600) => {
@@ -125,15 +141,13 @@ export function Play({ spec }: { spec: PlaySpec }) {
     // entering a destination's lands before reaching it: build anticipation
     if (i > destinationIndex(journeyScoreRef.current)) showNote({ kind: 'ahead', index: i }, 3000);
   }, [showNote]);
-  const journeyScoreRef = useRef(journeyScore);
-  journeyScoreRef.current = journeyScore;
 
   const kb = useKeyboardInset();
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-night">
-      <JourneyWorld score={journeyScore} reducedMotion={reducedMotion} mood={mood} reactKey={reactKey} onLandmark={onLandmark} onRegion={onRegion} />
-      <h2 className="sr-only" aria-live="polite">{`The explorer is at ${dest.name}`}</h2>
+      <JourneyWorld score={journeyScore} reducedMotion={reducedMotion} mood={mood} reactKey={reactKey} travel={travel} onLaunch={onLaunch} onSettle={onSettle} onLandmark={onLandmark} onRegion={onRegion} />
+      <h2 className="sr-only" aria-live="polite">{`The airship is at ${dest.name}`}</h2>
 
       <JourneyHud
         state={state}
@@ -142,11 +156,7 @@ export function Play({ spec }: { spec: PlaySpec }) {
         instant={reducedMotion || answering}
         journeyScore={journeyScore}
         onHome={() => navigate('/')}
-        right={!fixed ? (
-          <button onClick={() => dispatch({ type: 'END', now: Date.now() })} className="hud-plaque pointer-events-auto px-3 py-2.5 text-[13px] font-semibold text-cream/85 hover:text-gold">End journey</button>
-        ) : (
-          <button onClick={() => navigate('/')} className="hud-plaque pointer-events-auto grid h-[46px] w-10 place-items-center text-xl leading-none text-cream/60 hover:text-cream sm:h-[52px]" aria-label="Leave (progress is saved)" title="Leave — your progress is saved">×</button>
-        )}
+        right={<button onClick={() => navigate('/')} className="btn-ghost btn-sm btn-icon pointer-events-auto mr-0.5 mt-0.5" aria-label="Leave (progress is saved)" title="Leave — your progress is saved"><PixelIcon name="close" size={12} /></button>}
       />
       <DestinationCard note={note} />
 
@@ -164,12 +174,12 @@ export function Play({ spec }: { spec: PlaySpec }) {
                 q={q}
                 round={round}
                 reducedMotion={reducedMotion}
-                quick={cfg.mode === 'practice'}
-                isLast={fixed && state.index >= cfg.questionIds.length - 1}
+                isLast={state.index >= count - 1}
+                resumed={resumedReveal === state.index}
+                settled={settled}
                 onTravel={onTravel}
                 onNext={onNext}
                 onReport={(s) => setReport({ open: true, submitted: s })}
-                extraAction={cfg.mode === 'practice' ? <button onClick={(e) => { e.stopPropagation(); retry(); }} className="text-[11px] font-medium text-cream/70 hover:text-gold">Try this one again ↺</button> : undefined}
               />
             </motion.div>
           ) : null}

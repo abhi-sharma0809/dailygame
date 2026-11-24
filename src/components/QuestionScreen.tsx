@@ -5,6 +5,7 @@ import { CATEGORY_BY_ID } from '../data/atlas';
 import { checkPick, resolveAnswer, type AnswerResolution } from '../game/engine/questions';
 import type { Entity, RuntimeQuestion } from '../game/types';
 import { useSecondsLeft } from '../hooks/useCountdown';
+import { PixelIcon } from './PixelIcon';
 
 /* ------------------------------------------------------------ compass timer */
 
@@ -21,14 +22,14 @@ const CIRC = 2 * Math.PI * R;
  * final-seconds state fades in through CSS rather than restarting an
  * animation.
  */
-export function CompassTimer({ deadline, total, size = 56 }: { deadline: number | null; total: number | null; size?: number }) {
+export function CompassTimer({ deadline, total, size = 56 }: { deadline: number | null; total: number; size?: number }) {
   const arc = useRef<SVGCircleElement>(null);
   const marker = useRef<SVGGElement>(null);
-  const secs = useSecondsLeft(total ? deadline : null);
+  const secs = useSecondsLeft(deadline);
 
   // layout effect: the first paint already shows the true remaining time
   useLayoutEffect(() => {
-    if (!total || deadline == null) return;
+    if (deadline == null) return;
     let raf = 0;
     const paint = () => {
       const frac = Math.max(0, Math.min(1, (deadline - Date.now()) / (total * 1000)));
@@ -39,18 +40,6 @@ export function CompassTimer({ deadline, total, size = 56 }: { deadline: number 
     paint();
     return () => cancelAnimationFrame(raf);
   }, [deadline, total]);
-
-  if (!total) {
-    return (
-      <div className="relative grid shrink-0 place-items-center rounded-full border border-parchment/25 bg-night/60" style={{ width: size, height: size }}>
-        <svg viewBox="0 0 56 56" className="absolute inset-0 h-full w-full opacity-40" aria-hidden>
-          <path d="M28 8 L31 28 L28 31 L25 28 Z" fill="#D9AD63" />
-          <path d="M28 48 L31 28 L25 28 Z" fill="#F0E6D1" opacity="0.5" />
-        </svg>
-        <span className="eyebrow relative text-center text-[8px] leading-tight tracking-[0.16em] text-parchment/80">No<br />clock</span>
-      </div>
-    );
-  }
 
   const s = secs ?? total;
   const urgent = s <= 5;
@@ -120,7 +109,7 @@ interface DockProps {
   q: RuntimeQuestion;
   stageLabel: string;
   deadline: number | null;
-  seconds: number | null;
+  seconds: number;
   disabled?: boolean;
   onLock: (e: Entity, input: string) => void;
   onPass: () => void;
@@ -140,7 +129,6 @@ export function QuestionDock({ q, stageLabel, deadline, seconds, disabled, onLoc
   const [lastRejected, setLastRejected] = useState('');
   const locked = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const timed = !!seconds;
 
   useEffect(() => {
     locked.current = false;
@@ -186,25 +174,25 @@ export function QuestionDock({ q, stageLabel, deadline, seconds, disabled, onLoc
             behind the previous one's exit (rapid corrections stay instant) */}
           {fb?.kind === 'reject' && (
             <div key={`r:${fb.message}`} className="hud-tag fb-in pointer-events-auto border-l-[3px] border-l-ember">
-              <span>{fb.message} <span className="text-cream/60">Try again{timed ? ' while the compass turns' : ''}.</span></span>
-              {lastRejected.trim().length > 1 && <button type="button" onClick={() => onReport(lastRejected)} className="ml-2 whitespace-nowrap text-xs font-semibold text-gold hover:underline">It should count →</button>}
+              <span>{fb.message} <span className="text-cream/60">Try again while the compass turns.</span></span>
+              {lastRejected.trim().length > 1 && <button type="button" onClick={() => onReport(lastRejected)} className="btn-text ml-2 whitespace-nowrap py-0 text-[13px] text-gold-light">It should count</button>}
             </div>
           )}
           {fb?.kind === 'confirm' && (
             <div key={`c:${fb.entity.id}`} className="hud-tag fb-in pointer-events-auto border-l-[3px] border-l-gold">
               <span>Did you mean <strong className="font-display text-base italic text-gold-light">{fb.entity.name}</strong>?</span>
-              <span className="ml-2 flex shrink-0 gap-1.5">
-                <button type="button" onClick={() => lock(fb.entity, text)} className="rounded-full bg-gold px-3 py-1 text-xs font-bold text-ink">Yes ⏎</button>
-                <button type="button" onClick={() => { setFb(null); inputRef.current?.focus(); }} className="rounded-full px-2 py-1 text-xs text-cream/70 hover:text-cream">No</button>
+              <span className="ml-3 flex shrink-0 gap-2.5">
+                <button type="button" onClick={() => lock(fb.entity, text)} className="btn-gold btn-xs">Yes</button>
+                <button type="button" onClick={() => { setFb(null); inputRef.current?.focus(); }} className="btn-ghost btn-xs">No</button>
               </span>
             </div>
           )}
           {fb?.kind === 'choose' && (
             <div key={`h:${fb.options.map((o) => o.id).join()}`} className="hud-tag fb-in pointer-events-auto flex-col items-start border-l-[3px] border-l-gold">
               <span className="text-cream/75">Which one?</span>
-              <span className="mt-1.5 flex flex-wrap gap-1.5">
+              <span className="mt-2 flex flex-wrap gap-2.5 pb-0.5">
                 {fb.options.map((o) => (
-                  <button key={o.id} type="button" onClick={() => handle(checkPick(q, o), text)} className="rounded-full border border-cream/25 bg-night-2 px-3 py-1 font-display text-sm italic text-cream hover:border-gold hover:text-gold">{o.name}</button>
+                  <button key={o.id} type="button" onClick={() => handle(checkPick(q, o), text)} className="btn-ghost btn-xs">{o.name}</button>
                 ))}
               </span>
             </div>
@@ -214,7 +202,7 @@ export function QuestionDock({ q, stageLabel, deadline, seconds, disabled, onLoc
       <div className="journal-slip px-4 pb-3 pt-3 sm:px-5 sm:pb-3.5 sm:pt-3.5">
         <div className="flex items-center justify-between gap-3">
           <div className="eyebrow min-w-0 truncate text-[10px] text-[#5B6F4E]">{cat?.label}<span className="text-ink/35"> · </span><span className="normal-case tracking-normal text-ink-soft" style={{ letterSpacing: 0 }}>{stageLabel}</span></div>
-          <button type="button" onClick={pass} disabled={disabled} className="shrink-0 rounded px-1.5 py-0.5 text-[12px] font-medium text-ink-soft underline decoration-ink/25 underline-offset-2 transition hover:text-ink hover:decoration-ink/60 disabled:opacity-40">
+          <button type="button" onClick={pass} disabled={disabled} className="btn-text on-paper shrink-0 py-0 text-[13px]">
             Pass this one
           </button>
         </div>
@@ -242,12 +230,12 @@ export function QuestionDock({ q, stageLabel, deadline, seconds, disabled, onLoc
             spellCheck={false}
             enterKeyHint="go"
             maxLength={80}
-            className="h-12 w-full rounded-xl border border-parchment/15 bg-[#0B131B] px-4 font-display text-[17px] italic text-cream outline-none transition placeholder:text-cream/35 focus:border-gold/70 focus:shadow-[0_0_0_3px_rgba(217,173,99,.18)] sm:text-lg"
+            className="h-12 w-full rounded-[3px] border-2 border-parchment/15 bg-[#0B131B] px-4 font-display text-[17px] italic text-cream outline-none transition placeholder:text-cream/35 focus:border-gold/70 focus:shadow-[0_0_0_3px_rgba(217,173,99,.18)] sm:text-lg"
           />
         </motion.div>
-        <button type="submit" disabled={disabled} aria-label="Submit answer" className="btn-gold h-12 shrink-0 px-4 sm:px-6">
+        <button type="submit" disabled={disabled} aria-label="Submit answer" className="btn-gold mx-1 shrink-0 px-4 sm:px-5">
           <span className="hidden sm:inline">{fb?.kind === 'confirm' ? 'Confirm' : 'Submit'}</span>
-          <svg viewBox="0 0 20 20" className="h-5 w-5" aria-hidden><path d="M4 10 H15 M11 5.5 L15.5 10 L11 14.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <PixelIcon name="arrow" size={15} />
         </button>
       </form>
     </div>

@@ -1,8 +1,8 @@
 import { CATEGORIES, QUESTION_BY_ID } from '../../data/atlas';
 import { totalScore, type SessionState } from '../engine/session';
 import type { PlayerData, RoundSummary, SessionSummary } from '../persistence/store';
-import { DESTINATIONS, MAX_JOURNEY_SCORE, destinationIndex } from '../scoring';
-import { EXPEDITIONS, addDays, dayNumber } from '../selection';
+import { DESTINATIONS, destinationIndex } from '../scoring';
+import { addDays, dayNumber } from '../selection';
 import type { CategoryId, ResultTier } from '../types';
 
 /* ------------------------------------------------------------ summarize */
@@ -28,14 +28,11 @@ export function summarize(s: SessionState): SessionSummary {
     mode: s.config.mode,
     label: s.config.label,
     dateKey: s.config.dateKey,
-    expeditionId: s.config.expeditionId,
-    expeditionSession: s.config.expeditionSession,
     startedAt: s.startedAt,
     endedAt: s.endedAt ?? s.startedAt,
     rounds,
     total: totalScore(s),
     maxTotal: rounds.length * 100,
-    challenge: s.config.challenge,
   };
 }
 
@@ -68,7 +65,8 @@ export function streaks(data: PlayerData, today: string): { current: number; bes
 
 /* ------------------------------------------------------------ stats */
 
-const isJourney = (s: SessionSummary) => s.mode !== 'endless' && s.mode !== 'practice';
+/** Daily and archive quests (older saves may also hold sessions from modes that no longer exist). */
+const isJourney = (s: SessionSummary) => s.mode === 'daily' || s.mode === 'archive';
 
 export interface Stats {
   journeys: number;
@@ -132,11 +130,11 @@ export interface AchievementDef {
 const allRounds = (d: PlayerData) => d.sessions.flatMap((s) => s.rounds);
 
 export const ACHIEVEMENTS: AchievementDef[] = [
-  { id: 'first-connection', title: 'First Connection', description: 'Finish your first journey.', glyph: '✧', check: ({ session }) => isJourney(session) && session.rounds.length >= 7 },
+  { id: 'first-connection', title: 'First Connection', description: 'Finish your first quest.', glyph: '✧', check: ({ session }) => isJourney(session) && session.rounds.length >= 7 },
   { id: 'perfect-pair', title: 'Perfect Pair', description: 'Earn a 100-point Perfect Match.', glyph: '✦', check: ({ session }) => session.rounds.some((r) => r.tier === 'perfect') },
   { id: 'the-connector', title: 'The Connector', description: 'Earn five Perfect Matches in total.', glyph: '❖', check: ({ data }) => allRounds(data).filter((r) => r.tier === 'perfect').length >= 5 },
-  { id: 'world-explorer', title: 'World Explorer', description: 'Visit all seven destinations — answer every round of a journey.', glyph: '⌖', check: ({ session }) => isJourney(session) && session.rounds.length >= 7 && session.rounds.every((r) => r.status === 'answered') },
-  { id: 'summit', title: 'Summit Seeker', description: 'Reach The Summit — score 600 or more in a journey.', glyph: '▲', check: ({ session }) => isJourney(session) && session.rounds.length >= 7 && session.total >= 600 },
+  { id: 'world-explorer', title: 'World Explorer', description: 'Answer all seven questions of a quest.', glyph: '⌖', check: ({ session }) => isJourney(session) && session.rounds.length >= 7 && session.rounds.every((r) => r.status === 'answered') },
+  { id: 'summit', title: 'Summit Seeker', description: 'Reach The Summit — score 600 or more in a quest.', glyph: '▲', check: ({ session }) => isJourney(session) && session.rounds.length >= 7 && session.total >= 600 },
   { id: 'seven-day-journey', title: 'Seven Day Journey', description: 'Keep a seven-day daily streak.', glyph: '☀', check: ({ data, today }) => streaks(data, today).current >= 7 },
   {
     id: 'master-of-connections', title: 'Master of Connections', description: 'Average 75+ points per round across 21 or more rounds.', glyph: '♛',
@@ -144,8 +142,6 @@ export const ACHIEVEMENTS: AchievementDef[] = [
   },
   { id: 'off-the-map', title: 'Off the Map', description: 'Submit five valid answers that weren’t on the board yet.', glyph: '?', check: ({ data }) => allRounds(data).filter((r) => r.tier === 'unranked').length >= 5 },
   { id: 'cartographer', title: 'Cartographer', description: 'Answer a question in all ten categories.', glyph: '◎', check: ({ data }) => CATEGORIES.every((c) => allRounds(data).some((r) => r.category === c.id && r.status === 'answered')) },
-  { id: 'expedition-leader', title: 'Expedition Leader', description: 'Complete every themed expedition.', glyph: '⚑', check: ({ data }) => EXPEDITIONS.every((e) => data.sessions.some((s) => s.expeditionId === e.id)) },
-  { id: 'long-road', title: 'The Long Road', description: 'Answer 25 questions in one endless journey.', glyph: '∞', check: ({ session }) => session.mode === 'endless' && session.rounds.filter((r) => r.status === 'answered').length >= 25 },
 ];
 
 /** Record a finished session (pure). */
@@ -174,43 +170,33 @@ export function recordSession(data: PlayerData, state: SessionState, today: stri
 
 /* ------------------------------------------------------------ sharing */
 
-const SQUARE: Record<ResultTier, string> = { perfect: '🟨', nearly: '🟧', family: '🟩', close: '🟦', distant: '🟪', loose: '⬜', unranked: '⬜', none: '⬛' };
+/** One symbol per question, in the game's tier colours; a Perfect Match shines. */
+export const SHARE_SYMBOL: Record<ResultTier, string> = { perfect: '🌟', nearly: '🟨', family: '🟩', close: '🟦', distant: '🟪', loose: '⬜', unranked: '⬜', none: '⬛' };
 
-/** Share text: score and tiers only — never the questions or answers. */
-export function shareText(s: SessionSummary, url?: string): string {
-  const perfect = s.rounds.filter((r) => r.tier === 'perfect').length;
-  const title = s.mode === 'daily' && s.dateKey ? `KINSHIP — DAILY JOURNEY #${dayNumber(s.dateKey) + 1}` : `KINSHIP — ${s.label.toUpperCase()}`;
-  const lines = [
-    title,
-    '',
-    `${s.total} / ${s.maxTotal}`,
-    s.rounds.map((r) => SQUARE[r.tier]).join(''),
-    `Reached ${destinationFor(s.total, s.rounds.length).name}`,
-    perfect ? `${perfect} PERFECT CONNECTION${perfect === 1 ? '' : 'S'}` : '',
-    '',
-    'Can you find the same connections?',
-  ].filter((l, i, a) => l !== '' || a[i - 1] !== '');
-  if (url) lines.push(url);
-  return lines.join('\n');
+/** How the whole journey went, at a glance: the Summit earns the trophy. */
+export function shareBadge(total: number, rounds = 7): string {
+  const j = rounds >= 7 ? total : (total / Math.max(1, rounds)) * 7;
+  return j >= 600 ? '🏆' : j >= 450 ? '🚀' : j >= 300 ? '⛵' : '🧭';
 }
 
-/* ------------------------------------------------------------ friend challenges */
+/** "SIMMLY — DAILY QUEST #10" (or "… QUEST #4 · ARCHIVES" for a replayed one). */
+export function shareTitle(s: SessionSummary): string {
+  if (s.dateKey) return `SIMMLY — ${s.mode === 'daily' ? 'DAILY QUEST' : 'QUEST'} #${dayNumber(s.dateKey) + 1}${s.mode === 'archive' ? ' · ARCHIVES' : ''}`;
+  return `SIMMLY — ${s.label.toUpperCase()}`;
+}
 
-export interface ChallengePayload { q: string[]; s?: number; n?: string }
-
-const b64 = {
-  enc: (s: string) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''),
-  dec: (s: string) => decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/')))),
-};
-
-export const encodeChallenge = (p: ChallengePayload) => b64.enc(JSON.stringify(p));
-
-export function decodeChallenge(token: string): ChallengePayload | null {
-  try {
-    const p = JSON.parse(b64.dec(token)) as ChallengePayload;
-    if (!Array.isArray(p.q) || p.q.length < 1 || p.q.length > 10 || !p.q.every((id) => QUESTION_BY_ID.has(id))) return null;
-    return { q: p.q, s: typeof p.s === 'number' ? Math.max(0, Math.min(MAX_JOURNEY_SCORE, Math.round(p.s))) : undefined, n: typeof p.n === 'string' ? p.n.slice(0, 24) : undefined };
-  } catch {
-    return null;
-  }
+/**
+ * The share text — only the quest's date, the score and one symbol per question:
+ *
+ *   SIMMLY | NOVEMBER 24
+ *
+ *   🚀 465 / 700
+ *   🌟🟦🟨⬛🟪⬜🟩
+ *
+ * No links, no answers, no extra copy.
+ */
+export function shareText(s: SessionSummary): string {
+  const when = s.dateKey ? new Date(`${s.dateKey}T12:00:00`) : new Date(s.endedAt);
+  const date = when.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+  return [`SIMMLY | ${date}`, '', `${shareBadge(s.total, s.rounds.length)} ${s.total} / ${s.maxTotal}`, s.rounds.map((r) => SHARE_SYMBOL[r.tier]).join('')].join('\n');
 }

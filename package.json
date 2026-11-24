@@ -1,9 +1,9 @@
 {
-  "name": "kinship",
+  "name": "simmly",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "KINSHIP \u2014 a daily game of connections. Everything has something in common.",
+  "description": "SIMMLY \u2014 a daily game of connections. Everything has something in common.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.json --noEmit && vite build",

@@ -5,6 +5,7 @@ import { makeNearRenderer, nearActors, nearUnderActors } from './art/near';
 import { RoutePainter, SkyPainter, WeatherPainter } from './canvas';
 import { JourneyEngine } from './engine';
 import { EngineContext, Layer, ViewContext, type View } from './Layer';
+import { DEFAULT_STYLE, type TravelStyle } from './motion';
 import { BEACON_X, BEACON_Y, LM_X, ROUTE_Y, SKIES, WORLD_END, WORLD_START, clamp, regionAt, regionIndex, scoreToX } from './world';
 
 /* ============================================================
@@ -13,21 +14,32 @@ import { BEACON_X, BEACON_Y, LM_X, ROUTE_Y, SKIES, WORLD_END, WORLD_START, clamp
  * the airship flies to the matching point on the route, destinations
  * light up as they are reached, and time of day moves from dawn at the
  * Forgotten Forest to an aurora night at the Summit.
+ *
+ * The score alone decides *where* the ship goes (scoreToX). `travel`
+ * decides *how* it gets there: bumping `reactKey` launches the ship in that
+ * style, even if the score didn't change (a miss sputters in place).
  * ============================================================ */
 
-export type { ExplorerMood };
+export type { ExplorerMood, TravelStyle };
 
 interface Props {
   /** journey points 0–700 */
   score: number;
   reducedMotion: boolean;
   mood: ExplorerMood;
-  /** bump to replay the explorer's reaction */
+  /** bump to launch the explorer (in the `travel` style) and replay its reaction */
   reactKey: number;
+  /** how the next launch looks: from the answer's tier */
+  travel?: TravelStyle;
+  onLaunch?: (style: TravelStyle, moving: boolean) => void;
+  /** the explorer has landed and come to rest */
+  onSettle?: () => void;
   /** a destination (0–6) or the beacon (7) was reached by travelling */
   onLandmark?: (i: number) => void;
   onRegion?: (i: number) => void;
   onArrive?: () => void;
+  /** move the ship on screen by this fraction of the view (negative = left / up); the camera pans there */
+  shift?: { x: number; y: number };
   className?: string;
 }
 
@@ -42,16 +54,17 @@ function computeView(w: number, h: number): View {
   return { s, viewW, viewH, ax: viewW * (portrait ? 0.3 : 0.36), ay: viewH * (portrait ? 0.4 : 0.4), portrait };
 }
 
-export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, mood, reactKey, onLandmark, onRegion, onArrive, className }: Props) {
+export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, mood, reactKey, travel, onLandmark, onRegion, onArrive, onLaunch, onSettle, shift, className }: Props) {
   const root = useRef<HTMLDivElement>(null);
   const [engine] = useState(() => new JourneyEngine(scoreToX(score), reducedMotion));
   const [view, setView] = useState<View>(() => computeView(typeof window !== 'undefined' ? window.innerWidth : 1440, typeof window !== 'undefined' ? window.innerHeight : 900));
   const [lit, setLit] = useState(() => litFor(score));
   const [region, setRegion] = useState(() => regionIndex(scoreToX(score)));
-  const [wipe, setWipe] = useState(false);
-  const scoreRef = useRef(score);
-  const cbs = useRef({ onLandmark, onRegion, onArrive });
-  cbs.current = { onLandmark, onRegion, onArrive };
+  const cbs = useRef({ onLandmark, onRegion, onArrive, onLaunch, onSettle });
+  cbs.current = { onLandmark, onRegion, onArrive, onLaunch, onSettle };
+  const travelRef = useRef(travel);
+  travelRef.current = travel;
+  const flashRef = useRef<HTMLDivElement>(null);
 
   const skyRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sunRef = useRef<HTMLDivElement>(null);
@@ -61,6 +74,9 @@ export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, m
   const weatherCanvas = useRef<HTMLCanvasElement>(null);
   const weather = useRef<WeatherPainter | null>(null);
   const routeP = useRef<RoutePainter | null>(null);
+
+  // where the ship actually rests (written on mount and every time it settles; read by e2e checks)
+  useLayoutEffect(() => { if (root.current) root.current.dataset.shipX = engine.frame.ex.toFixed(1); }, [engine]);
 
   // size
   useLayoutEffect(() => {
@@ -89,7 +105,12 @@ export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, m
       cbs.current.onLandmark?.(i);
     };
     engine.onRegion = (i) => { setRegion(i); cbs.current.onRegion?.(i); };
-    engine.onArrive = () => cbs.current.onArrive?.();
+    engine.onLaunch = (style, moving) => { if (moving || style.power === 0) routeP.current?.launch(engine.frame, view); cbs.current.onLaunch?.(style, moving); };
+    engine.onArrive = () => { routeP.current?.land(engine.frame, view); cbs.current.onArrive?.(); };
+    engine.onSettle = () => {
+      if (root.current) root.current.dataset.shipX = engine.frame.ex.toFixed(1);
+      cbs.current.onSettle?.();
+    };
     engine.start();
     return () => engine.stop();
   }, [engine, reducedMotion, view]);
@@ -135,26 +156,36 @@ export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, m
       sky?.draw(f, view, engine.reduced);
       route?.draw(f, view, engine.reduced);
       w?.draw(f, view, engine.reduced);
+      // a soft bloom of light from the ship on a strong launch
+      const fl = flashRef.current;
+      if (fl) {
+        const on = f.flash > 0.005 && !engine.reduced;
+        if (on) {
+          fl.style.setProperty('--fx', `${((view.ax + f.ex - f.camX) * view.s).toFixed(0)}px`);
+          fl.style.setProperty('--fy', `${((view.ay + f.ey - 40 - f.camY) * view.s).toFixed(0)}px`);
+          fl.style.setProperty('--glow', f.style.color);
+        }
+        fl.style.opacity = on ? f.flash.toFixed(3) : '0';
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [engine, view]);
 
-  // score → travel. Endless journeys loop back to the forest through the clouds.
-  useEffect(() => {
-    const prev = scoreRef.current;
-    scoreRef.current = score;
-    if (score === prev) return;
-    if (score < prev - 0.5) {
-      if (reducedMotion) { engine.jump(scoreToX(score)); setLit(litFor(score)); return; }
-      setWipe(true);
-      const t1 = window.setTimeout(() => { engine.jump(scoreToX(0)); setLit(litFor(0)); if (routeP.current) routeP.current.reached = 1; }, 650);
-      const t2 = window.setTimeout(() => { setWipe(false); engine.travelTo(scoreToX(score)); }, 900);
-      return () => { clearTimeout(t1); clearTimeout(t2); };
-    }
-    engine.travelTo(scoreToX(score));
-  }, [score, engine, reducedMotion]);
+  // framing
+  const sx = shift?.x ?? 0, sy = shift?.y ?? 0;
+  useEffect(() => { engine.focus = { x: -sx * view.viewW, y: -sy * view.viewH }; }, [engine, sx, sy, view]);
 
-  useEffect(() => { if (mood === 'miss' && routeP.current) routeP.current.sputter = 1.2; }, [mood, reactKey]);
+  // score → destination; reactKey → launch in the answer's style.
+  // The destination is always scoreToX(score): the engine only decides how to get there.
+  const commanded = useRef({ x: scoreToX(score), key: reactKey });
+  useEffect(() => {
+    const x = scoreToX(score);
+    const launched = reactKey !== commanded.current.key;
+    if (!launched && Math.abs(x - commanded.current.x) < 0.5) return;
+    commanded.current = { x, key: reactKey };
+    if (root.current) root.current.dataset.targetX = x.toFixed(1);
+    engine.travelTo(x, launched ? travelRef.current ?? DEFAULT_STYLE : DEFAULT_STYLE);
+  }, [score, reactKey, engine]);
 
   /* ------------------------------------------------ layers */
   const pal = BACK[region];
@@ -187,7 +218,7 @@ export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, m
   return (
     <EngineContext.Provider value={engine}>
       <ViewContext.Provider value={view}>
-        <div ref={root} className={`absolute inset-0 overflow-hidden ${className ?? ''}`} style={{ background: SKIES[0].top, contain: 'strict' }} aria-hidden>
+        <div ref={root} className={`absolute inset-0 overflow-hidden ${className ?? ''}`} style={{ background: SKIES[0].top, contain: 'strict' }} data-target-x={scoreToX(score).toFixed(1)} aria-hidden>
           {/* sky: seven times of day, crossfaded by position */}
           {SKIES.map((_, i) => (
             <div key={i} ref={(el) => { skyRefs.current[i] = el; }} className="absolute inset-0" style={{ background: skyBg(i), opacity: i === 0 ? 1 : 0, willChange: 'opacity' }} />
@@ -214,8 +245,8 @@ export const JourneyWorld = memo(function JourneyWorld({ score, reducedMotion, m
           <canvas ref={weatherCanvas} className="absolute inset-0 h-full w-full" />
           {/* vignette */}
           <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(5,9,14,.5) 100%)' }} />
-          {/* cloud wipe when an endless journey begins a new lap */}
-          <div className="pointer-events-none absolute inset-0 transition-opacity duration-500" style={{ opacity: wipe ? 1 : 0, background: 'radial-gradient(60% 50% at 50% 50%, #F8F1E2, #E6D7BE 60%, #B9A88C)' }} />
+          {/* launch bloom (driven per frame) */}
+          <div ref={flashRef} className="pointer-events-none absolute inset-0" style={{ opacity: 0, background: 'radial-gradient(42vmax 32vmax at var(--fx, 50%) var(--fy, 50%), color-mix(in srgb, var(--glow, #FFD978) 60%, transparent), transparent 70%)' }} />
         </div>
       </ViewContext.Provider>
     </EngineContext.Provider>

@@ -6,7 +6,8 @@ import { BEACON_X, LM_X, WORLD_END, WORLD_START, X0, clamp, regionAt, rng, route
  * Canvas painters driven by the engine frame (no React).
  *   SkyPainter      stars, shooting stars, aurora (behind the mountains)
  *   RoutePainter    the route ahead (parchment dashes) and travelled (gold),
- *                   exhaust puffs behind the airship
+ *                   exhaust puffs, and the answer-driven flight effects: a
+ *                   glowing trail, engine sparks, launch burst, landing ring
  *   WeatherPainter  region particles in front: fireflies, leaves, pollen,
  *                   wind, snow, rising star motes
  * ============================================================ */
@@ -107,14 +108,59 @@ export class SkyPainter {
 /* ------------------------------------------------------------ route */
 
 interface Puff { x: number; y: number; vx: number; vy: number; r: number; life: number; max: number; dark: boolean }
+/** world-space trail sample at the ship's stern */
+interface TrailPt { x: number; y: number; age: number; w: number }
+/** world-space spark / burst particle */
+interface Spark { x: number; y: number; vx: number; vy: number; r: number; life: number; max: number; white: boolean; g: number }
+interface Ring { x: number; y: number; life: number; max: number; r: number; w: number; color: string }
 
 export class RoutePainter {
   private puffs: Puff[] = [];
   private emit = 0;
+  private trail: TrailPt[] = [];
+  private sparks: Spark[] = [];
+  private rings: Ring[] = [];
+  private sparkAcc = 0;
   /** reached destinations, for the route markers */
   reached = 0;
   sputter = 0;
   constructor(private c: HTMLCanvasElement) {}
+
+  /** stern of the airship in world units (the propeller), allowing for the phone scale */
+  private stern(f: Frame, view: View) {
+    const k = view.portrait ? 1.25 : 1;
+    return { x: f.ex - 46 * k, y: f.ey + f.bob + 12 * k };
+  }
+
+  /** The ship leaves: a ring of light and a spray of sparks thrown backwards. */
+  launch(f: Frame, view: View) {
+    const st = f.style;
+    if (st.power <= 0) { this.sputter = 1.2; return; }
+    const p = this.stern(f, view);
+    if (st.burst > 0) {
+      this.rings.push({ x: p.x, y: p.y, life: 0, max: 0.7, r: 30 + 120 * st.power, w: 2 + 4 * st.power, color: st.color });
+      for (let i = 0; i < st.burst; i++) {
+        const a = Math.PI + (Math.random() - 0.5) * 2.4; // mostly backwards
+        const v = 120 + Math.random() * 420 * st.power;
+        this.sparks.push({ x: p.x, y: p.y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 40, r: 1.4 + Math.random() * 2.6, life: 0, max: 0.6 + Math.random() * 0.8, white: Math.random() > 0.55, g: 160 });
+      }
+    }
+  }
+
+  /** The ship arrives: strong answers leave a shimmer where it lands. */
+  land(f: Frame, view: View) {
+    const st = f.style;
+    if (st.power < 0.6) return;
+    const k = view.portrait ? 1.25 : 1;
+    this.rings.push({ x: f.ex, y: f.ey - 40 * k, life: 0, max: 0.9, r: 70 + 70 * st.power, w: 1.5 + 2 * st.power, color: st.color });
+    const n = Math.round(10 + 22 * st.power);
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2;
+      const v = 60 + Math.random() * 90;
+      this.sparks.push({ x: f.ex + Math.cos(a) * 50, y: f.ey - 40 * k + Math.sin(a) * 30, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 30, r: 1 + Math.random() * 1.8, life: 0, max: 0.7 + Math.random() * 0.6, white: true, g: 40 });
+    }
+  }
+
   draw(f: Frame, view: View, reduced: boolean) {
     const { ctx, w, h } = fit(this.c);
     ctx.clearRect(0, 0, w, h);
@@ -170,12 +216,14 @@ export class RoutePainter {
       ctx.restore();
     });
 
+    if (!reduced) this.drawFlight(ctx, f, view, sx, sy);
+
     // exhaust puffs from the propeller while flying (dark sputter on a miss)
     if (!reduced) {
       const k = view.portrait ? 1.25 : 1;
       const px = sx(f.ex) - 50 * s * k;
       const py = sy(f.ey + f.bob) + 12 * s * k;
-      const rate = Math.abs(f.vx) > 60 ? 14 : this.sputter > 0 ? 9 : 1.2;
+      const rate = Math.abs(f.vx) > 60 ? 10 + 10 * f.style.power : this.sputter > 0 ? 9 : 1.2;
       this.emit += rate * f.dt;
       if (this.sputter > 0) this.sputter -= f.dt;
       while (this.emit > 1) {
@@ -200,12 +248,82 @@ export class RoutePainter {
     }
   }
   private lastCam: number | null = null;
+
+  private drawFlight(ctx: CanvasRenderingContext2D, f: Frame, view: View, sx: (x: number) => number, sy: (y: number) => number) {
+    const s = view.s;
+    const st = f.style;
+    const dt = f.dt;
+    const p = this.stern(f, view);
+
+    // trail: sampled at the stern while the engine is lit, fades with age
+    for (const t of this.trail) t.age += dt;
+    const life = Math.max(0.15, st.trail);
+    this.trail = this.trail.filter((t) => t.age < life);
+    if (f.boost > 0.04 && st.trail > 0 && (f.phase === 'flight' || f.phase === 'settle')) this.trail.push({ x: p.x, y: p.y, age: 0, w: f.boost });
+    if (this.trail.length > 1) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.lineCap = 'round';
+      for (let pass = 0; pass < 2; pass++) {
+        ctx.strokeStyle = pass === 0 ? st.color : '#FFF8E6';
+        for (let i = 1; i < this.trail.length; i++) {
+          const a = this.trail[i - 1], b = this.trail[i];
+          const fade = 1 - b.age / life;
+          if (fade <= 0) continue;
+          const w = (pass === 0 ? 3 + 14 * st.power : 1 + 3 * st.power) * b.w * fade * s;
+          ctx.globalAlpha = (pass === 0 ? 0.28 : 0.55) * fade;
+          ctx.lineWidth = Math.max(0.6, w);
+          ctx.beginPath(); ctx.moveTo(sx(a.x), sy(a.y)); ctx.lineTo(sx(b.x), sy(b.y)); ctx.stroke();
+        }
+      }
+      ctx.restore();
+    }
+
+    // sparks streaming from the engine at speed
+    if (f.phase === 'flight' && st.sparks > 0) {
+      this.sparkAcc += st.sparks * f.boost * dt;
+      while (this.sparkAcc > 1) {
+        this.sparkAcc -= 1;
+        this.sparks.push({ x: p.x + (Math.random() - 0.5) * 6, y: p.y + (Math.random() - 0.5) * 8, vx: -40 - Math.random() * 160, vy: (Math.random() - 0.5) * 90, r: 0.9 + Math.random() * 1.8 * st.power, life: 0, max: 0.35 + Math.random() * 0.6, white: Math.random() > 0.6, g: 60 });
+      }
+    } else this.sparkAcc = 0;
+
+    if (this.sparks.length || this.rings.length) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      for (const k of this.sparks) {
+        k.life += dt;
+        k.vy += k.g * dt;
+        k.vx *= 1 - 1.6 * dt;
+        k.x += k.vx * dt; k.y += k.vy * dt;
+        const a = 1 - k.life / k.max;
+        if (a <= 0) continue;
+        ctx.globalAlpha = a;
+        ctx.fillStyle = k.white ? '#FFF8E6' : st.color;
+        ctx.beginPath(); ctx.arc(sx(k.x), sy(k.y), Math.max(0.5, k.r * (0.5 + a * 0.6) * s), 0, 6.283); ctx.fill();
+      }
+      this.sparks = this.sparks.filter((k) => k.life < k.max);
+      for (const r of this.rings) {
+        r.life += dt;
+        const q = r.life / r.max;
+        if (q >= 1) continue;
+        const e = 1 - Math.pow(1 - q, 3);
+        ctx.globalAlpha = (1 - q) * 0.8;
+        ctx.strokeStyle = r.color;
+        ctx.lineWidth = Math.max(0.8, r.w * (1 - q) * s);
+        ctx.beginPath(); ctx.ellipse(sx(r.x), sy(r.y), r.r * e * s, r.r * e * 0.62 * s, 0, 0, 6.283); ctx.stroke();
+      }
+      this.rings = this.rings.filter((r) => r.life < r.max);
+      ctx.restore();
+    }
+  }
 }
 
 /* ------------------------------------------------------------ weather */
 
 type Kind = 'firefly' | 'leaf' | 'pollen' | 'wind' | 'snow' | 'spark';
-interface P { kind: Kind; x: number; y: number; vx: number; vy: number; r: number; life: number; max: number; rot: number; vr: number; depth: number; hue: number }
+interface P { kind: Kind; x: number; y: number; vx: number; vy: number; r: number; life: number; max: number; rot: number; vr: number; depth: number; hue: number; bvx: number; bvy: number }
+const approachV = (v: number, base: number, dt: number) => base + (v - base) * Math.exp(-2.2 * dt);
 
 export class WeatherPainter {
   private ps: P[] = [];
@@ -219,7 +337,7 @@ export class WeatherPainter {
     for (let i = 0; i < n; i++) {
       const a = Math.random() * Math.PI * 2;
       const v = 80 + Math.random() * 220;
-      this.bursts.push({ kind: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120, r: 1.5 + Math.random() * 2.5, life: 0, max: 1.2 + Math.random() * 0.8, rot: 0, vr: 0, depth: 1, hue: Math.random() });
+      this.bursts.push({ kind: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120, r: 1.5 + Math.random() * 2.5, life: 0, max: 1.2 + Math.random() * 0.8, rot: 0, vr: 0, depth: 1, hue: Math.random(), bvx: 0, bvy: 0 });
     }
   }
 
@@ -232,7 +350,8 @@ export class WeatherPainter {
       firefly: band(rr, -1, 0.9, 0.6) * 9,
       leaf: band(rr, -1, 2.3, 0.6) * (rr > 1.6 ? 3 : 2.2),
       pollen: band(rr, 0.8, 2.5, 0.5) * 7,
-      wind: band(rr, 2.6, 4.3, 0.4) * 5 + (Math.abs(f.vx) > 200 ? 4 : 0),
+      // speed lines grow with the strength of the answer that launched the ship
+      wind: band(rr, 2.6, 4.3, 0.4) * 5 + (Math.abs(f.vx) > 200 ? 3 + 22 * f.style.power * f.boost : 0),
       snow: band(rr, 3.5, 5.0, 0.5) * 26,
       spark: band(rr, 4.9, 7, 0.5) * 8,
     };
@@ -247,8 +366,24 @@ export class WeatherPainter {
         if (this.ps.length < this.budget) this.ps.push(this.spawn(k, w, h));
       }
     }
+    // the ship's wake: nearby motes, leaves and snow are pushed aside as it passes
+    const shipX = (view.ax + f.ex - f.camX) * scale;
+    const shipY = (view.ay + f.ey - 40 - f.camY) * scale;
+    const wakeR = 170 * scale;
+    const wake = Math.min(1600, Math.abs(f.vx)) * (0.6 + f.style.power);
     for (const p of this.ps) {
       p.life += dt;
+      if (wake > 40 && p.kind !== 'wind') {
+        const dx = p.x - shipX, dy = p.y - shipY;
+        const d = Math.hypot(dx, dy);
+        if (d < wakeR && d > 1) {
+          const k = (1 - d / wakeR) * wake * dt * 1.4;
+          p.vx += (dx / d) * k - k * 0.6;
+          p.vy += (dy / d) * k;
+        }
+      }
+      // wake impulses fade so particles return to their own drift
+      if (p.kind !== 'wind' && p.kind !== 'firefly') { p.vx = approachV(p.vx, p.bvx, dt); p.vy = approachV(p.vy, p.bvy, dt); }
       p.x += p.vx * dt * scale - dCam * p.depth;
       p.y += p.vy * dt * scale;
       p.rot += p.vr * dt;
@@ -274,6 +409,12 @@ export class WeatherPainter {
   }
 
   private spawn(kind: Kind, w: number, h: number): P {
+    const p = this.spawnRaw(kind, w, h);
+    p.bvx = p.vx; p.bvy = p.vy;
+    return p;
+  }
+
+  private spawnRaw(kind: Kind, w: number, h: number): P {
     const r = Math.random;
     const base = { kind, life: 0, rot: r() * 6, vr: (r() - 0.5) * 3, depth: 0.6 + r() * 0.9, hue: r() } as P;
     switch (kind) {

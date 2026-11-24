@@ -64,7 +64,7 @@ for (const st of STRATEGIES) {
     const day = addDays('2026-11-15', i * 2 + STRATEGIES.indexOf(st));
     const ids = dailyQuestionIds(day);
     const r = mulberry32(hashString(`${st.name}:${i}`));
-    let s = createSession({ mode: 'daily', questionIds: ids, seconds: 20, fixedLength: true, dateKey: day, label: 'sim' }, 0, `sim${i}`);
+    let s = createSession({ mode: 'daily', questionIds: ids, seconds: 20, dateKey: day, label: 'sim' }, 0, `sim${i}`);
     const rounds: Round[] = [];
     let now = 0;
     for (const qid of ids) {
@@ -96,7 +96,7 @@ const mean = (x: number[]) => (x.length ? x.reduce((a, b) => a + b, 0) / x.lengt
 const sd = (x: number[]) => { const m = mean(x); return Math.sqrt(mean(x.map((v) => (v - m) ** 2))); };
 const pad = (v: string | number, n: number) => String(v).padStart(n);
 
-console.log(`\nKINSHIP player simulation — ${results.length} journeys, ${results.length * 7} rounds\n`);
+console.log(`\nSIMMLY player simulation — ${results.length} journeys, ${results.length * 7} rounds\n`);
 console.log('STRATEGY                  mean   sd   min   max   perfect  unranked  no answer');
 for (const st of STRATEGIES) {
   const rs = results.filter((x) => x.strategy === st.name);

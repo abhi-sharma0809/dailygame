@@ -1,7 +1,6 @@
 import type { SessionSummary } from '../game/persistence/store';
-import { destinationFor } from '../game/progression';
+import { destinationFor, shareTitle } from '../game/progression';
 import { TIER_COLORS } from '../game/scoring';
-import { dayNumber } from '../game/selection';
 
 /**
  * Renders a 1080×1350 share card: the live Atlas illustration on top, a
@@ -48,7 +47,7 @@ export async function renderShareCard(s: SessionSummary, mapSvg: SVGSVGElement |
   g.textAlign = 'center';
   g.fillStyle = '#B4843C';
   g.font = '700 26px "DM Sans", sans-serif';
-  const title = s.mode === 'daily' && s.dateKey ? `KINSHIP — DAILY JOURNEY #${dayNumber(s.dateKey) + 1}` : `KINSHIP — ${s.label.toUpperCase()}`;
+  const title = shareTitle(s);
   g.fillText(title.split('').join(String.fromCharCode(8202)), Wd / 2, py + 80);
 
   g.fillStyle = '#26323A';

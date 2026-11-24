@@ -40,7 +40,7 @@ export function EditorPage() {
     const file = ATLAS.boards[draft.category];
     const content = serializeBoardFile({ ...file, questions: file.questions.map((q) => (q.id === draft.id ? { ...draft, version: dirty ? draft.version + 1 : draft.version } : q)) });
     setStatus('Saving…');
-    const res = await fetch('/__kinship/save-board', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ category: draft.category, content }) });
+    const res = await fetch('/__simmly/save-board', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ category: draft.category, content }) });
     setStatus(res.ok ? 'Saved — the game will hot-reload with the new board (version bumped).' : `Save failed: ${await res.text()}`);
   };
 

@@ -2,7 +2,7 @@
  * Original, synthesized sound effects (Web Audio API — no samples).
  * Everything is optional: if audio is unavailable or disabled, calls are no-ops.
  */
-type Sfx = 'click' | 'lock' | 'reject' | 'sweep' | 'calc' | 'acquire' | 'reveal' | 'achievement' | 'tick' | 'miss' | 'skip' | 'connect' | 'travel';
+type Sfx = 'click' | 'lock' | 'reject' | 'sweep' | 'calc' | 'acquire' | 'reveal' | 'achievement' | 'tick' | 'miss' | 'skip' | 'connect' | 'travel' | 'launch';
 
 let ctx: AudioContext | null = null;
 let master: GainNode | null = null;
@@ -83,6 +83,14 @@ export function play(s: Sfx, intensity = 0) {
       return;
     case 'travel':
       return noise(1.4, { from: 250, to: 900, gain: 0.05, q: 2 });
+    case 'launch': {
+      // intensity 0–1: a soft whoosh for a loose connection, a bright surge for a perfect one
+      const k = Math.max(0, Math.min(1, intensity));
+      noise(0.9 + k * 0.9, { from: 180 + k * 120, to: 900 + k * 2600, gain: 0.04 + k * 0.06, q: 1.6 });
+      if (k >= 0.6) tone(140 + k * 60, 0.5 + k * 0.4, { type: 'sine', gain: 0.05 + k * 0.05, glide: 420 + k * 500, attack: 0.04 });
+      if (k >= 0.95) [1046.5, 1318.5, 1568, 2093].forEach((f, i) => tone(f, 0.45, { type: 'sine', gain: 0.045, delay: 0.12 + i * 0.07 }));
+      return;
+    }
     case 'tick':
       return tone(660, 0.07, { type: 'triangle', gain: 0.06 });
     case 'skip':

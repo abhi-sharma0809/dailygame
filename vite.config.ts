@@ -8,10 +8,10 @@ import react from '@vitejs/plugin-react';
 function boardEditor(): Plugin {
   const dir = path.resolve(__dirname, 'src/data/atlas/boards');
   return {
-    name: 'kinship-board-editor',
+    name: 'simmly-board-editor',
     apply: 'serve',
     configureServer(server) {
-      server.middlewares.use('/__kinship/save-board', (req, res) => {
+      server.middlewares.use('/__simmly/save-board', (req, res) => {
         if (req.method !== 'POST') { res.statusCode = 405; res.end('POST only'); return; }
         let body = '';
         req.on('data', (c) => { body += c; if (body.length > 2_000_000) req.destroy(); });

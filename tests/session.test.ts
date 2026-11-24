@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { QUESTION_BY_ID } from '../src/data/atlas';
 import { buildQuestion } from '../src/game/engine/questions';
 import { createSession, isExpired, sessionReducer, totalScore, type SessionConfig } from '../src/game/engine/session';
-import { emptyPlayer, loadPlayer, memoryStore, savePlayer, STORAGE_KEY } from '../src/game/persistence/store';
-import { computeStats, decodeChallenge, encodeChallenge, recordSession, shareText, streaks } from '../src/game/progression';
-import { addDays, dailyCategories, dailyQuestionIds, dateKey, dayNumber, EXPEDITIONS, expeditionSessionCount, expeditionSessionIds, mulberry32, nextOpenQuestion } from '../src/game/selection';
+import { emptyPlayer, LEGACY_STORAGE_KEYS, loadPlayer, memoryStore, savePlayer, STORAGE_KEY } from '../src/game/persistence/store';
+import { computeStats, recordSession, shareText, shareTitle, streaks } from '../src/game/progression';
+import { addDays, dailyCategories, dailyQuestionIds, dateKey, dayNumber } from '../src/game/selection';
 
 const id = (qid: string, name: string) => buildQuestion(QUESTION_BY_ID.get(qid)!).universe.entities.find((e) => e.name === name)!.id;
-const cfg = (o: Partial<SessionConfig> = {}): SessionConfig => ({ mode: 'daily', questionIds: ['animal_panda', 'tv_friends', 'food_pizza'], seconds: 20, fixedLength: true, label: 'T', ...o });
+const cfg = (o: Partial<SessionConfig> = {}): SessionConfig => ({ mode: 'daily', questionIds: ['animal_panda', 'tv_friends', 'food_pizza'], seconds: 20, label: 'T', ...o });
 
 describe('session', () => {
   it('locks once, ignores duplicates, refuses invalid', () => {
@@ -64,20 +64,9 @@ describe('daily selection', () => {
   });
 });
 
-describe('modes', () => {
-  it('every expedition has a full session of 7', () => {
-    for (const e of EXPEDITIONS) for (let i = 0; i < expeditionSessionCount(e.id); i++) expect(new Set(expeditionSessionIds(e.id, i)).size).toBe(7);
-  });
-  it('endless avoids recent questions', () => {
-    const rand = mulberry32(3);
-    const recent: string[] = [];
-    for (let i = 0; i < 50; i++) { const q = nextOpenQuestion({ rand, recent })!; expect(recent).not.toContain(q); recent.push(q); }
-  });
-});
-
 function playDaily(key: string, answer: 'best' | 'skip' = 'best') {
   const ids = dailyQuestionIds(key);
-  let s = createSession({ mode: 'daily', questionIds: ids, seconds: 20, fixedLength: true, dateKey: key, label: 'Daily' }, 0, `d_${key}`);
+  let s = createSession({ mode: 'daily', questionIds: ids, seconds: 20, dateKey: key, label: 'Daily' }, 0, `d_${key}`);
   ids.forEach((qid, i) => {
     const q = buildQuestion(QUESTION_BY_ID.get(qid)!);
     s = answer === 'best' ? sessionReducer(s, { type: 'LOCK', entityId: q.ranked[0].entity.id, input: 'x', now: i * 10 + 1 }) : sessionReducer(s, { type: 'SKIP', now: i * 10 + 1 });
@@ -110,16 +99,34 @@ describe('progression & persistence', () => {
     expect(st.history).toHaveLength(49);
   });
   it('survives corrupt storage', () => expect(loadPlayer(memoryStore({ [STORAGE_KEY]: '{oops' })).sessions).toEqual([]));
-  it('share text never reveals questions or answers', () => {
+  it('share text is only the date, the score and one symbol per question', () => {
     const { summary } = recordSession(emptyPlayer(), playDaily('2026-11-19'), '2026-11-19');
-    const t = shareText(summary);
-    expect(t).toMatch(/700 \/ 700/);
-    expect(t).toMatch(/7 PERFECT CONNECTIONS/);
+    expect(shareText(summary)).toBe('SIMMLY | NOVEMBER 19\n\n🏆 700 / 700\n🌟🌟🌟🌟🌟🌟🌟');
+    const tiers = ['perfect', 'nearly', 'family', 'close', 'distant', 'unranked', 'none'] as const;
+    const mixed = { ...summary, total: 100 + 90 + 80 + 65 + 45 + 30, rounds: summary.rounds.map((r, i) => ({ ...r, tier: tiers[i] })) };
+    const t = shareText(mixed);
+    expect(t).toBe('SIMMLY | NOVEMBER 19\n\n⛵ 410 / 700\n🌟🟨🟩🟦🟪⬜⬛');
+    expect(t).not.toMatch(/https?:|www\.|#/);
     for (const r of summary.rounds) { expect(t).not.toContain(r.entityName!); expect(t).not.toContain(QUESTION_BY_ID.get(r.questionId)!.prompt); }
   });
-  it('challenge links round-trip', () => {
-    const ids = dailyQuestionIds('2026-11-19');
-    expect(decodeChallenge(encodeChallenge({ q: ids, s: 512, n: 'Sam' }))).toEqual({ q: ids, s: 512, n: 'Sam' });
-    expect(decodeChallenge('nope')).toBeNull();
+  it('share titles name the quest', () => {
+    const { summary } = recordSession(emptyPlayer(), playDaily('2026-11-19'), '2026-11-19');
+    expect(shareTitle(summary)).toBe('SIMMLY — DAILY QUEST #5');
+    expect(shareTitle({ ...summary, mode: 'archive' })).toBe('SIMMLY — QUEST #5 · ARCHIVES');
+  });
+  it('moves progress saved under the old name to the new key', () => {
+    const { data } = recordSession(emptyPlayer(), playDaily('2026-11-19'), '2026-11-19');
+    const store = memoryStore({ [LEGACY_STORAGE_KEYS[0]]: JSON.stringify(data) });
+    expect(loadPlayer(store).dailies['2026-11-19'].total).toBe(700);
+    expect(store.get(STORAGE_KEY)).not.toBeNull();
+    expect(store.get(LEGACY_STORAGE_KEYS[0])).toBeNull();
+    // the new key wins over any leftover legacy copy
+    store.set(LEGACY_STORAGE_KEYS[0], JSON.stringify(emptyPlayer()));
+    expect(loadPlayer(store).dailies['2026-11-19'].total).toBe(700);
+  });
+  it('drops runs from removed modes but keeps resumable quests', () => {
+    const daily = createSession(cfg({ dateKey: '2026-11-19' }), 0);
+    const store = memoryStore({ [STORAGE_KEY]: JSON.stringify({ ...emptyPlayer(), inProgress: { 'daily:2026-11-19': daily, 'archive:2026-11-16': daily, endless: daily, practice: daily, 'expedition:wild:0': daily } }) });
+    expect(Object.keys(loadPlayer(store).inProgress).sort()).toEqual(['archive:2026-11-16', 'daily:2026-11-19']);
   });
 });

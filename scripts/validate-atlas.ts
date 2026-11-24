@@ -6,7 +6,7 @@ const verbose = process.argv.includes('-v');
 const issues = validateAtlas(ATLAS);
 const count = (s: string) => issues.filter((i) => i.severity === s).length;
 
-console.log(`\nKINSHIP atlas ${BANK_VERSION}`);
+console.log(`\nSIMMLY atlas ${BANK_VERSION}`);
 console.log(`  ${ATLAS.questions.length} questions · ${ATLAS.questions.reduce((a, q) => a + q.board.length, 0)} ranked answers`);
 for (const u of Object.values(ATLAS.universes)) console.log(`  universe ${u.id.padEnd(10)} ${String(u.entities.length).padStart(4)} valid answers`);
 const byCat: Record<string, Record<string, number>> = {};

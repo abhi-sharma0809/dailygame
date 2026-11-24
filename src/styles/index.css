@@ -59,26 +59,134 @@
   .eyebrow { @apply font-sans text-[11px] font-semibold uppercase tracking-[0.24em]; }
   .readout { @apply font-mono tabular-nums; }
 
-  .btn {
-    @apply relative inline-flex select-none items-center justify-center gap-2 rounded-full px-6 py-3 font-sans text-[15px] font-semibold tracking-wide transition duration-150 disabled:cursor-not-allowed disabled:opacity-40;
+  /* ============================================================
+   * Buttons — one pixel-game system for every control.
+   *
+   * A square face with a bevel (light top, dark bottom) sitting on an
+   * extruded side, all wrapped in a crisp outline drawn as offset shadows,
+   * which leaves the corners notched like pixel art. Pressing sinks the face
+   * down onto its side.
+   *   variants: btn-gold (primary) · btn-ink (primary on paper) ·
+   *             btn-ghost (secondary on dark) · btn-paper (secondary on
+   *             paper) · btn-danger
+   *   sizes:    btn-sm · (md) · btn-lg · btn-icon (square)
+   * ============================================================ */
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger) {
+    --px: 3px;      /* outline thickness = the "pixel" */
+    --depth: 4px;   /* resting drop-shadow depth = how far it sinks when pressed */
+    --lift: var(--depth);
+    --face: #1c2834; --hi: #34475a; --lo: #121b23; --side: #0b1117; --edge: #7a8894; --fg: #f0e6d1;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    height: 2.75rem;
+    padding: 0 1.25rem;
+    border: 0;
+    border-radius: 0;
+    font-family: 'Pixelify Sans', 'DM Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--fg);
+    background: var(--face);
+    box-shadow:
+      inset 0 var(--px) 0 0 var(--hi),
+      inset 0 calc(var(--px) * -1) 0 0 var(--lo),
+      0 var(--lift) 0 0 var(--side),
+      0 calc(var(--px) * -1) 0 0 var(--edge),
+      calc(var(--px) * -1) 0 0 0 var(--edge),
+      var(--px) 0 0 0 var(--edge),
+      calc(var(--px) * -1) var(--lift) 0 0 var(--edge),
+      var(--px) var(--lift) 0 0 var(--edge),
+      0 calc(var(--lift) + var(--px)) 0 0 var(--edge);
+    transition: transform 80ms steps(2, end), filter 120ms ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
-  .btn-gold {
-    @apply btn text-ink;
-    background: linear-gradient(180deg, #ecc98a 0%, #d9ad63 55%, #c5964e 100%);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 -2px 0 rgba(120, 80, 30, 0.35) inset, 0 10px 24px -10px rgba(217, 173, 99, 0.9);
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger):hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-1px); --lift: calc(var(--depth) + 1px); }
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger):active:not(:disabled) { transform: translateY(var(--depth)); --lift: 0px; filter: brightness(0.96); }
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger):focus-visible { outline: 3px solid #ffe7a6; outline-offset: calc(var(--px) + 3px); }
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger):disabled {
+    cursor: not-allowed;
+    --lift: calc(var(--depth) / 2);
+    --hi: var(--face); --lo: var(--face);
+    filter: saturate(0.2) brightness(0.78);
+    opacity: 0.6;
+    transform: translateY(calc(var(--depth) / 2));
   }
-  .btn-gold:hover { filter: brightness(1.05); transform: translateY(-1px); }
-  .btn-gold:active { transform: translateY(1px); }
-  .btn-ink {
-    @apply btn bg-ink text-parchment hover:bg-ink-soft;
-    box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.8);
-  }
-  .btn-ghost {
-    @apply btn border border-cream/20 text-cream/90 hover:border-gold/70 hover:text-gold;
-  }
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger) svg { flex-shrink: 0; }
+
+  .btn-gold { --face: #e8bb62; --hi: #fbe3a0; --lo: #c79747; --side: #8f6224; --edge: #23180c; --fg: #23180c; }
+  .btn-ink { --face: #2e3c47; --hi: #4a5a66; --lo: #222d35; --side: #121a20; --edge: #0b1116; --fg: #f4ead5; }
+  .btn-ghost:hover:not(:disabled) { --edge: #d9ad63; }
+  .btn-paper { --face: #ece0c3; --hi: #fffaee; --lo: #d6c49d; --side: #b39c6e; --edge: #26323a; --fg: #26323a; }
+  .btn-danger { --face: #cc6d42; --hi: #eda07a; --lo: #a95430; --side: #6e2f1b; --edge: #2a1209; --fg: #fff4e6; }
+  /* a selected option (radio / toggle groups) wears the primary colours */
+  :is(.btn, .btn-gold, .btn-ink, .btn-ghost, .btn-paper, .btn-danger):is([aria-checked='true'], [aria-pressed='true']) { --face: #e8bb62; --hi: #fbe3a0; --lo: #c79747; --side: #8f6224; --edge: #23180c; --fg: #23180c; }
+
+  .btn-sm { --px: 2px; --depth: 3px; height: 2.25rem; padding: 0 0.85rem; font-size: 14px; gap: 0.45rem; }
+  .btn-xs { --px: 2px; --depth: 2px; height: 1.75rem; padding: 0 0.6rem; font-size: 13px; gap: 0.35rem; }
+  .btn-lg { --depth: 5px; height: 3.5rem; padding: 0 1.75rem; font-size: 19px; }
+  .btn-icon { width: 2.75rem; padding: 0; }
+  .btn-icon.btn-sm { width: 2.25rem; }
+
+  /* tertiary actions: pixel text with a dotted underline, no box */
   .btn-text {
-    @apply inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-cream/70 transition hover:text-gold;
+    @apply inline-flex items-center gap-1.5 px-1 py-1 text-cream/75 transition-colors;
+    font-family: 'Pixelify Sans', 'DM Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-decoration: underline dotted 2px;
+    text-underline-offset: 4px;
+    text-decoration-color: currentColor;
   }
+  .btn-text:hover:not(:disabled) { color: #ecc98a; }
+  .btn-text:focus-visible { outline: 2px solid #ffe7a6; outline-offset: 2px; }
+  .btn-text:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-text.on-paper { color: #4a5761; }
+  .btn-text.on-paper:hover:not(:disabled) { color: #26323a; }
+
+  /* tiles: whole-row buttons in lists (Archives, voyage log) — same pixel outline, no drop */
+  .tile {
+    --px: 2px; --edge: rgba(240, 230, 209, 0.22);
+    border-radius: 0;
+    box-shadow: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge), 0 var(--px) 0 0 var(--edge), 0 6px 14px -8px rgba(0, 0, 0, 0.7);
+    transition: filter 120ms ease;
+  }
+  .tile:hover { --edge: rgba(217, 173, 99, 0.85); filter: brightness(1.08); }
+  .tile:active { transform: translateY(2px); }
+  .tile:focus-visible, .tile:focus-within:has(> button:focus-visible) { outline: 3px solid #ffe7a6; outline-offset: 4px; }
+
+  .tile-paper { --edge: #26323a; background-color: var(--parchment); background-image: var(--paper-noise), radial-gradient(130% 120% at 20% 0%, #fbf4e4 0%, #f0e4c9 60%, #e4d3b0 100%); }
+  .tile-paper:hover { --edge: #b4843c; }
+  .tile-dark { background: rgba(22, 34, 46, 0.92); }
+  .tile-log { background: rgba(13, 20, 28, 0.8); }
+  .tile-gold { --edge: rgba(233, 182, 92, 0.85); background: rgba(34, 30, 22, 0.84); box-shadow: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge), 0 var(--px) 0 0 var(--edge), 0 0 22px -6px rgba(233, 182, 92, 0.6); }
+  /* a tile's call to action, in the button type */
+  .tile-cta { @apply inline-flex items-center gap-1.5 font-pixel text-[14px] font-semibold tracking-[0.03em]; }
+
+  /* the sound switch: a square track and a square knob */
+  .px-switch {
+    --px: 2px;
+    position: relative; width: 3.25rem; height: 1.75rem; border-radius: 0;
+    background: #c9b48a;
+    box-shadow: inset 0 2px 0 0 #b09a6e, 0 -2px 0 0 #26323a, -2px 0 0 0 #26323a, 2px 0 0 0 #26323a, 0 2px 0 0 #26323a;
+  }
+  .px-switch[aria-checked='true'] { background: #e3b45e; box-shadow: inset 0 2px 0 0 #b4843c, 0 -2px 0 0 #26323a, -2px 0 0 0 #26323a, 2px 0 0 0 #26323a, 0 2px 0 0 #26323a; }
+  .px-switch > span {
+    position: absolute; top: 4px; left: 4px; width: 1.25rem;
+    height: calc(1.75rem - 8px);
+    background: #26323a;
+    box-shadow: inset 0 2px 0 0 #4a5a66, inset 0 -2px 0 0 #141c22;
+    transition: transform 100ms steps(3, end);
+  }
+  .px-switch[aria-checked='true'] > span { transform: translateX(1.5rem); }
+  .px-switch:focus-visible { outline: 3px solid #ffe7a6; outline-offset: 4px; }
 
   .ribbon {
     @apply relative inline-flex items-center gap-2 px-4 py-1 font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-ink;
@@ -173,28 +281,34 @@
     border-radius: 4px 4px 16px 16px;
     box-shadow: 0 22px 44px -18px rgba(3, 6, 10, 0.85);
   }
-  .hud-plaque {
-    background: rgba(13, 20, 28, 0.72);
-    border: 1px solid rgba(240, 230, 209, 0.13);
-    border-radius: 12px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 10px 24px -14px rgba(0, 0, 0, 0.7);
+  /* HUD panels, tags and destination cards: square pixel frames that match the buttons
+     (a notched 2px outline drawn with offset shadows, a bevel, a hard 2px drop) */
+  .hud-plaque, .hud-tag, .cartouche {
+    --edge: rgba(240, 230, 209, 0.3);
+    border-radius: 0;
+    background: rgba(13, 20, 28, 0.84);
+    box-shadow:
+      inset 0 2px 0 0 rgba(255, 255, 255, 0.07),
+      inset 0 -2px 0 0 rgba(0, 0, 0, 0.35),
+      0 -2px 0 0 var(--edge), -2px 0 0 0 var(--edge), 2px 0 0 0 var(--edge), 0 2px 0 0 var(--edge),
+      0 5px 0 0 rgba(3, 6, 10, 0.55);
   }
   .hud-tag {
-    @apply flex max-w-full items-center rounded-lg px-3.5 py-2 text-[13px] leading-snug text-cream;
-    background: rgba(13, 20, 28, 0.92);
-    box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.8);
+    @apply flex max-w-full items-center px-3.5 py-2 text-[13px] leading-snug text-cream;
+    background: rgba(13, 20, 28, 0.94);
   }
-  .cartouche {
-    @apply rounded-xl px-6 py-2.5;
-    background: rgba(13, 20, 28, 0.66);
-    border: 1px solid rgba(240, 230, 209, 0.16);
-    box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.8);
-  }
+  .cartouche { @apply px-6 py-2.5; }
   .cartouche--gold {
-    background: linear-gradient(180deg, #f6e2b0, #e2bd72);
-    border-color: rgba(255, 246, 221, 0.7);
-    box-shadow: 0 0 0 4px rgba(226, 189, 114, 0.18), 0 16px 36px -14px rgba(0, 0, 0, 0.7);
+    --edge: #8a6a2c;
+    background: #efd394;
+    box-shadow:
+      inset 0 2px 0 0 #fbeac0,
+      inset 0 -2px 0 0 #d6b26a,
+      0 -2px 0 0 var(--edge), -2px 0 0 0 var(--edge), 2px 0 0 0 var(--edge), 0 2px 0 0 var(--edge),
+      0 5px 0 0 rgba(3, 6, 10, 0.5);
   }
+  /* the logo as a home button: the wordmark on a pixel button face */
+  .wordmark-btn { height: 2.5rem; padding: 0 0.8rem; }
 }
 
 /* ============================================================

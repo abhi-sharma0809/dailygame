@@ -7,9 +7,9 @@ import { CountUp, Wordmark } from './ui';
 
 /* ============================================================
  * The journey HUD: small ink plaques at the edges of the world.
- *   left   — wordmark + journey label
- *   centre — the legs of the journey and the next destination
- *   right  — the running score and leave/end
+ *   left   — wordmark + quest label
+ *   centre — the seven questions and the next destination
+ *   right  — the running score and leave
  * ============================================================ */
 
 interface HudProps {
@@ -25,8 +25,7 @@ interface HudProps {
 
 export function JourneyHud({ state, shownScore, scoreFrom, instant, journeyScore, onHome, right }: HudProps) {
   const cfg = state.config;
-  const fixed = cfg.fixedLength;
-  const count = fixed ? cfg.questionIds.length : state.index + 1;
+  const count = cfg.questionIds.length;
   const reached = Math.min(6, Math.floor(journeyScore / 100 + 1e-9));
   const nextI = journeyScore >= 700 ? 7 : reached + 1;
   const into = journeyScore >= 600 ? (journeyScore - 600) / 100 : (journeyScore % 100) / 100;
@@ -34,11 +33,11 @@ export function JourneyHud({ state, shownScore, scoreFrom, instant, journeyScore
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-40 px-3 pt-[max(0.6rem,env(safe-area-inset-top))] sm:px-5 sm:pt-4">
       <div className="flex items-start justify-between gap-2">
-        <div className="hud-plaque pointer-events-auto flex items-center gap-3 px-3 py-2 sm:px-4">
+        <div className="pointer-events-auto ml-0.5 mt-0.5 flex items-center gap-3">
           <Wordmark size="sm" onClick={onHome} />
-          <div className="hidden min-w-0 border-l border-parchment/15 pl-3 lg:block">
+          <div className="hud-plaque hidden min-w-0 px-3 py-1.5 lg:block">
             <div className="eyebrow truncate text-[9.5px] text-cream/55">{cfg.label}</div>
-            <div className="readout text-[12px] text-cream/85">Leg {String(state.index + 1).padStart(2, '0')}{fixed && ` / ${String(count).padStart(2, '0')}`}</div>
+            <div className="font-pixel text-[14px] text-cream/90">Question {state.index + 1} / {count}</div>
           </div>
         </div>
 
@@ -49,11 +48,11 @@ export function JourneyHud({ state, shownScore, scoreFrom, instant, journeyScore
         </div>
 
         <div className="flex items-start gap-1.5">
-          <div className="hud-plaque pointer-events-auto px-3 py-1.5 text-right sm:px-4 sm:py-2">
+          <div className="hud-plaque pointer-events-auto mr-2 mt-0.5 px-3 py-1.5 text-right sm:px-4">
             <div className="eyebrow text-[9px] text-cream/50">Score</div>
-            <div className="readout text-xl leading-tight text-gold sm:text-[22px]">
+            <div className="readout text-[21px] font-semibold leading-tight text-gold sm:text-[23px]">
               <CountUp key={shownScore} from={scoreFrom} to={shownScore} duration={1.2} instant={instant} />
-              {fixed && <span className="text-[11px] text-cream/40">/{count * 100}</span>}
+              <span className="text-[12px] font-medium text-cream/50">/{count * 100}</span>
             </div>
           </div>
           {right}
@@ -75,7 +74,7 @@ function Legs({ state, count }: { state: SessionState; count: number }) {
   const shown = Math.min(count, 12);
   const offset = count - shown;
   return (
-    <div className="flex items-center gap-1.5" aria-label={`Leg ${state.index + 1}${state.config.fixedLength ? ` of ${count}` : ''}`}>
+    <div className="flex items-center gap-1.5" aria-label={`Question ${state.index + 1} of ${count}`}>
       {Array.from({ length: shown }, (_, k) => {
         const i = k + offset;
         const r = state.rounds[i];
@@ -106,8 +105,8 @@ function NextUp({ name, numeral, into, done }: { name: string; numeral: string; 
         <>
           <span className="eyebrow text-[9px] text-cream/45">Next</span>
           <span className="font-display text-[13px] italic text-cream">{numeral} · {name.replace(/^The /, '')}</span>
-          <span className="relative h-1 w-14 overflow-hidden rounded-full bg-parchment/15">
-            <span className="absolute inset-y-0 left-0 rounded-full bg-gold transition-[width] duration-[1600ms] ease-out" style={{ width: `${Math.round(into * 100)}%` }} />
+          <span className="relative h-1.5 w-14 overflow-hidden bg-parchment/15">
+            <span className="absolute inset-y-0 left-0 bg-gold transition-[width] duration-[1600ms] ease-out" style={{ width: `${Math.round(into * 100)}%` }} />
           </span>
         </>
       )}
