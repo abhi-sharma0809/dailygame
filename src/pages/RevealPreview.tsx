@@ -4,11 +4,11 @@ import { QUESTION_BY_ID } from '../data/atlas';
 import { buildQuestion, evaluate } from '../game/engine/questions';
 import type { RoundRecord } from '../game/engine/session';
 import type { ResultTier } from '../game/types';
-import { useHashRoute } from '../hooks/useHashRoute';
+import { useRoute } from '../hooks/useRoute';
 
-/** Development-only: stage the connection reveal for any tier (#/reveal?tier=perfect&q=animal_panda). */
+/** Development-only: stage the connection reveal for any tier (/reveal?tier=perfect&q=animal_panda). */
 export function RevealPreview() {
-  const route = useHashRoute();
+  const route = useRoute();
   const tier = (route.query.get('tier') ?? 'perfect') as ResultTier;
   const qid = route.query.get('q') ?? 'city_new_york';
   const q = useMemo(() => buildQuestion(QUESTION_BY_ID.get(qid)!), [qid]);

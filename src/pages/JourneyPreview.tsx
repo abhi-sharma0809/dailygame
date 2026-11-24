@@ -2,14 +2,14 @@ import { useRef, useState } from 'react';
 import { JourneyWorld, type ExplorerMood, type TravelStyle } from '../components/Journey/JourneyWorld';
 import { DEFAULT_STYLE, styleForTier } from '../components/Journey/motion';
 import { TIER_LABEL, type ResultTier } from '../game/types';
-import { useHashRoute } from '../hooks/useHashRoute';
+import { useRoute } from '../hooks/useRoute';
 
 const TIERS: [ResultTier, number][] = [['perfect', 100], ['nearly', 90], ['family', 80], ['close', 65], ['distant', 45], ['loose', 30], ['none', 0]];
 const moodFor = (t: ResultTier): ExplorerMood => (t === 'perfect' ? 'celebrate' : t === 'nearly' || t === 'family' ? 'cheer' : t === 'none' ? 'miss' : 'travel');
 
-/** Development-only: fly the journey world to any score in any tier's style (#/journey?s=350). */
+/** Development-only: fly the journey world to any score in any tier's style (/journey?s=350). */
 export function JourneyPreview() {
-  const route = useHashRoute();
+  const route = useRoute();
   const [score, setScore] = useState(() => Number(route.query.get('s') ?? 0));
   const [mood, setMood] = useState<ExplorerMood>('idle');
   const [travel, setTravel] = useState<TravelStyle>(DEFAULT_STYLE);

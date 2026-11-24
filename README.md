@@ -6,7 +6,7 @@
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173   (board editor at /#/editor)
+npm run dev        # http://localhost:5173   (board editor at /editor)
 npm run build      # typecheck + production build → dist/
 ```
 
@@ -54,7 +54,7 @@ Scores are always read from the stored board, and boards never change mid-sessio
 
 ### Board editor (development only)
 
-`npm run dev`, then open `/#/editor`. You can browse questions, edit prompts, dimensions, rationale, tiers, aliases and reasons, pull in unranked answers players gave on this device, see live validation, and **save straight back to the board file**. A small Vite dev-server endpoint does the write, and the game hot-reloads.
+`npm run dev`, then open `/editor`. You can browse questions, edit prompts, dimensions, rationale, tiers, aliases and reasons, pull in unranked answers players gave on this device, see live validation, and **save straight back to the board file**. A small Vite dev-server endpoint does the write, and the game hot-reloads.
 
 ## Answer resolution
 
@@ -116,6 +116,7 @@ Fairness checks from the same run:
 | `src/components/ConnectionReveal.tsx` | The compact reveal dock and the similarity board (drawer on wide screens, sheet on phones) |
 | `src/components/connection.tsx` | How a connection looks, by tier: node distance, winding, thickness, glow, draw speed, particles. Also the small `StrengthGlyph` used in the voyage log |
 | `src/components/QuestionScreen.tsx` | The question dock: journal slip, compass timer, answer input |
+| `src/hooks/useRoute.ts` | Clean-path routing (`/play/daily`, `/archive`, `/results/:id`) on the history API; old `#/…` links are upgraded. `vercel.json` serves `index.html` for every path |
 | `src/pages/` | Home, Play, Results (the voyage log over the world), Archive, HowToPlay, Editor (dev), JourneyPreview and RevealPreview (dev) |
 | `src/components/PixelIcon.tsx` | Pixel-art icons (arrow, skip, close, gear) drawn from character grids |
 | `src/styles/index.css` → *Buttons* | The single pixel button system: `btn-gold` (primary), `btn-ink` (primary on paper), `btn-ghost`, `btn-paper`, `btn-danger`; sizes `btn-xs`/`btn-sm`/`btn-lg`/`btn-icon`; `btn-text` for tertiary links; `tile` for whole-row list buttons; `px-switch`. Labels use Pixelify Sans |
@@ -145,7 +146,7 @@ Position follows a velocity curve `v ∝ u^a (1−u)^b` that is monotonic by con
 
 **Results** keep the world exactly where the seventh answer left the ship. The camera holds, then pans to make room (ship left on desktop, ship up on phones), and the recap rises over the landscape. It shows an achievement plate (score, destination, the route in miniature, perfect count, streak) and a voyage log with one compact entry per question. Each entry has the reference, your answer, the score and a small thread glyph, and opens to show its board.
 
-Development previews: `npm run dev`, then open `/#/journey?s=350` to fly the world to any score in any tier's style, or `/#/reveal?tier=close` to stage the connection reveal for any tier.
+Development previews: `npm run dev`, then open `/journey?s=350` to fly the world to any score in any tier's style, or `/reveal?tier=close` to stage the connection reveal for any tier.
 
 ## Known limitations
 

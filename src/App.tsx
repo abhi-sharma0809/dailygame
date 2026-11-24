@@ -4,7 +4,7 @@ import { BANK_VERSION } from './data/atlas';
 import type { SessionConfig } from './game/engine/session';
 import { SECONDS_PER_ROUND } from './game/scoring';
 import { EPOCH, dailyQuestionIds, dayNumber } from './game/selection';
-import { navigate, useHashRoute } from './hooks/useHashRoute';
+import { navigate, useRoute } from './hooks/useRoute';
 import { ArchivePage } from './pages/Archive';
 import { EditorPage } from './pages/Editor';
 import { Home } from './pages/Home';
@@ -32,7 +32,7 @@ const quest = (mode: SessionConfig['mode'], dateKey: string, label: string): Ses
 type Resolved = { page: 'play'; spec: PlaySpec } | { page: 'results'; id: string } | { page: 'archive' | 'home' | 'editor' | 'journey' | 'reveal' } | { page: 'redirect'; to: string };
 
 export default function App() {
-  const route = useHashRoute();
+  const route = useRoute();
   const { data, today } = usePlayer();
   const [a, b, c] = route.path;
 

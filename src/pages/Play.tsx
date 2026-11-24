@@ -14,7 +14,7 @@ import { createSession, currentRound, isExpired, sessionReducer, totalScore, typ
 import { DESTINATIONS, destinationIndex } from '../game/scoring';
 import type { Entity, ResultTier } from '../game/types';
 import { useDeadline, useSecondsLeft } from '../hooks/useCountdown';
-import { navigate } from '../hooks/useHashRoute';
+import { navigate } from '../hooks/useRoute';
 import { usePlayer } from '../state/PlayerContext';
 
 export interface PlaySpec {

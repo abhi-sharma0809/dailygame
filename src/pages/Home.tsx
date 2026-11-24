@@ -11,7 +11,7 @@ import { DESTINATIONS, TIER_COLORS, destinationIndex } from '../game/scoring';
 import { dayNumber } from '../game/selection';
 import type { ResultTier } from '../game/types';
 import { hms, useUntilMidnight } from '../hooks/useCountdown';
-import { navigate } from '../hooks/useHashRoute';
+import { navigate } from '../hooks/useRoute';
 import { usePlayer } from '../state/PlayerContext';
 import { HowToPlay } from './HowToPlay';
 

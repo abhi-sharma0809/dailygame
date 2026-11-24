@@ -2,7 +2,7 @@ import { PageShell, SectionTitle } from '../components/ui';
 import { PixelIcon } from '../components/PixelIcon';
 import { totalScore } from '../game/engine/session';
 import { EPOCH, addDays, dayNumber } from '../game/selection';
-import { navigate } from '../hooks/useHashRoute';
+import { navigate } from '../hooks/useRoute';
 import { usePlayer } from '../state/PlayerContext';
 
 const shortDate = (d: string) => new Date(`${d}T12:00:00`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });

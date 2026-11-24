@@ -159,7 +159,7 @@ const qs = ids.map((id) => buildQuestion(QUESTION_BY_ID.get(id)!));
 
     if (i === 2) {
       // leave mid-quest, come back from home
-      await p.goto(URL + '#/', { waitUntil: 'networkidle0' });
+      await p.goto(URL + '', { waitUntil: 'networkidle0' });
       await sleep(1200);
       await shot(p, '08-home-in-progress');
       check(/Continue — question 4 of 7/.test(await text(p)), 'home offers CONTINUE at question 4');
@@ -230,25 +230,25 @@ const qs = ids.map((id) => buildQuestion(QUESTION_BY_ID.get(id)!));
 
   /* ------------------------------------------------ completed today */
   console.log('\nCompleted today');
-  await p.goto(URL + '#/', { waitUntil: 'networkidle0' });
+  await p.goto(URL + '', { waitUntil: 'networkidle0' });
   await sleep(1500);
   await shot(p, '11-home-complete');
   const hc = await text(p);
   check(/See today’s journey/.test(hc) && /complete/i.test(hc), 'home shows today is complete');
   check(!/Start today’s quest/.test(hc), 'no second attempt offered');
-  await p.goto(URL + '#/play/daily', { waitUntil: 'networkidle0' });
+  await p.goto(URL + 'play/daily', { waitUntil: 'networkidle0' });
   check(await p.waitForFunction(() => /Journey complete/.test(document.body.innerText), { timeout: 5000 }).then(() => true, () => false), 'one Daily Quest attempt per day');
 
   /* ------------------------------------------------ archives */
   console.log('\nArchives');
-  await p.goto(URL + '#/archive', { waitUntil: 'networkidle0' });
+  await p.goto(URL + 'archive', { waitUntil: 'networkidle0' });
   await sleep(900);
   await shot(p, '12-archives');
   const at = await text(p);
   check(/Today · Daily Quest|TODAY · DAILY QUEST/i.test(at), 'today is set apart in the Archives');
   check(/No\. 1\b/.test(at), 'the first quest is listed');
   const past = addDays(today, -2);
-  await p.goto(URL + `#/play/archive/${past}`, { waitUntil: 'networkidle0' });
+  await p.goto(URL + `play/archive/${past}`, { waitUntil: 'networkidle0' });
   await p.waitForSelector('#answer');
   const pq = (await p.$eval('h1', (h) => h.textContent ?? '')).trim();
   check(pq === buildQuestion(QUESTION_BY_ID.get(dailyQuestionIds(past)[0])!).def.prompt, 'an archived quest plays that day’s questions');
@@ -258,37 +258,45 @@ const qs = ids.map((id) => buildQuestion(QUESTION_BY_ID.get(id)!));
   const secs = await p.$eval('[role=timer]', (t) => Number((t as HTMLElement).innerText.trim()));
   check((await p.$eval('h1', (h) => h.textContent ?? '')).trim() === pq, 'refresh resumes the same question');
   check(secs <= 17, `timer kept running across refresh (${secs}s left)`);
-  await p.goto(URL + '#/archive', { waitUntil: 'networkidle0' });
+  await p.goto(URL + 'archive', { waitUntil: 'networkidle0' });
   await sleep(600);
   check(/\bContinue\b/.test(await text(p)), 'Archives show the unfinished replay as Continue');
-  await p.goto(URL + `#/play/archive/${today}`, { waitUntil: 'networkidle0' });
+  await p.goto(URL + `play/archive/${today}`, { waitUntil: 'networkidle0' });
   check(await p.waitForFunction(() => /Journey complete/.test(document.body.innerText), { timeout: 5000 }).then(() => true, () => false), 'today can’t be replayed through the Archives');
 
   /* ------------------------------------------------ retired routes */
   console.log('\nRetired routes');
-  for (const r of ['#/play/endless', '#/practice', '#/play/practice?cat=movies', '#/expeditions', '#/play/expedition/wild-connections/0', '#/stats', '#/settings', '#/c/abc', '#/play/challenge/abc', '#/nowhere']) {
+  for (const r of ['play/endless', 'practice', 'play/practice?cat=movies', 'expeditions', 'play/expedition/wild-connections/0', 'stats', 'settings', 'c/abc', 'play/challenge/abc', 'nowhere']) {
     await p.goto(URL + r, { waitUntil: 'networkidle0' });
     await sleep(400);
-    const h = await p.evaluate(() => location.hash);
-    check(h === '#/' && /See today’s journey/.test(await text(p)), `${r} → home`);
+    const at = await p.evaluate(() => location.pathname + location.search + location.hash);
+    check(at === '/' && /See today’s journey/.test(await text(p)), `/${r} → home`);
   }
+  // links from before clean URLs still work, and are tidied
+  await p.goto(URL + '#/archive', { waitUntil: 'networkidle0' });
+  await sleep(500);
+  const tidy = await p.evaluate(() => location.href);
+  check(/\/archive$/.test(tidy) && !tidy.includes('#') && /Past quests/.test(await text(p)), `old #/archive link → ${tidy}`);
+  await p.reload({ waitUntil: 'networkidle0' });
+  await sleep(500);
+  check(/Past quests/.test(await text(p)), 'reloading a clean URL stays on the page');
 
   /* ------------------------------------------------ mobile */
   console.log('\nMobile');
   await p.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-  await p.goto(URL + '#/', { waitUntil: 'networkidle0' }); await sleep(1800); await shot(p, '20-mobile-home');
+  await p.goto(URL + '', { waitUntil: 'networkidle0' }); await sleep(1800); await shot(p, '20-mobile-home');
   check((await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)) <= 1, 'no horizontal scroll on mobile home');
-  await p.goto(URL + '#/archive', { waitUntil: 'networkidle0' }); await sleep(800); await shot(p, '21-mobile-archives');
+  await p.goto(URL + 'archive', { waitUntil: 'networkidle0' }); await sleep(800); await shot(p, '21-mobile-archives');
   check((await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)) <= 1, 'no horizontal scroll on mobile archives');
   const mday = addDays(today, -3);
-  await p.goto(URL + `#/play/archive/${mday}`, { waitUntil: 'networkidle0' }); await p.waitForSelector('#answer'); await sleep(800); await shot(p, '22-mobile-question');
+  await p.goto(URL + `play/archive/${mday}`, { waitUntil: 'networkidle0' }); await p.waitForSelector('#answer'); await sleep(800); await shot(p, '22-mobile-question');
   const mq = buildQuestion(QUESTION_BY_ID.get(dailyQuestionIds(mday)[0])!);
   await type(p, mq.ranked[0].entity.name); await waitReveal(p); await sleep(2700); await shot(p, '23-mobile-flight');
   await waitSettled(p); await shot(p, '24-mobile-settled');
   const mpos = await shipAt(p);
   check(Math.abs(mpos.ship - scoreToX(mq.ranked[0].points)) < 0.6, 'mobile: ship rests at the score');
   check((await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)) <= 1, 'no horizontal scroll on mobile play');
-  await p.goto(URL + `#/results/${stored.dailies[today].sessionId}`, { waitUntil: 'networkidle0' }); await sleep(5500); await shot(p, '25-mobile-results');
+  await p.goto(URL + `results/${stored.dailies[today].sessionId}`, { waitUntil: 'networkidle0' }); await sleep(5500); await shot(p, '25-mobile-results');
 
   check(errors.length === 0, `no console/page errors${errors.length ? ': ' + errors.slice(0, 3).join(' | ') : ''}`);
   await browser.close();

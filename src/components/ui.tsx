@@ -1,6 +1,6 @@
 import { AnimatePresence, animate, motion } from 'framer-motion';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { navigate } from '../hooks/useHashRoute';
+import { navigate } from '../hooks/useRoute';
 import { usePlayer } from '../state/PlayerContext';
 import { PixelIcon } from './PixelIcon';
 
