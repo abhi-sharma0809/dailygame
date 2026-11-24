@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --night: #101923;
+  --forest: #19382e;
+  --moss: #78936b;
+  --parchment: #f0e6d1;
+  --gold: #d9ad63;
+  --sky: #89b7ce;
+  --ink: #26323a;
+  --cream: #f8f3e8;
+  --ember: #c8693f;
+  /* reusable paper grain */
+  --paper-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .28  0 0 0 0 .18  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+  --fibers: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .09' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .4  0 0 0 0 .25  0 0 0 .10 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-night font-sans text-cream antialiased;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection { background: rgba(217, 173, 99, 0.4); color: var(--cream); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+  button { -webkit-tap-highlight-color: transparent; }
+  h1, h2, h3, .display { font-family: Fraunces, Georgia, serif; font-variation-settings: 'SOFT' 60, 'opsz' 96; }
+}
+
+@layer components {
+  /* parchment surfaces — the game's paper */
+  .paper {
+    @apply relative text-ink shadow-paper;
+    background-color: var(--parchment);
+    background-image: var(--paper-noise), var(--fibers), radial-gradient(120% 90% at 30% 10%, #f8f0de 0%, #efe3c8 55%, #e2d1ad 100%);
+    border-radius: 18px 22px 16px 20px / 20px 16px 22px 18px;
+  }
+  .paper-edge::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(38, 50, 58, 0.18);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  /* night surfaces — deep, warm-edged */
+  .slate {
+    @apply relative shadow-lift;
+    background: linear-gradient(180deg, rgba(29, 44, 58, 0.92), rgba(16, 25, 35, 0.94));
+    border: 1px solid rgba(240, 230, 209, 0.12);
+    border-radius: 20px;
+  }
+
+  .eyebrow { @apply font-sans text-[11px] font-semibold uppercase tracking-[0.24em]; }
+  .readout { @apply font-mono tabular-nums; }
+
+  .btn {
+    @apply relative inline-flex select-none items-center justify-center gap-2 rounded-full px-6 py-3 font-sans text-[15px] font-semibold tracking-wide transition duration-150 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-gold {
+    @apply btn text-ink;
+    background: linear-gradient(180deg, #ecc98a 0%, #d9ad63 55%, #c5964e 100%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 -2px 0 rgba(120, 80, 30, 0.35) inset, 0 10px 24px -10px rgba(217, 173, 99, 0.9);
+  }
+  .btn-gold:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  .btn-gold:active { transform: translateY(1px); }
+  .btn-ink {
+    @apply btn bg-ink text-parchment hover:bg-ink-soft;
+    box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.8);
+  }
+  .btn-ghost {
+    @apply btn border border-cream/20 text-cream/90 hover:border-gold/70 hover:text-gold;
+  }
+  .btn-text {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-cream/70 transition hover:text-gold;
+  }
+
+  .ribbon {
+    @apply relative inline-flex items-center gap-2 px-4 py-1 font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-ink;
+    background: linear-gradient(180deg, #ecd39e, #d9ad63);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%, 10px 50%);
+  }
+
+  .rule-ornament {
+    height: 14px;
+    background:
+      radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 3.5px),
+      linear-gradient(90deg, transparent, rgba(217, 173, 99, 0.6) 20%, rgba(217, 173, 99, 0.6) 44%, transparent 44%, transparent 56%, rgba(217, 173, 99, 0.6) 56%, rgba(217, 173, 99, 0.6) 80%, transparent) center / 100% 1px no-repeat;
+  }
+  .rule-ink {
+    height: 14px;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(38, 50, 58, 0.6) 0 2.5px, transparent 3px),
+      linear-gradient(90deg, transparent, rgba(38, 50, 58, 0.3) 20%, rgba(38, 50, 58, 0.3) 45%, transparent 45%, transparent 55%, rgba(38, 50, 58, 0.3) 55%, rgba(38, 50, 58, 0.3) 80%, transparent) center / 100% 1px no-repeat;
+  }
+}
+
+/* soft vignette + grain over the whole world */
+.atmosphere::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(5, 9, 14, 0.55) 100%);
+}
+.atmosphere::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.35;
+  background-image: var(--paper-noise);
+  mix-blend-mode: soft-light;
+}
+
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes drift { from { transform: translateX(-40px); } to { transform: translateX(40px); } }
+@keyframes shimmer { to { stroke-dashoffset: -40; } }
+@keyframes pulse-soft { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes flutter { 0%, 100% { transform: skewY(0deg) scaleX(1); } 50% { transform: skewY(6deg) scaleX(0.92); } }
+@keyframes rays { to { transform: rotate(360deg); } }
+
+.anim-twinkle { animation: twinkle 3.2s ease-in-out infinite; }
+.anim-drift { animation: drift 18s ease-in-out infinite alternate; }
+.anim-shimmer { animation: shimmer 3s linear infinite; }
+.anim-pulse { animation: pulse-soft 3.4s ease-in-out infinite; }
+.anim-flutter { animation: flutter 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }
+.anim-rays { animation: rays 40s linear infinite; transform-box: fill-box; transform-origin: center; }
+.anim-spin { animation: spin 0.5s linear infinite; transform-box: fill-box; transform-origin: center; }
+
+.reduced-motion *, .reduced-motion *::before, .reduced-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-twinkle, .anim-drift, .anim-shimmer, .anim-pulse, .anim-flutter, .anim-rays, .anim-spin { animation: none; }
+}
+
+.scrollbar-thin::-webkit-scrollbar { height: 6px; width: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(240, 230, 209, 0.2); border-radius: 3px; }
+
+/* ============================================================
+ * Journey HUD surfaces
+ * ============================================================ */
+@layer components {
+  /* the question on paper, tucked into an ink console beneath */
+  .journal-slip {
+    @apply relative text-ink;
+    background-color: var(--parchment);
+    background-image: var(--paper-noise), radial-gradient(130% 120% at 20% 0%, #fbf4e4 0%, #f0e4c9 60%, #e4d3b0 100%);
+    border-radius: 16px 16px 4px 4px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 -14px 40px -24px rgba(5, 9, 14, 0.6);
+  }
+  .journal-slip--full {
+    border-radius: 16px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 24px 50px -20px rgba(5, 9, 14, 0.75), 0 2px 6px rgba(5, 9, 14, 0.35);
+  }
+  .ink-console {
+    position: relative;
+    background: linear-gradient(180deg, #17222d 0%, #0f1820 100%);
+    border: 1px solid rgba(240, 230, 209, 0.1);
+    border-top: 1px solid rgba(201, 162, 85, 0.45);
+    border-radius: 4px 4px 16px 16px;
+    box-shadow: 0 22px 44px -18px rgba(3, 6, 10, 0.85);
+  }
+  .hud-plaque {
+    background: rgba(13, 20, 28, 0.72);
+    border: 1px solid rgba(240, 230, 209, 0.13);
+    border-radius: 12px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 10px 24px -14px rgba(0, 0, 0, 0.7);
+  }
+  .hud-tag {
+    @apply flex max-w-full items-center rounded-lg px-3.5 py-2 text-[13px] leading-snug text-cream;
+    background: rgba(13, 20, 28, 0.92);
+    box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.8);
+  }
+  .cartouche {
+    @apply rounded-xl px-6 py-2.5;
+    background: rgba(13, 20, 28, 0.66);
+    border: 1px solid rgba(240, 230, 209, 0.16);
+    box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.8);
+  }
+  .cartouche--gold {
+    background: linear-gradient(180deg, #f6e2b0, #e2bd72);
+    border-color: rgba(255, 246, 221, 0.7);
+    box-shadow: 0 0 0 4px rgba(226, 189, 114, 0.18), 0 16px 36px -14px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ============================================================
+ * World actors — transform/opacity only, so they run on the compositor
+ * ============================================================ */
+@keyframes sway { 0%, 100% { transform: rotate(-2.4deg); } 50% { transform: rotate(2.4deg); } }
+@keyframes glint { 0%, 100% { opacity: 0; transform: translateX(-14px) scaleX(0.6); } 50% { opacity: 1; transform: translateX(14px) scaleX(1); } }
+@keyframes bob-slow { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(3px) rotate(1.5deg); } }
+@keyframes banner { 0%, 100% { transform: scaleX(1) skewY(0deg); } 50% { transform: scaleX(0.86) skewY(7deg); } }
+@keyframes drift-slow { 0%, 100% { transform: translateX(-30px); } 50% { transform: translateX(30px); } }
+@keyframes breathe { 0%, 100% { opacity: 0.55; transform: scale(0.94); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes flame { 0%, 100% { transform: scale(1, 1) skewX(0deg); } 25% { transform: scale(0.92, 1.08) skewX(-4deg); } 60% { transform: scale(1.06, 0.94) skewX(3deg); } }
+@keyframes falls { to { background-position: 0 40px; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes draw-in { from { stroke-dashoffset: 400; } to { stroke-dashoffset: 0; } }
+@keyframes birds { 0% { transform: translate(-60px, 10px); } 50% { transform: translate(60px, -12px); } 100% { transform: translate(-60px, 10px); } }
+@keyframes wing { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(-0.6); } }
+@keyframes prop { 0% { transform: scaleY(1); } 50% { transform: scaleY(-1); } 100% { transform: scaleY(1); } }
+@keyframes flag { 0%, 100% { transform: skewY(0deg) scaleX(1); } 50% { transform: skewY(-8deg) scaleX(0.9); } }
+@keyframes scarf { 0%, 100% { transform: skewY(0deg) scaleX(1); } 33% { transform: skewY(6deg) scaleX(0.94); } 66% { transform: skewY(-5deg) scaleX(1.04); } }
+@keyframes halo { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+.anim-sway { animation: sway 4.2s ease-in-out infinite; }
+.anim-glint { animation: glint 3.6s ease-in-out infinite; }
+.anim-bob-slow { animation: bob-slow 4.8s ease-in-out infinite; }
+.anim-banner { animation: banner 1.4s ease-in-out infinite; }
+.anim-drift-slow { animation: drift-slow 26s ease-in-out infinite; }
+.anim-breathe { animation: breathe 3.6s ease-in-out infinite; }
+.anim-flame { animation: flame 0.9s ease-in-out infinite; }
+.anim-fade-in { animation: fade-in 1.4s ease-out both; }
+.anim-spin-slow { animation: spin 10s linear infinite; }
+.anim-birds { animation: birds 24s ease-in-out infinite; }
+.anim-wing { animation: wing 0.7s ease-in-out infinite; transform-box: fill-box; }
+.anim-prop { animation: prop 0.24s linear infinite; }
+.anim-flag { animation: flag 1.1s ease-in-out infinite; }
+.anim-scarf { animation: scarf 1.5s ease-in-out infinite; }
+.draw-in { stroke-dasharray: 400; animation: draw-in 2.4s ease-out both; }
+.timer-halo { animation: halo 1s ease-in-out infinite; }
+.falls {
+  background: repeating-linear-gradient(180deg, rgba(232, 246, 250, 0.9) 0 10px, rgba(181, 211, 226, 0.55) 10px 22px, rgba(232, 246, 250, 0.85) 22px 40px);
+  border-radius: 4px;
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
+  mask-image: linear-gradient(180deg, #000 70%, transparent);
+  animation: falls 0.6s linear infinite;
+}
+.anim-rays { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-sway, .anim-glint, .anim-bob-slow, .anim-banner, .anim-drift-slow, .anim-breathe, .anim-flame, .anim-spin-slow, .anim-birds, .anim-wing, .anim-prop, .anim-flag, .anim-scarf, .falls, .timer-halo { animation: none; }
+}
+@keyframes fb-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.fb-in { animation: fb-in 0.18s ease-out both; }

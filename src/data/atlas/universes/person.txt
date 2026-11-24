@@ -1,0 +1,179 @@
+@universe person | noun=celebrity | plural=celebrities and public figures
+# Public figures, judged on professional persona and body of work.
+Adam Sandler
+Adele
+Al Roker
+Anthony Bourdain
+Ariana Grande
+Austin Butler
+Barack Obama ; obama
+Bear Grylls
+Beyoncé ; beyonce ; queen b
+Billie Eilish
+Bobby Flay
+Bradley Cooper
+Brad Pitt
+Bruno Mars
+Chris Evans
+Chris Hemsworth
+Chris Pratt
+Chris Pine
+Chris Rock
+Conan O'Brien ; conan obrien ; conan
+Daniel Craig
+Dave Chappelle
+David Beckham ; beckham
+Denzel Washington
+Doja Cat
+Drake
+Dua Lipa
+Dwayne Johnson ; the rock ; dwayne the rock johnson
+Ed Sheeran
+Ellen DeGeneres ; ellen
+Emma Stone
+Emma Watson
+Florence Pugh
+Gal Gadot
+Gordon Ramsay ; ramsay
+Guy Fieri
+Harry Styles
+Hugh Jackman
+Idris Elba
+Jack Black
+Jamie Oliver
+Jason Momoa ; momoa
+Jason Statham ; statham
+Jason Sudeikis
+Jennifer Aniston
+Jennifer Lawrence ; j law ; jlaw
+Jennifer Lopez ; jlo ; j lo
+Jim Carrey
+Jimmy Fallon
+Jimmy Kimmel
+Joe Rogan
+John Cena ; cena
+John Krasinski ; krasinski
+Jonah Hill
+Julia Roberts
+Justin Bieber ; bieber
+Kanye West ; ye
+Keanu Reeves ; keanu
+Kevin Hart
+Kim Kardashian
+Kylie Jenner
+Lady Gaga ; gaga
+LeBron James ; lebron
+Leonardo DiCaprio ; leo dicaprio ; dicaprio
+Lin-Manuel Miranda ; lin manuel miranda
+Lionel Messi ; messi
+Lizzo
+Margot Robbie
+Mark Wahlberg
+Martha Stewart
+Matthew McConaughey ; mcconaughey
+Melissa McCarthy
+Meryl Streep
+Michelle Obama
+Miley Cyrus
+Mindy Kaling
+MrBeast ; mr beast ; jimmy donaldson
+Nicki Minaj
+Nigella Lawson ; nigella
+Olivia Rodrigo
+Oprah Winfrey ; oprah
+Paul Hollywood
+Paul Rudd
+Pedro Pascal
+Post Malone
+Rihanna
+Robert Downey Jr. ; rdj ; robert downey jr ; robert downey junior
+Ryan Gosling ; gosling
+Ryan Reynolds ; reynolds
+Sabrina Carpenter
+Salma Hayek
+Sandra Bullock
+Scarlett Johansson ; scarjo
+Selena Gomez
+Serena Williams
+Seth Rogen
+Simon Cowell
+Snoop Dogg ; snoop
+Steve Carell
+Stephen Colbert ; colbert
+Taylor Swift ; taylor ; t swift ; tswift
+Timothée Chalamet ; timothee chalamet ; chalamet
+Tom Cruise
+Tom Hanks
+Tom Holland
+Trevor Noah
+Usain Bolt
+Vin Diesel
+Viola Davis
+Will Ferrell
+Will Smith
+Zac Efron
+Zendaya
+Zoe Saldaña ; zoe saldana
+Jenna Ortega
+Sydney Sweeney
+Anya Taylor-Joy ; anya taylor joy
+Hailee Steinfeld
+Millie Bobby Brown
+Kristen Stewart
+Halsey
+Shawn Mendes
+Charlie Puth
+Lorde
+Katy Perry
+Kelly Clarkson
+Carrie Underwood
+Shania Twain
+Dolly Parton
+Lana Del Rey
+Phoebe Bridgers
+Gracie Abrams
+Kesha
+Demi Lovato
+Hailey Bieber
+Ryan Seacrest
+Seth Meyers
+James Corden
+Jon Stewart
+John Oliver
+Hugh Grant
+Owen Wilson
+Ben Stiller
+Vince Vaughn
+Jeff Goldblum
+Ken Jeong
+Rebel Wilson
+Kristen Bell
+Dax Shepard
+Anna Kendrick
+Jake Gyllenhaal
+Chris O'Dowd
+Arnold Schwarzenegger ; schwarzenegger ; arnold
+Sylvester Stallone ; stallone
+Terry Crews
+Dave Bautista ; batista ; bautista
+Roman Reigns
+Hulk Hogan
+Kevin James
+Ina Garten
+Rachael Ray
+Marco Pierre White
+Joe Wicks
+Padma Lakshmi
+Giada De Laurentiis ; giada
+Alton Brown
+Emeril Lagasse ; emeril
+Wolfgang Puck
+David Chang
+José Andrés ; jose andres
+Massimo Bottura
+Heston Blumenthal
+Christina Aguilera
+Britney Spears
+Sza ; SZA
+Olivia Wilde
+Jennifer Garner

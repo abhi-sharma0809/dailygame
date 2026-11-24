@@ -1,0 +1,176 @@
+@category characters | label=Fictional Characters
+
+## char_spiderman | easy | universe=character | ref=Spider-Man | v=1
+prompt: Name a character most like Spider-Man.
+hint: Powers, personality, age and story.
+dims: powers, origin, personality, life situation
+why: Spider-Man is a young, wisecracking hero juggling ordinary life with superpowers and responsibility. Miles Morales and Spider-Gwen are Spider-People; Ms. Marvel and Invincible share the teen-hero-with-a-secret life.
+100 Miles Morales :: Another Spider-Man — same powers and the same teen balancing act
+100 Spider-Gwen :: Spider-powered teen hero from an alternate universe
+90 Ms. Marvel :: Teen hero juggling school, family and a secret identity
+90 Invincible :: Teen hero balancing powers and everyday life
+80 Static Shock :: Wisecracking teen superhero
+80 Kid Flash :: Young speedster sidekick
+80 Venom :: Spider-symbiote antihero
+80 Ant-Man :: Funny, down-to-earth hero
+65 Batman * :: Masked vigilante of a big city
+65 Iron Man * :: Mentor in the films
+65 Daredevil :: Acrobatic New York vigilante
+65 Captain America :: Marvel hero from New York
+45 Superman :: Hero with a secret identity
+45 Ben Tennyson :: Kid with powers
+30 Hulk :: Marvel hero
+
+## char_batman | easy | universe=character | ref=Batman | v=1
+prompt: Name a character most like Batman.
+hint: Skills, wealth, darkness and gadgets.
+dims: abilities, persona, wealth, tone
+why: Batman is a rich, human vigilante with gadgets, detective skill and a dark past. Moon Knight and The Shadow follow the same template; Iron Man shares the billionaire-with-gadgets angle.
+100 Moon Knight :: Rich, dark, caped vigilante of the night
+100 The Shadow :: Pulp vigilante of the night that inspired Batman
+90 Nightwing :: Batman's protégé
+90 Batwoman :: Gotham's other dark knight
+90 Green Arrow :: Billionaire gadget-using vigilante
+80 Iron Man * :: Billionaire genius hero with tech
+80 The Punisher :: Dark, vengeful vigilante
+80 Daredevil :: Brooding night vigilante
+80 Zorro :: Masked vigilante with a secret identity
+65 Sherlock Holmes :: Brilliant detective
+65 Catwoman :: Gotham cat burglar
+65 Rorschach :: Gritty masked detective
+45 Superman * :: Justice League partner
+45 Spider-Man :: Masked city vigilante
+30 Joker :: Arch-nemesis
+
+## char_shrek | easy | universe=character | ref=Shrek | v=1
+prompt: Name a character most like Shrek.
+hint: Gruff outsider, big heart, fairytale twist.
+dims: personality, story role, appearance, humor
+why: Shrek is a grumpy, misunderstood ogre with a soft heart who stars in a fairytale send-up.
+100 Fiona :: Ogre, fairy-tale outsider and Shrek's partner
+90 Grinch * :: Grumpy outsider who turns out to have a heart
+90 Beast :: Gruff, monstrous outsider with a heart of gold
+90 Sulley :: Big green-blue monster with a soft heart
+80 Hulk :: Big green brute with feelings
+80 Oscar the Grouch ; oscar :: Grumpy green loner
+65 Donkey * :: His loud sidekick
+65 Ralph ; wreck-it ralph :: Misunderstood big guy
+65 Puss in Boots :: Same franchise
+45 Mike Wazowski :: Green monster
+45 Fozzie Bear :: Lovable comedic creature
+30 Lord Farquaad :: Same story's villain
+
+## char_harry_potter | easy | universe=character | ref=Harry Potter | v=1
+prompt: Name a character most like Harry Potter.
+hint: Chosen one, orphan, magic school.
+dims: backstory, role, setting, powers
+why: Harry is an orphan "chosen one" who learns magic and defeats a dark lord. Percy Jackson matches almost every beat; Luke Skywalker and Frodo share the chosen-hero journey.
+100 Percy Jackson * :: Kid discovers hidden powers, goes to a special camp, battles an ancient evil
+90 Luke Skywalker :: Orphaned farm boy discovers powers, faces a dark lord
+90 Eragon :: Farm boy discovers magic and fights an evil king
+90 Lyra Belacqua :: Child destined to defeat dark forces
+80 Frodo Baggins :: Reluctant chosen hero against a dark lord
+80 Neville Longbottom :: Fellow Hogwarts hero
+80 Aang :: Young chosen one with powers
+65 Hermione Granger :: Best friend
+65 Ron Weasley :: Best friend
+65 Spider-Man :: Orphan raised by an aunt and uncle
+65 Matilda :: Gifted child versus cruel guardians
+45 Katniss Everdeen :: Young hero
+45 Mowgli :: Orphaned child
+30 Gandalf :: Wizard
+
+## char_vader | easy | universe=character | ref=Darth Vader | v=1
+prompt: Name a character most like Darth Vader.
+hint: Armored dark enforcer with a tragic fall.
+dims: role, look, backstory, power
+why: Darth Vader is an armored, menacing enforcer who fell from heroism. Kylo Ren repeats that path; Palpatine and Darth Maul share the Sith.
+100 Kylo Ren * :: Masked Sith follower who idolizes and imitates Vader
+90 Darth Maul :: Sith Lord
+90 Count Dooku :: Fallen Jedi turned Sith
+90 Palpatine :: Sith master
+80 Darth Revan :: Fallen hero Sith
+80 General Grievous :: Cyborg enforcer of the Empire's predecessors
+80 Magneto :: Tragic villain with powers
+80 Sauron * :: Dark lord in armor
+65 Doctor Doom :: Armored, masked tyrant
+65 Megatron :: Imposing armored villain
+65 Thanos :: Cosmic tyrant
+45 Voldemort * :: Fallen dark lord
+45 Green Goblin :: Masked villain
+30 Joker :: Iconic villain
+
+## char_elsa | easy | universe=character | ref=Elsa | v=1
+prompt: Name a character most like Elsa.
+hint: Powers, royalty and inner struggle.
+dims: powers, royalty, personality, story
+why: Elsa is an isolated queen with ice powers learning to accept herself. Ice-wielding characters and lonely royal heroines are her closest kin.
+100 The Snow Queen :: The fairy-tale queen of ice Elsa was based on
+90 Anna :: Her sister and co-hero
+90 Merida :: Independent royal heroine
+90 Iceman :: Ice-powered hero
+80 Rapunzel :: Isolated princess discovering herself
+80 Moana * :: Independent heroine with a destiny
+80 Killer Frost :: Ice-powered character
+80 Mr. Freeze :: Ice-powered character
+80 Jack Frost :: Winter spirit
+65 Raya :: Disney heroine
+65 Cinderella :: Disney royalty
+65 Olaf :: Frozen co-star
+45 Maleficent :: Disney sorceress
+30 Ariel * :: Disney princess
+
+## char_homer | easy | universe=character | ref=Homer Simpson | v=1
+prompt: Name a character most like Homer Simpson.
+hint: Bumbling cartoon dad.
+dims: role, personality, humor, format
+why: Homer is the lazy, lovable, bumbling father of an animated family. Peter Griffin and Fred Flintstone are the same archetype.
+100 Peter Griffin * :: Bumbling, lazy cartoon dad
+100 Fred Flintstone :: The original bumbling cartoon dad
+90 Stan Smith :: Blundering cartoon father
+90 Hank Hill :: Cartoon dad with a beer and lawn
+90 Bob Belcher :: Hapless cartoon dad
+80 Randy Marsh :: Ridiculous cartoon dad
+80 Al Bundy :: Lazy sitcom dad
+65 Bart Simpson :: His son
+65 Patrick Star :: Lovable dimwit
+65 Garfield :: Lazy, food-obsessed
+45 Ned Flanders :: Neighbor
+45 Gru :: Animated dad
+30 Marge Simpson :: His wife
+
+## char_iron_man | hard | universe=character | ref=Iron Man | v=1
+prompt: Name a character most like Iron Man.
+hint: Tech, armor, wealth and ego.
+dims: powers, wealth, personality
+why: Iron Man is a billionaire genius in powered armor with a big ego. Batman shares the billionaire-genius core; War Machine and Ironheart wear the same kind of suit.
+100 War Machine :: Armored suit hero, Tony's best friend
+100 Ironheart :: Genius builder of an Iron Man suit
+90 Batman * :: Billionaire genius with gadgets
+90 Green Arrow :: Billionaire vigilante
+80 Doctor Strange :: Arrogant genius turned hero
+80 Star-Lord :: Cocky, quippy Marvel hero
+80 Cyborg :: Tech-powered hero
+65 Spider-Man :: Mentee
+65 Captain America :: Avengers co-leader
+65 Lex Luthor :: Billionaire genius (villain)
+45 Ultron :: His creation
+45 Thor :: Avenger
+30 Hulk :: Avenger
+
+## char_gandalf | hard | universe=character | ref=Gandalf | v=1
+prompt: Name a character most like Gandalf.
+hint: Wise old wizard and mentor.
+dims: role, powers, look
+why: Gandalf is a wise, bearded wizard mentor guiding a young hero. Dumbledore and Merlin are the same archetype.
+100 Albus Dumbledore * :: Wise, bearded wizard mentor
+100 Merlin :: Legendary wizard mentor
+90 Obi-Wan Kenobi :: Wise mentor with powers
+90 Yoda :: Small, ancient mentor with powers
+80 Saruman :: Fellow wizard
+80 Professor X :: Wise mentor leader
+65 Doctor Strange :: Sorcerer
+65 Ged :: Archmage
+45 Aragorn :: Lord of the Rings hero
+45 Hagrid :: Gentle mentor at a magic school
+30 Sauron :: Same world

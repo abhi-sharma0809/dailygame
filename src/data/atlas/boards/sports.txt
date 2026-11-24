@@ -1,0 +1,161 @@
+@category sports | label=Sports
+
+## sport_basketball | easy | universe=sport | ref=Basketball | v=1
+prompt: Name a sport most like basketball.
+hint: Hoops, passing, court and teams.
+dims: objective, equipment, field of play, team size
+why: Basketball is a fast indoor team sport of passing and shooting at a raised goal. Netball is nearly identical; korfball shares the raised basket.
+100 Netball * :: Team ball sport shooting at a raised hoop
+100 Wheelchair basketball :: Basketball adapted for wheelchair users
+90 Korfball :: Mixed teams shooting at a raised basket
+80 Handball :: Fast indoor team passing game
+80 Volleyball * :: Indoor court team sport
+80 Water polo :: Team passing game with goals
+65 Ultimate frisbee :: Passing, cutting and scoring
+65 Futsal :: Indoor court team sport
+65 Lacrosse :: Passing and shooting
+45 Soccer * :: Team ball sport
+45 Hockey :: Fast team game
+30 Dodgeball :: Indoor ball game
+
+## sport_soccer | easy | universe=sport | ref=Soccer | v=1
+prompt: Name a sport most like soccer.
+hint: Feet, goals and big fields.
+dims: objective, play style, field, team size
+why: Soccer is a team sport played mostly with the feet on a large field. Futsal is its indoor version; Gaelic football shares the field and goals.
+100 Futsal * :: Indoor five-a-side soccer
+90 Beach soccer :: Soccer on sand
+90 Gaelic football :: Kicking game on a big field with goals
+80 Rugby union * :: Field team sport with kicking
+80 Field hockey :: Field game with goals and similar positions
+80 Ice hockey :: Goals, offside, team passing
+80 Australian rules football :: Kicking field game
+65 American football :: Called football, but mostly carried
+65 Handball :: Similar goal and positions
+65 Lacrosse :: Team goals sport
+45 Basketball :: Team ball sport
+45 Footvolley :: Volleyball played with feet
+30 Kickball :: Kick a ball
+
+## sport_tennis | easy | universe=sport | ref=Tennis | v=1
+prompt: Name a sport most like tennis.
+hint: Racket, net and rallies.
+dims: equipment, scoring, play
+why: Tennis is a racket-and-net rally sport. Padel and squash are close siblings; badminton shares the net.
+100 Paddle tennis * :: Racket and net, adapted court
+100 Real tennis :: The original indoor version
+90 Squash * :: Racket rally sport
+90 Badminton * :: Racket sport over a net
+90 Pickleball :: Paddle sport with tennis rules
+80 Table tennis * :: Miniature racket sport over a net
+80 Racquetball :: Racket rally sport
+80 Platform tennis :: Racket sport
+65 Volleyball :: Net game
+45 Golf :: Individual sport with clubs
+30 Baseball :: Swinging at a ball
+
+## sport_golf | easy | universe=sport | ref=Golf | v=1
+prompt: Name a sport most like golf.
+hint: Precision, clubs, holes.
+dims: equipment, objective, pace
+why: Golf is about striking a ball into a hole in as few shots as possible. Disc golf and mini golf share the format exactly.
+100 Mini golf * :: Small-scale golf
+100 Disc golf :: Golf with discs on a course
+90 Footgolf :: Golf played with a soccer ball
+80 Croquet :: Mallet, ball and targets on grass
+80 Pool :: Precision striking
+65 Bowling :: Precision target sport
+65 Bocce :: Precision target sport
+65 Lawn bowls :: Precision target sport
+65 Curling :: Precision target sport
+45 Archery :: Precision aiming
+45 Darts :: Precision aiming
+45 Shooting :: Precision aiming
+45 Cornhole :: Target sport
+30 Tennis :: Country-club sport
+
+## sport_baseball | easy | universe=sport | ref=Baseball | v=1
+prompt: Name a sport most like baseball.
+hint: Bat, ball, bases and innings.
+dims: objective, equipment, rules, structure
+why: Baseball is bat-and-ball with pitching, bases and innings. Softball and rounders are near-identical; cricket shares the core.
+100 Softball * :: Baseball with a bigger ball and smaller field
+100 Rounders :: The bat-and-base game baseball grew from
+90 Cricket * :: Bat-and-ball sport of bowling, batting and fielding
+90 Stickball :: Street version of baseball
+80 Kickball :: Baseball with a kicked ball
+65 Pelota :: Ball-and-wall striking sport
+45 Golf :: Swinging at a ball
+45 Tennis :: Hitting a ball
+30 Basketball :: Classic American sport
+
+## sport_boxing | easy | universe=sport | ref=Boxing | v=1
+prompt: Name a sport most like boxing.
+hint: One-on-one striking sports.
+dims: combat style, rules, contact
+why: Boxing is a one-on-one striking sport with fists. Kickboxing and Muay Thai add kicks; MMA combines it with grappling.
+100 Kickboxing * :: Striking sport with punches and kicks
+100 Muay Thai :: Stand-up striking sport
+90 Mixed martial arts * :: Striking plus grappling
+80 Karate :: Striking martial art
+80 Taekwondo :: Striking martial art
+80 Wrestling :: One-on-one combat sport
+65 Judo :: Grappling martial art
+65 Brazilian jiu-jitsu :: Grappling martial art
+65 Sumo :: One-on-one combat
+65 Fencing :: One-on-one combat sport
+45 Arm wrestling :: Strength contest
+30 Weightlifting :: Strength sport
+
+## sport_hockey | easy | universe=sport | ref=Ice hockey | v=1
+prompt: Name a sport most like hockey.
+hint: Sticks, pucks and ice.
+dims: equipment, surface, play
+why: Ice hockey is a fast stick-and-puck sport on ice. Roller hockey and bandy are siblings; field hockey shares the stick play.
+100 Roller hockey * :: Hockey on wheels
+100 Bandy :: Ice sport with sticks and a ball
+90 Field hockey * :: Stick-and-ball team sport
+90 Sledge hockey :: Ice hockey for sledge users
+90 Ringette :: Ice stick sport
+80 Floorball :: Indoor stick sport
+80 Lacrosse :: Stick sport with goals
+80 Hurling :: Stick-and-ball team sport
+65 Curling :: Ice sport
+65 Speed skating :: Skating sport
+45 Soccer :: Team goals sport
+30 Figure skating :: On the ice
+
+## sport_volleyball | hard | universe=sport | ref=Volleyball | v=1
+prompt: Name a sport most like volleyball.
+hint: Net, rallies, teams.
+dims: equipment, play, team
+why: Volleyball is a team net sport where the ball must not touch the ground. Beach volleyball is its outdoor version; sepak takraw is its kicking twin.
+100 Beach volleyball * :: Volleyball on sand
+100 Sepak takraw :: Volleyball played with the feet
+90 Footvolley :: Volleyball with soccer skills
+90 Fistball :: Net game hitting with the arm
+80 Badminton :: Net sport
+80 Teqball :: Net sport
+65 Tennis :: Net sport
+65 Netball :: Indoor team sport
+45 Basketball :: Indoor court sport
+30 Dodgeball :: Ball game
+
+## sport_skiing | hard | universe=sport | ref=Skiing | v=1
+prompt: Name a sport most like skiing.
+hint: Snow, slopes, speed.
+dims: surface, equipment, motion
+why: Alpine skiing is racing down snowy slopes on skis. Snowboarding is its sibling; cross-country and ski jumping share the skis.
+100 Snowboarding * :: Riding down snowy slopes
+90 Cross-country skiing :: Skis on snow
+90 Ski jumping :: Skis and snow
+80 Biathlon :: Skis plus shooting
+80 Water skiing :: Skis on water
+65 Bobsleigh :: Speed down icy tracks
+65 Luge :: Speed down icy tracks
+65 Skeleton :: Speed down icy tracks
+65 Surfing :: Riding a board downhill on a wave
+65 Skateboarding :: Board sport
+45 Ice hockey :: Winter sport
+45 Figure skating :: Winter sport
+30 Cycling :: Downhill speed

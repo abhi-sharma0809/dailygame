@@ -1,0 +1,145 @@
+@universe city | noun=city | plural=cities
+Amsterdam
+Athens
+Atlanta
+Auckland
+Austin
+Bangkok
+Barcelona
+Beijing
+Berlin
+Bogotá ; bogota
+Bordeaux
+Boston
+Bruges ; brugge
+Brussels
+Budapest
+Buenos Aires
+Cairo
+Cape Town
+Chicago
+Copenhagen
+Dallas
+Delhi ; new delhi
+Denver
+Dubai
+Dublin
+Edinburgh
+Florence ; firenze
+Geneva
+Hanoi
+Havana
+Helsinki
+Ho Chi Minh City ; saigon ; hcmc
+Hong Kong
+Honolulu
+Houston
+Istanbul
+Jakarta
+Jerusalem
+Kyoto
+Las Vegas ; vegas
+Lisbon
+London
+Los Angeles ; la
+Lyon
+Macau ; macao
+Madrid
+Manila
+Marrakesh ; marrakech
+Melbourne
+Mexico City ; cdmx
+Miami
+Milan ; milano
+Montreal ; montréal
+Moscow
+Mumbai ; bombay
+Munich ; münchen ; munchen
+Nairobi
+Naples ; napoli
+New Orleans ; nola
+New York City ; new york ; nyc ; manhattan
+Nice
+Osaka
+Oslo
+Paris
+Philadelphia ; philly
+Porto
+Prague
+Quebec City ; québec city ; quebec
+Reykjavik ; reykjavík
+Rio de Janeiro ; rio
+Rome ; roma
+San Diego
+San Francisco ; sf ; san fran
+Santiago
+São Paulo ; sao paulo
+Seattle
+Seoul
+Seville ; sevilla
+Shanghai
+Singapore
+St. Petersburg ; saint petersburg ; st petersburg
+Stockholm
+Sydney
+Taipei
+Tel Aviv
+Tokyo
+Toronto
+Vancouver
+Venice ; venezia
+Vienna ; wien
+Warsaw
+Washington, D.C. ; washington dc ; dc
+Zurich ; zürich
+Kraków ; krakow
+Ljubljana
+Salzburg
+Valencia
+Granada
+Strasbourg
+Lausanne
+Tallinn
+Riga
+Dubrovnik
+Nashville
+Portland
+Montevideo
+Lima
+Cusco
+Cartagena
+Marseille
+Toulouse
+Turin ; torino
+Bologna
+Verona
+Pisa
+Siena
+Hamburg
+Cologne ; köln ; koln
+Frankfurt
+Kolkata ; calcutta
+Bangalore ; bengaluru
+Shenzhen
+Guangzhou
+Yokohama
+Nara
+Busan
+Abu Dhabi
+Doha
+Riyadh
+Perth
+Brisbane
+Wellington
+Johannesburg
+Lagos
+Accra
+Casablanca
+Tunis
+Agra
+Jaipur
+Varanasi
+Kathmandu
+Luang Prabang
+Hoi An
+Chiang Mai

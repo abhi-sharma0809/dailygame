@@ -1,0 +1,171 @@
+@category objects | label=Everyday Life & Objects
+
+## obj_smartphone | easy | universe=object | ref=Smartphone | v=1
+prompt: Name an object most like a smartphone.
+hint: What it does, how it looks and how you use it.
+dims: function, form factor, technology
+why: A smartphone is a pocket touchscreen computer and phone. Tablets are its bigger twin; smartwatches and handheld consoles share chunks of its role.
+100 Tablet * :: Same touchscreen computer, just bigger
+90 Smartwatch :: Phone functions on your wrist
+90 Handheld console :: Pocket screen for games
+80 Laptop * :: Portable computer
+80 E-reader :: Handheld screen
+80 Camera phone :: Phone-camera
+65 Home phone :: Makes calls
+65 Walkie-talkie :: Talk to anyone in your pocket
+65 Pager :: Pocket messaging
+65 Computer :: General computing
+45 Camera :: Takes photos
+45 Calculator :: Pocket device
+45 Remote control :: Handheld device with buttons
+30 Wallet :: Always in your pocket
+
+## obj_bicycle | easy | universe=object | ref=Bicycle | v=1
+prompt: Name something most like a bicycle.
+hint: Wheels, pedals and how you get around.
+dims: mechanism, transport role, propulsion
+exclude: Tandem bicycle, Electric bike, Penny-farthing
+why: A bicycle is a two-wheeled, pedal-powered vehicle. Tricycles and unicycles share the pedals; scooters share the human-powered personal transport.
+100 Tricycle :: Pedal-powered, just one more wheel
+100 Unicycle :: Pedal-powered, one wheel
+90 Exercise bike :: Same pedals, going nowhere
+90 Motorcycle * :: Two wheels, handlebars, a motor
+90 Moped :: Two-wheeler with pedals and a motor
+80 Kick scooter * :: Human-powered two-wheeler
+80 Electric scooter :: Two-wheel personal transport
+65 Skateboard :: Human-powered rolling transport
+65 Segway :: Personal transport
+65 Inline skates :: Human-powered wheels
+45 Car :: Transport
+45 Wagon :: Wheeled
+30 Stroller :: Wheeled
+
+## obj_tv | easy | universe=object | ref=Television | v=1
+prompt: Name an object most like a television.
+hint: A screen you watch.
+dims: function, form, technology
+why: A TV is a large screen for watching video. Monitors and projectors share that exact role.
+100 Monitor * :: A big screen that displays video
+100 Projector :: Shows video on a big screen
+90 Video projector :: Projects TV and movies
+80 Smart display :: Screen for video and media
+80 Tablet :: Screen for watching shows
+80 Laptop :: Screen for watching shows
+65 Computer :: Displays video
+65 Smartphone * :: Screen for watching
+65 Radio :: Broadcast entertainment box
+45 Remote control :: TV companion
+45 Game console :: Plugs into a TV
+30 Mirror :: Flat glass rectangle on a wall
+
+## obj_backpack | easy | universe=object | ref=Backpack | v=1
+prompt: Name something most like a backpack.
+hint: How it carries things and how you wear it.
+dims: carrying style, purpose, form
+exclude: School bag, Hiking pack
+why: A backpack is a bag worn on the back with shoulder straps. Rucksacks are synonyms; satchels, messenger bags and duffels are close bag relatives.
+100 Duffel bag :: Soft bag with straps for carrying gear
+100 Messenger bag :: Strap-worn everyday bag
+90 Satchel :: Strap-worn school bag
+90 Bag * :: Carries your stuff
+80 Fanny pack :: Hands-free worn bag
+80 Briefcase :: Carries work things
+80 Suitcase * :: Carries belongings on a trip
+65 Tool belt :: Worn, carries tools
+65 Lunchbox :: Carried to school
+45 Wallet :: Carries essentials
+45 Jacket :: Worn, has pockets
+30 Tent :: Hiking gear
+
+## obj_camera | hard | universe=object | ref=Camera | v=1
+prompt: Name an object most like a camera.
+hint: Capturing images.
+dims: function, technology, form
+why: A camera captures images. Camcorders, action cameras and instant cameras are near-identical; phones share the function.
+100 Camcorder :: Captures video
+100 GoPro :: Action camera
+90 Polaroid camera :: Instant camera
+90 Film camera :: Captures photos on film
+90 Disposable camera :: Single-use camera
+80 Smartphone * :: Camera in your pocket
+80 Webcam :: Camera for your computer
+80 Security camera :: Records video
+65 Telescope :: Lens for seeing far
+65 Binoculars :: Lenses for seeing far
+65 Drone :: Flying camera
+45 Projector :: Lens and light for images
+45 Microphone :: Records the world
+30 Mirror :: Shows your image
+
+## obj_refrigerator | easy | universe=object | ref=Refrigerator | v=1
+prompt: Name something most like a refrigerator.
+hint: Keeping things cold.
+dims: function, form, location
+why: A refrigerator keeps food cold. Freezers, mini fridges and coolers share that job.
+100 Freezer * :: Keeps food cold — just colder
+100 Mini fridge :: A small refrigerator
+90 Chest freezer :: Cold food storage
+90 Wine cooler :: Keeps drinks cold
+90 Cooler :: Keeps food cold on the go
+80 Ice box :: The pre-electric refrigerator
+80 Vending machine :: Cold drinks in a box
+65 Larder :: Food storage room
+65 Root cellar :: Cool food storage
+65 Air conditioner :: Keeps things cool
+45 Dishwasher :: Kitchen appliance
+45 Oven * :: Kitchen appliance
+45 Microwave :: Kitchen appliance
+30 Wardrobe :: Tall box with doors
+
+## obj_skateboard | easy | universe=object | ref=Skateboard | v=1
+prompt: Name an object most like a skateboard.
+hint: Riding on a board.
+dims: form, use, motion
+why: A skateboard is a wheeled deck you ride standing. Longboards are the same; waveboards and snowboards share the board.
+100 Longboard * :: A longer skateboard
+100 Waveboard :: Two-wheeled twisting skateboard
+90 Kick scooter :: Wheeled deck with a handlebar
+90 Hoverboard :: Self-balancing board
+80 Snowboard :: Board for sliding on snow
+80 Surfboard * :: Board for riding waves
+80 Snowskate :: A skateboard for snow
+65 Roller skates :: Wheeled street transport
+65 Inline skates :: Wheeled street transport
+65 Bodyboard :: Ride-on board
+45 Bicycle :: Street transport
+45 Sled :: Ride-on sliding
+30 Ice skates :: Glide over ice
+
+## obj_umbrella | hard | universe=object | ref=Umbrella | v=1
+prompt: Name an object most like an umbrella.
+hint: Protection and shelter.
+dims: function, form, portability
+why: An umbrella is a portable folding canopy that shelters you. Tents and parasols share the shelter; raincoats share the purpose.
+100 Parasol :: Folding canopy for shade
+100 Raincoat * :: Keeps rain off you
+90 Tent :: Fabric shelter on a frame
+80 Awning :: Fabric overhang shelter
+80 Hat :: Covers your head from the weather
+65 Jacket :: Weather protection
+65 Sunglasses :: Sun protection
+45 Kite :: Fabric on a frame
+45 Fan :: Folds open
+30 Helmet :: Head protection
+
+## obj_watch | hard | universe=object | ref=Watch | v=1
+prompt: Name an object most like a watch.
+hint: Time on the go.
+dims: function, form, portability
+exclude: Pocket watch
+why: A watch tells time on your wrist. Smartwatches and clocks are the closest.
+100 Smartwatch * :: Wrist-worn timepiece with extras
+100 Alarm clock :: Tells and keeps time
+90 Clock * :: Tells time
+80 Hourglass :: Measures time
+80 Stopwatch :: Measures time
+65 Bracelet :: Worn on the wrist
+65 Fitness tracker :: Worn on the wrist
+65 Smartphone :: Tells you the time
+45 Calculator :: Small digital device
+45 Compass :: Small dial instrument
+30 Calendar :: Tracks time

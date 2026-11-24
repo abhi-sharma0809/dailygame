@@ -1,0 +1,200 @@
+@universe country | noun=country | plural=countries
+Afghanistan ; Islamic Republic of Afghanistan  #asia
+Albania ; Republic of Albania ; Shqipëri ; Shqipëria ; Shqipnia  #europe
+Algeria ; People's Democratic Republic of Algeria ; Dzayer ; Algérie  #africa
+Andorra ; Principality of Andorra ; Principat d'Andorra  #europe
+Angola ; Republic of Angola ; República de Angola  #africa
+Antigua and Barbuda  #americas
+Argentina ; Argentine Republic ; República Argentina  #americas
+Armenia ; Republic of Armenia ; Hayastan  #asia
+Australia ; Commonwealth of Australia  #oceania
+Austria ; Republic of Austria ; Osterreich ; Oesterreich  #europe
+Azerbaijan ; Republic of Azerbaijan  #asia
+Bahamas ; Commonwealth of the Bahamas  #americas
+Bahrain ; Kingdom of Bahrain  #asia
+Bangladesh ; People's Republic of Bangladesh ; Gônôprôjatôntri Bangladesh  #asia
+Barbados  #americas
+Belarus ; Republic of Belarus  #europe
+Belgium ; Kingdom of Belgium ; België ; Belgie ; Belgien ; Belgique ; Koninkrijk België  #europe
+Belize  #americas
+Benin ; Republic of Benin ; République du Bénin  #africa
+Bhutan ; Kingdom of Bhutan  #asia
+Bolivia ; Plurinational State of Bolivia ; Buliwya ; Wuliwya ; Estado Plurinacional de Bolivia ; Buliwya Mamallaqta ; Wuliwya Suyu  #americas
+Bosnia and Herzegovina ; Bosnia-Herzegovina  #europe
+Botswana ; Republic of Botswana ; Lefatshe la Botswana  #africa
+Brazil ; Federative Republic of Brazil ; Brasil ; República Federativa do Brasil  #americas
+Brunei ; Brunei Darussalam ; Nation of Brunei ; the Abode of Peace  #asia
+Bulgaria ; Republic of Bulgaria  #europe
+Burkina Faso  #africa
+Burundi ; Republic of Burundi ; Republika y'Uburundi ; République du Burundi  #africa
+Cambodia ; Kingdom of Cambodia  #asia
+Cameroon ; Republic of Cameroon ; République du Cameroun  #africa
+Canada  #americas
+Cape Verde ; Republic of Cabo Verde ; República de Cabo Verde  #africa
+Central African Republic ; République centrafricaine  #africa
+Chad ; Republic of Chad ; Tchad ; République du Tchad  #africa
+Chile ; Republic of Chile ; República de Chile  #americas
+China ; People's Republic of China ; Zhongguo ; Zhonghua  #asia
+Colombia ; Republic of Colombia ; República de Colombia  #americas
+Comoros ; Union of the Comoros ; Union des Comores ; Udzima wa Komori  #africa
+Congo ; Republic of the Congo ; Congo-Brazzaville  #africa
+Costa Rica ; Republic of Costa Rica ; República de Costa Rica  #americas
+Croatia ; Republic of Croatia ; Hrvatska ; Republika Hrvatska  #europe
+Cuba ; Republic of Cuba ; República de Cuba  #americas
+Cyprus ; Republic of Cyprus ; Kýpros  #europe
+Czechia ; Czech Republic  #europe
+DR Congo ; Democratic Republic of the Congo ; Congo-Kinshasa ; Democratic Republic of Congo ; DRC  #africa
+Denmark ; Kingdom of Denmark ; Danmark ; Kongeriget Danmark  #europe
+Djibouti ; Republic of Djibouti ; Jabuuti ; Gabuuti ; République de Djibouti ; Gabuutih Ummuuno ; Jamhuuriyadda Jabuuti  #africa
+Dominica ; Commonwealth of Dominica ; Dominique  #americas
+Dominican Republic  #americas
+Ecuador ; Republic of Ecuador ; República del Ecuador  #americas
+Egypt ; Arab Republic of Egypt  #africa
+El Salvador ; Republic of El Salvador ; República de El Salvador  #americas
+Equatorial Guinea ; Republic of Equatorial Guinea ; República de Guinea Ecuatorial ; République de Guinée équatoriale ; República da Guiné Equatorial  #africa
+Eritrea ; State of Eritrea ; Dawlat Iritriyá  #africa
+Estonia ; Republic of Estonia ; Eesti ; Eesti Vabariik  #europe
+Eswatini ; Kingdom of Eswatini ; Swaziland ; weSwatini ; Swatini ; Ngwane ; Umbuso weSwatini  #africa
+Ethiopia ; Federal Democratic Republic of Ethiopia  #africa
+Fiji ; Republic of Fiji ; Viti ; Matanitu ko Viti  #oceania
+Finland ; Republic of Finland ; Suomi ; Suomen tasavalta ; Republiken Finland  #europe
+France ; French Republic ; République française  #europe
+Gabon ; Gabonese Republic ; République Gabonaise  #africa
+Gambia ; Republic of the Gambia  #africa
+Georgia ; Sakartvelo  #asia
+Germany ; Federal Republic of Germany ; Bundesrepublik Deutschland  #europe
+Ghana ; Republic of Ghana  #africa
+Greece ; Hellenic Republic ; Elláda  #europe
+Greenland ; Grønland  #territory #americas
+Grenada  #americas
+Guatemala ; Republic of Guatemala  #americas
+Guinea ; Republic of Guinea ; République de Guinée  #africa
+Guinea-Bissau ; Republic of Guinea-Bissau ; República da Guiné-Bissau  #africa
+Guyana ; Co-operative Republic of Guyana  #americas
+Haiti ; Republic of Haiti ; République d'Haïti ; Repiblik Ayiti  #americas
+Honduras ; Republic of Honduras ; República de Honduras  #americas
+Hong Kong  #territory #asia
+Hungary  #europe
+Iceland ; Island ; Republic of Iceland ; Lýðveldið Ísland  #europe
+India ; Republic of India ; Bharat Ganrajya  #asia
+Indonesia ; Republic of Indonesia ; Republik Indonesia  #asia
+Iran ; Islamic Republic of Iran ; Persia  #asia
+Iraq ; Republic of Iraq  #asia
+Ireland ; Republic of Ireland ; Éire ; Poblacht na hÉireann  #europe
+Israel ; State of Israel  #asia
+Italy ; Italian Republic ; Repubblica italiana  #europe
+Ivory Coast ; Republic of Côte d'Ivoire ; Côte d'Ivoire ; Cote d'Ivoire ; République de Côte d'Ivoire  #africa
+Jamaica  #americas
+Japan ; Nippon ; Nihon  #asia
+Jordan ; Hashemite Kingdom of Jordan  #asia
+Kazakhstan ; Republic of Kazakhstan ; Qazaqstan  #asia
+Kenya ; Republic of Kenya ; Jamhuri ya Kenya  #africa
+Kiribati ; Independent and Sovereign Republic of Kiribati ; Republic of Kiribati ; Ribaberiki Kiribati  #oceania
+Kuwait ; State of Kuwait ; Dawlat al-Kuwait  #asia
+Kyrgyzstan ; Kyrgyz Republic ; Kyrgyz Respublikasy  #asia
+Laos ; Lao People's Democratic Republic ; Sathalanalat Paxathipatai Paxaxon Lao  #asia
+Latvia ; Republic of Latvia ; Latvijas Republika  #europe
+Lebanon ; Lebanese Republic  #asia
+Lesotho ; Kingdom of Lesotho ; Muso oa Lesotho  #africa
+Liberia ; Republic of Liberia  #africa
+Libya ; State of Libya ; Dawlat Libya  #africa
+Liechtenstein ; Principality of Liechtenstein ; Fürstentum Liechtenstein  #europe
+Lithuania ; Republic of Lithuania ; Lietuvos Respublika  #europe
+Luxembourg ; Grand Duchy of Luxembourg ; Grand-Duché de Luxembourg ; Großherzogtum Luxemburg ; Groussherzogtum Lëtzebuerg  #europe
+Madagascar ; Republic of Madagascar ; Repoblikan'i Madagasikara ; République de Madagascar  #africa
+Malawi ; Republic of Malawi  #africa
+Malaysia  #asia
+Maldives ; Republic of the Maldives ; Maldive Islands ; Dhivehi Raajjeyge Jumhooriyya  #asia
+Mali ; Republic of Mali ; République du Mali  #africa
+Malta ; Republic of Malta ; Repubblika ta' Malta  #europe
+Marshall Islands ; Republic of the Marshall Islands  #oceania
+Mauritania ; Islamic Republic of Mauritania  #africa
+Mauritius ; Republic of Mauritius ; République de Maurice  #africa
+Mexico ; United Mexican States ; Mexicanos ; Estados Unidos Mexicanos  #americas
+Micronesia ; Federated States of Micronesia  #oceania
+Moldova ; Republic of Moldova ; Republica Moldova  #europe
+Monaco ; Principality of Monaco ; Principauté de Monaco  #europe
+Mongolia  #asia
+Montenegro ; Crna Gora  #europe
+Morocco ; Kingdom of Morocco  #africa
+Mozambique ; Republic of Mozambique ; República de Moçambique  #africa
+Myanmar ; Republic of the Union of Myanmar ; Burma  #asia
+Namibia ; Republic of Namibia ; Namibië  #africa
+Nauru ; Republic of Nauru ; Naoero ; Pleasant Island ; Ripublik Naoero  #oceania
+Nepal ; Federal Democratic Republic of Nepal  #asia
+Netherlands ; Kingdom of the Netherlands ; Holland ; Nederland ; The Netherlands  #europe
+New Zealand ; Aotearoa ; NZ  #oceania
+Nicaragua ; Republic of Nicaragua ; República de Nicaragua  #americas
+Niger ; Republic of Niger ; Nijar  #africa
+Nigeria ; Federal Republic of Nigeria ; Nijeriya ; Naíjíríà  #africa
+North Korea ; Democratic People's Republic of Korea ; DPRK  #asia
+North Macedonia ; Republic of North Macedonia ; The former Yugoslav Republic of Macedonia ; Macedonia  #europe
+Norway ; Kingdom of Norway ; Norge ; Noreg ; Kongeriket Norge ; Kongeriket Noreg  #europe
+Oman ; Sultanate of Oman  #asia
+Pakistan ; Islamic Republic of Pakistan  #asia
+Palau ; Republic of Palau ; Beluu er a Belau  #oceania
+Palestine ; State of Palestine  #territory #asia
+Panama ; Republic of Panama ; República de Panamá  #americas
+Papua New Guinea ; Independent State of Papua New Guinea ; Independen Stet bilong Papua Niugini  #oceania
+Paraguay ; Republic of Paraguay ; República del Paraguay ; Tetã Paraguái  #americas
+Peru ; Republic of Peru ; República del Perú  #americas
+Philippines ; Republic of the Philippines ; Repúblika ng Pilipinas  #asia
+Poland ; Republic of Poland ; Rzeczpospolita Polska  #europe
+Portugal ; Portuguese Republic ; Portuguesa ; República Portuguesa  #europe
+Puerto Rico ; Commonwealth of Puerto Rico ; Estado Libre Asociado de Puerto Rico  #territory #americas
+Qatar ; State of Qatar  #asia
+Romania ; Rumania ; Roumania ; România  #europe
+Russia ; Russian Federation  #europe
+Rwanda ; Republic of Rwanda ; Repubulika y'u Rwanda ; République du Rwanda  #africa
+Saint Kitts and Nevis ; Federation of Saint Christopher and Nevis  #americas
+Saint Lucia  #americas
+Saint Vincent and the Grenadines  #americas
+Samoa ; Independent State of Samoa  #oceania
+San Marino ; Most Serene Republic of San Marino ; Republic of San Marino ; Repubblica di San Marino  #europe
+Saudi Arabia ; Kingdom of Saudi Arabia ; Saudi  #asia
+Senegal ; Republic of Senegal ; République du Sénégal  #africa
+Serbia ; Republic of Serbia ; Srbija ; Republika Srbija  #europe
+Seychelles ; Republic of Seychelles ; Repiblik Sesel ; République des Seychelles  #africa
+Sierra Leone ; Republic of Sierra Leone  #africa
+Singapore ; Republic of Singapore ; Singapura ; Republik Singapura  #asia
+Slovakia ; Slovak Republic ; Slovenská republika  #europe
+Slovenia ; Republic of Slovenia ; Republika Slovenija  #europe
+Solomon Islands  #oceania
+Somalia ; Federal Republic of Somalia ; Jamhuuriyadda Federaalka Soomaaliya  #africa
+South Africa ; Republic of South Africa ; Suid-Afrika  #africa
+South Korea ; Republic of Korea ; Korea ; ROK  #asia
+South Sudan ; Republic of South Sudan  #africa
+Spain ; Kingdom of Spain ; Reino de España  #europe
+Sri Lanka ; Democratic Socialist Republic of Sri Lanka  #asia
+Sudan ; Republic of the Sudan  #africa
+Suriname ; Republic of Suriname ; Sarnam ; Sranangron ; Republiek Suriname  #americas
+Sweden ; Kingdom of Sweden ; Konungariket Sverige  #europe
+Switzerland ; Swiss Confederation ; Schweiz ; Suisse ; Svizzera ; Svizra  #europe
+Syria ; Syrian Arab Republic  #asia
+São Tomé and Príncipe ; Democratic Republic of São Tomé and Príncipe ; Sao Tome and Principe ; República Democrática de São Tomé e Príncipe  #africa
+Taiwan ; Republic of China ; Chinese Taipei  #territory #asia
+Tajikistan ; Republic of Tajikistan ; Toçikiston ; Çumhuriyi Toçikiston  #asia
+Tanzania ; United Republic of Tanzania ; Jamhuri ya Muungano wa Tanzania  #africa
+Thailand ; Kingdom of Thailand ; Prathet ; Thai ; Ratcha Anachak Thai  #asia
+Timor-Leste ; Democratic Republic of Timor-Leste ; East Timor ; Timor ; República Democrática de Timor-Leste ; Repúblika Demokrátika Timór-Leste ; Timór Lorosa'e  #asia
+Togo ; Togolese Republic ; Togolese ; République Togolaise  #africa
+Tonga ; Kingdom of Tonga  #oceania
+Trinidad and Tobago ; Republic of Trinidad and Tobago  #americas
+Tunisia ; Tunisian Republic ; Republic of Tunisia  #africa
+Turkmenistan  #asia
+Tuvalu  #oceania
+Türkiye ; Republic of Türkiye ; Turkiye ; Republic of Turkey ; Türkiye Cumhuriyeti ; Turkey  #asia
+Uganda ; Republic of Uganda ; Jamhuri ya Uganda  #africa
+Ukraine ; Ukrayina  #europe
+United Arab Emirates ; Emirates ; UAE  #asia
+United Kingdom ; United Kingdom of Great Britain and Northern Ireland ; Great Britain ; UK ; Britain ; England ; Scotland  #europe
+United States ; United States of America ; USA ; US ; America ; the States  #americas
+Uruguay ; Oriental Republic of Uruguay ; República Oriental del Uruguay  #americas
+Uzbekistan ; Republic of Uzbekistan  #asia
+Vanuatu ; Republic of Vanuatu ; Ripablik blong Vanuatu ; République de Vanuatu  #oceania
+Vatican City ; Vatican City State ; Vatican ; Stato della Città del Vaticano ; Holy See  #europe
+Venezuela ; Bolivarian Republic of Venezuela ; República Bolivariana de Venezuela  #americas
+Vietnam ; Socialist Republic of Vietnam ; Viet Nam  #asia
+Yemen ; Republic of Yemen ; Yemeni Republic  #asia
+Zambia ; Republic of Zambia  #africa
+Zimbabwe ; Republic of Zimbabwe  #africa

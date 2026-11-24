@@ -1,0 +1,249 @@
+@universe food | noun=food or drink | plural=foods and drinks
+# Tags: #drink #dessert #snack #fruit #dish
+Apple  #fruit
+Apple pie  #dessert
+Apricot  #fruit
+Avocado  #fruit
+Avocado toast  #dish
+Bagel  #dish
+Baguette  #dish
+Baklava  #dessert
+Banana  #fruit
+Banana bread  #dessert
+Banh mi ; bánh mì  #dish
+Bao ; bao bun ; steamed bun  #dish
+Beer  #drink
+Bibimbap  #dish
+Biryani  #dish
+Black tea  #drink
+Blackberry  #fruit
+Blueberry  #fruit
+Boba tea ; bubble tea ; boba  #drink
+Brownie ; brownies  #dessert
+Bruschetta  #dish
+Burrito  #dish
+Butter chicken  #dish
+Calzone  #dish
+Cappuccino  #drink
+Caramel popcorn ; kettle corn  #snack
+Carrot cake  #dessert
+Cereal  #dish
+Ceviche  #dish
+Chai ; masala chai ; chai tea  #drink
+Cheesecake  #dessert
+Cheeseburger  #dish
+Cherry  #fruit
+Chicken nuggets ; nuggets  #dish
+Chicken sandwich  #dish
+Chips ; potato chips ; crisps  #snack
+Chocolate ; chocolate bar  #dessert
+Chocolate cake  #dessert
+Chocolate mousse  #dessert
+Chow mein  #dish
+Churros ; churro  #dessert
+Cider ; apple cider  #drink
+Coca-Cola ; coke ; cola  #drink
+Coconut  #fruit
+Coffee  #drink
+Cold brew ; cold brew coffee  #drink
+Cookie ; cookies ; chocolate chip cookie  #dessert
+Corn dog  #dish
+Corn on the cob ; corn  #dish
+Crackers  #snack
+Cranberry  #fruit
+Crème brûlée ; creme brulee  #dessert
+Crêpe ; crepe ; crepes  #dessert
+Croissant  #dish
+Cupcake  #dessert
+Curry  #dish
+Dates ; date  #fruit
+Dim sum  #dish
+Donut ; doughnut  #dessert
+Dragon fruit ; pitaya  #fruit
+Dumplings ; dumpling ; gyoza ; jiaozi  #dish
+Empanada ; empanadas  #dish
+Energy drink ; red bull  #drink
+Enchiladas ; enchilada  #dish
+Espresso  #drink
+Fajitas ; fajita  #dish
+Falafel  #dish
+Fig  #fruit
+Fish and chips  #dish
+Flatbread ; naan  #dish
+Focaccia  #dish
+Fondue  #dish
+French fries ; fries  #dish
+French toast  #dish
+Fried chicken  #dish
+Frozen custard ; custard  #dessert
+Frozen yogurt ; froyo  #dessert
+Fruit salad  #dessert
+Garlic bread  #dish
+Gelato  #dessert
+Gnocchi  #dish
+Granola bar  #snack
+Grape  #fruit
+Grapefruit  #fruit
+Green tea  #drink
+Grilled cheese ; grilled cheese sandwich  #dish
+Guacamole  #dish
+Guava  #fruit
+Gummy bears ; gummies  #snack
+Gyro ; gyros  #dish
+Hamburger ; burger  #dish
+Hot chocolate ; hot cocoa ; cocoa  #drink
+Hot dog  #dish
+Hummus  #dish
+Ice cream  #dessert
+Ice cream sandwich  #dessert
+Iced coffee  #drink
+Iced tea  #drink
+Jerky ; beef jerky  #snack
+Kebab ; doner kebab ; shawarma  #dish
+Kiwi ; kiwifruit  #fruit
+Kombucha  #drink
+Lasagna ; lasagne  #dish
+Latte ; caffe latte  #drink
+Lava cake ; molten chocolate cake  #dessert
+Lemon  #fruit
+Lemonade  #drink
+Lime  #fruit
+Lychee  #fruit
+Macaron ; macarons  #dessert
+Mac and cheese ; macaroni and cheese  #dish
+Mango  #fruit
+Matcha ; matcha latte  #drink
+Meatballs  #dish
+Milk  #drink
+Milkshake  #drink
+Mochi  #dessert
+Muffin  #dessert
+Nachos  #snack
+Nectarine  #fruit
+Noodles  #dish
+Nuts ; mixed nuts  #snack
+Omelette ; omelet  #dish
+Onigiri ; rice ball  #dish
+Orange  #fruit
+Orange juice ; oj  #drink
+Pad thai  #dish
+Paella  #dish
+Pancakes ; pancake  #dish
+Panna cotta  #dessert
+Papaya  #fruit
+Pasta ; spaghetti ; penne  #dish
+Peach  #fruit
+Pear  #fruit
+Persimmon  #fruit
+Pho  #dish
+Pie  #dessert
+Pierogi  #dish
+Pineapple  #fruit
+Pita ; pita bread  #dish
+Pizza  #dish
+Plum  #fruit
+Poke ; poke bowl  #dish
+Pomegranate  #fruit
+Popcorn  #snack
+Popsicle ; ice pop ; ice lolly  #dessert
+Pork buns  #dish
+Pretzel ; pretzels  #snack
+Pudding  #dessert
+Quesadilla  #dish
+Quince  #fruit
+Ramen  #dish
+Raspberry  #fruit
+Ravioli  #dish
+Red velvet cake  #dessert
+Rice cakes ; rice cake  #snack
+Rice crackers ; senbei  #snack
+Risotto  #dish
+Salad  #dish
+Samosa  #dish
+Sandwich ; sub ; hoagie  #dish
+Sashimi  #dish
+Sherbet ; sorbet  #dessert
+Smoothie  #drink
+Soda ; pop ; soft drink  #drink
+Soup  #dish
+Spring rolls ; egg rolls ; spring roll  #dish
+Steak  #dish
+Stir fry ; stir-fry  #dish
+Strawberry  #fruit
+Sundae  #dessert
+Sushi  #dish
+Taco ; tacos  #dish
+Tamales ; tamale  #dish
+Tea  #drink
+Tempura  #dish
+Tiramisu  #dessert
+Toast  #dish
+Tofu  #dish
+Tortilla chips  #snack
+Trail mix  #snack
+Udon  #dish
+Waffles ; waffle  #dish
+Water  #drink
+Watermelon  #fruit
+Wine  #drink
+Wrap  #dish
+Yogurt ; yoghurt  #dessert
+Flatbread pizza ; flatbread pizza  #dish
+Lahmacun ; turkish pizza  #dish
+Pizza bagel  #dish
+Pizza rolls  #snack
+Tostada  #dish
+Taco salad  #dish
+Arepa  #dish
+Gimbap ; kimbap  #dish
+Temaki ; hand roll  #dish
+California roll  #dish
+Chirashi  #dish
+Musubi ; spam musubi  #dish
+Mac salad  #dish
+Slider ; sliders  #dish
+Patty melt  #dish
+Veggie burger  #dish
+Sloppy joe  #dish
+Club sandwich  #dish
+Philly cheesesteak ; cheesesteak  #dish
+Meatloaf  #dish
+Soft serve  #dessert
+Kulfi  #dessert
+Affogato  #dessert
+Shaved ice ; snow cone ; kakigori  #dessert
+Ice cream cake  #dessert
+Black forest cake ; black forest gateau  #dessert
+Devil's food cake ; devils food cake  #dessert
+Fudge  #dessert
+Chocolate truffle ; truffles  #dessert
+Sachertorte ; sacher torte  #dessert
+Flourless chocolate cake  #dessert
+Sponge cake  #dessert
+Pound cake  #dessert
+Carbonara ; spaghetti carbonara  #dish
+Instant noodles ; cup noodles ; cup noodle  #dish
+Lo mein  #dish
+Soba  #dish
+Couscous  #dish
+Polenta  #dish
+Rice  #dish
+Fried rice  #dish
+Yerba mate ; mate  #drink
+Hot tea  #drink
+Decaf ; decaf coffee  #drink
+Chicory coffee ; chicory  #drink
+Mocha ; caffe mocha  #drink
+Americano  #drink
+Pecans ; pecan  #snack
+Peanuts ; roasted peanuts  #snack
+Puffed rice  #snack
+Cheese puffs ; cheetos  #snack
+Corn nuts  #snack
+Pork rinds  #snack
+Pistachios ; pistachio  #snack
+Sunflower seeds  #snack
+Kettle chips  #snack
+Asian pear ; nashi pear  #fruit
+Crabapple ; crab apple  #fruit
+Loquat  #fruit

@@ -1,0 +1,225 @@
+@category food | label=Food & Drink
+
+## food_pizza | easy | universe=food | ref=Pizza | v=1
+prompt: Name a food most like pizza.
+hint: Bread base, toppings, how it's baked and eaten.
+dims: structure, ingredients, cooking method, how it's eaten
+why: Pizza is flat leavened dough baked with sauce, cheese and toppings. Flatbreads and folded pizzas are its closest relatives.
+100 Calzone * :: Literally a folded pizza — same dough, sauce and cheese
+100 Lahmacun :: Thin baked flatbread topped with spiced meat — "Turkish pizza"
+90 Flatbread pizza :: Pizza on a flatbread
+90 Focaccia :: Italian oven-baked flatbread, often topped
+80 Pizza bagel :: Pizza toppings on bread
+80 Garlic bread :: Baked bread with cheese and garlic
+80 Bruschetta :: Italian bread topped with tomatoes
+65 Tostada :: Flat crispy base with toppings
+65 Quesadilla :: Flat, cheesy and sliced into wedges
+65 Pizza rolls :: Pizza flavors in a snack
+45 Lasagna :: Italian cheese-and-tomato bake
+45 Pasta * :: Italian comfort food
+45 Grilled cheese :: Melted cheese on bread
+30 Hamburger :: Fast-food favorite
+30 Taco :: Toppings on a base
+
+## food_sushi | medium | universe=food | ref=Sushi | v=1
+prompt: Name a food most like sushi.
+hint: Rice, raw fish, rolls and Japanese technique.
+dims: ingredients, preparation, cuisine, form
+why: Sushi is vinegared rice with fish or vegetables, often raw, served as rolls or pieces. Gimbap, poke and sashimi share its core ingredients.
+100 Gimbap :: Korean seaweed-rice roll sliced into rounds
+100 Sashimi * :: Same raw fish, minus the rice
+90 Poke :: Raw fish over rice
+90 Temaki :: Hand-rolled sushi cone
+90 California roll :: A sushi roll
+80 Onigiri :: Seaweed-wrapped rice ball
+80 Chirashi :: Raw fish scattered over sushi rice
+80 Musubi :: Rice block wrapped in seaweed
+65 Ceviche :: Raw fish cured in citrus
+65 Spring rolls :: Wrapped, rolled bites
+45 Ramen * :: Japanese dish
+45 Tempura :: Japanese seafood dish
+30 Dumplings :: Asian bite-sized dish
+30 Burrito :: A wrapped roll
+
+## food_burger | easy | universe=food | ref=Hamburger | v=1
+prompt: Name a food most like a hamburger.
+hint: Bun, patty and how it's built.
+dims: structure, ingredients, cuisine, how it's eaten
+why: A hamburger is a ground-meat patty in a split bun with toppings. Sliders and cheeseburgers are variants; patty melts and sandwiches share the build.
+100 Slider :: A miniature hamburger
+100 Cheeseburger * :: A hamburger with cheese
+90 Veggie burger :: Same build, plant-based patty
+90 Patty melt :: Burger patty on toasted bread
+80 Sloppy joe :: Ground meat on a bun
+80 Chicken sandwich :: Patty-in-a-bun fast food
+80 Hot dog * :: Meat in a bun, same fast-food world
+65 Sandwich :: Filling between bread
+65 Philly cheesesteak :: Meat-and-cheese sandwich
+65 Meatloaf :: Seasoned ground meat
+45 Kebab :: Meat in bread
+45 Taco :: Handheld meat dish
+30 Pizza :: Fast food classic
+30 French fries :: The classic side
+
+## food_ice_cream | easy | universe=food | ref=Ice cream | v=1 | accept=#dessert
+prompt: Name a dessert most like ice cream.
+hint: Frozen, creamy and scooped.
+dims: temperature, texture, ingredients, serving
+why: Ice cream is a frozen, churned dairy dessert. Gelato and frozen custard are near-identical; sorbet and frozen yogurt share the frozen scoop.
+100 Gelato * :: Italian churned frozen dairy dessert
+100 Frozen custard :: Churned frozen dairy dessert with egg
+90 Frozen yogurt * :: Frozen, creamy, served the same way
+90 Soft serve :: Soft frozen dairy dessert
+90 Kulfi :: Dense frozen dairy dessert
+80 Sherbet :: Frozen, scooped, fruit-based
+80 Popsicle :: Frozen treat
+80 Ice cream sandwich :: Ice cream between cookies
+80 Sundae :: Ice cream with toppings
+65 Affogato :: Gelato drowned in espresso
+65 Shaved ice :: Frozen sweet treat
+65 Mochi :: Often filled with ice cream
+65 Milkshake :: Blended ice cream drink
+45 Pudding :: Creamy dessert
+45 Panna cotta :: Creamy set dessert
+45 Yogurt :: Creamy dairy
+30 Cheesecake :: Creamy dessert
+
+## food_tacos | easy | universe=food | ref=Taco | v=1
+prompt: Name a food most like tacos.
+hint: Tortillas, fillings, handheld.
+dims: base, filling, cuisine, how it's eaten
+why: Tacos are corn or flour tortillas folded around fillings. Burritos, tostadas and fajitas use the same building blocks.
+100 Burrito * :: Tortilla wrapped around fillings
+100 Tostada :: Crisp flat tortilla with taco toppings
+90 Fajitas :: Fillings you fold into tortillas yourself
+90 Quesadilla :: Folded tortilla with filling
+90 Enchiladas :: Tortillas rolled around fillings
+80 Arepa :: Stuffed corn bread
+80 Gyro :: Meat in folded flatbread
+80 Kebab :: Meat in flatbread
+65 Wrap :: Filling inside a flatbread
+65 Nachos :: Tortilla chips with toppings
+65 Taco salad :: Taco ingredients in a bowl
+45 Empanada :: Filled handheld pastry
+45 Tamales :: Mexican corn-dough dish
+30 Sandwich :: Handheld food
+
+## food_coffee | easy | universe=food | ref=Coffee | v=1 | accept=#drink
+prompt: Name a drink most like coffee.
+hint: Drinks only — think caffeine, ritual and flavor.
+dims: caffeine, flavor, preparation, ritual
+exclude: Espresso, Americano, Latte, Cappuccino, Cold brew, Iced coffee, Decaf, Mocha
+why: Coffee is a hot, bitter, caffeinated brewed drink. Coffee drinks themselves are excluded; the closest alternatives are other brewed caffeinated drinks.
+100 Black tea * :: Brewed, caffeinated, hot morning ritual
+100 Chicory coffee :: Roasted root brewed exactly like coffee
+90 Yerba mate :: Brewed caffeinated drink
+90 Chai :: Strong spiced tea, often taken with milk
+90 Matcha :: Caffeinated, whisked, often served as a latte
+80 Green tea :: Brewed caffeinated drink
+80 Hot chocolate * :: Hot, dark, comforting drink
+80 Tea :: Brewed hot drink
+65 Energy drink :: Caffeine kick
+65 Coca-Cola :: Caffeinated drink
+45 Kombucha :: Brewed, fermented tea
+45 Boba tea :: Tea-based drink
+30 Milk :: Common breakfast drink
+
+## food_popcorn | hard | universe=food | ref=Popcorn | v=1 | accept=#snack
+prompt: Name a snack most like popcorn.
+hint: Snacks only. Light, crunchy, salty or sweet.
+dims: texture, base ingredient, occasion, flavor
+why: Popcorn is a light, crunchy, puffed whole-grain snack. Puffed rice and caramel corn are near-identical; chips share the salty crunch.
+100 Caramel popcorn :: Popcorn coated in caramel
+100 Puffed rice :: Puffed whole grain — light and crunchy
+90 Corn nuts :: Toasted corn kernels
+90 Cheese puffs :: Light, airy puffed corn snack
+80 Chips * :: Salty, crunchy movie-night snack
+80 Pretzel :: Salty, crunchy snack
+80 Rice cakes :: Puffed grain
+80 Tortilla chips :: Crunchy corn snack
+65 Crackers :: Light crunchy snack
+65 Nuts :: Salty snack
+65 Trail mix :: Handful snack
+45 Pork rinds :: Puffed, crunchy snack
+45 Sunflower seeds :: Snack by the handful
+30 Gummy bears :: Movie snack
+
+## food_apple | easy | universe=food | ref=Apple | v=1 | accept=#fruit
+prompt: Name a fruit most like an apple.
+hint: Fruits only. Texture, family tree and how you eat it.
+dims: botany, texture, flavor, size
+why: Apples are crisp pome fruits of the rose family. Pears are the closest relative; quince and Asian pear are pomes too.
+100 Pear * :: Fellow pome fruit — same family and core
+100 Asian pear :: Crisp pome with apple-like crunch
+90 Quince :: Pome fruit related to the apple
+90 Crabapple :: A small wild apple
+80 Loquat :: Pome fruit of the same family
+80 Persimmon :: Crisp, apple-sized orchard fruit
+80 Peach :: Rose-family orchard fruit
+80 Plum :: Rose-family orchard fruit
+65 Nectarine :: Orchard fruit
+65 Apricot :: Orchard fruit
+65 Guava :: Firm fruit
+45 Orange * :: Round lunchbox fruit
+45 Pomegranate :: Round red fruit
+30 Banana :: Lunchbox fruit
+
+## food_pasta | easy | universe=food | ref=Pasta | v=1
+prompt: Name a food most like pasta.
+hint: Dough, noodles and sauces.
+dims: base, preparation, cuisine, serving
+why: Pasta is a wheat dough shaped and boiled, served with sauce. Noodles from other cuisines and filled pastas are its closest kin.
+100 Noodles * :: Boiled wheat dough strands
+100 Gnocchi :: Italian boiled dough with pasta sauces
+90 Ravioli :: Filled pasta
+90 Lasagna :: Layered pasta
+90 Udon :: Thick wheat noodles
+90 Lo mein :: Wheat noodles tossed in sauce
+80 Ramen :: Wheat noodles in broth
+80 Pierogi :: Boiled filled dough
+80 Dumplings :: Boiled dough parcels
+80 Mac and cheese :: Pasta with sauce
+65 Couscous :: Tiny wheat grains
+65 Soba :: Buckwheat noodles
+65 Pad thai :: Rice noodles
+45 Risotto :: Italian starchy dish
+45 Rice :: Starchy staple
+30 Pizza :: Italian comfort food
+
+## food_chocolate_cake | hard | universe=food | ref=Chocolate cake | v=1 | accept=#dessert
+prompt: Name a dessert most like chocolate cake.
+hint: Desserts only. Rich, chocolatey and baked.
+dims: flavor, texture, baking, occasion
+why: Chocolate cake is a rich baked chocolate sponge, often frosted. Devil's food and black forest are chocolate cakes by another name; brownies share the bake.
+100 Devil's food cake :: Rich chocolate layer cake
+100 Black forest cake :: Chocolate sponge layered with cherries and cream
+90 Lava cake :: Chocolate cake with a molten middle
+90 Sachertorte :: Viennese chocolate cake
+90 Brownie * :: Dense baked chocolate square
+80 Flourless chocolate cake :: Dense chocolate cake
+80 Red velvet cake :: Cocoa layer cake
+80 Cupcake * :: Small frosted cake
+65 Chocolate mousse :: Rich chocolate dessert
+65 Fudge :: Rich chocolate confection
+65 Carrot cake :: Frosted layer cake
+65 Cheesecake :: Rich celebration cake
+45 Tiramisu :: Layered dessert with cocoa
+45 Chocolate :: The key ingredient
+30 Cookie :: Baked sweet
+
+## food_soup | hard | universe=food | ref=Ramen | v=1
+prompt: Name a food most like ramen.
+hint: Noodles, broth, bowls.
+dims: noodles, broth, cuisine, serving
+why: Ramen is wheat noodles in a rich broth with toppings. Pho and udon are noodle-soup siblings.
+100 Pho * :: Noodle soup with broth and toppings
+100 Udon :: Japanese noodle soup
+90 Soba :: Japanese noodles often in broth
+90 Instant noodles :: Ramen's packaged cousin
+80 Chow mein :: Wheat noodles
+80 Lo mein :: Wheat noodles
+65 Soup :: Brothy bowl
+65 Pad thai :: Noodle dish
+45 Dumplings :: Asian comfort food
+45 Pasta :: Noodles
+30 Sushi :: Japanese dish

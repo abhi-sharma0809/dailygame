@@ -1,0 +1,212 @@
+@category movies | label=Movies
+
+## movie_titanic | easy | universe=movie | ref=Titanic | v=1
+prompt: Name a movie most like Titanic.
+hint: Epic, tragic romance against a historical backdrop.
+dims: genre, scale, historical setting, romance
+why: Titanic is a sweeping period romance doomed by a real disaster. Pearl Harbor copies the formula; epic romances like Gone with the Wind and Atonement share the scale and tragedy.
+100 Pearl Harbor :: Love triangle swept up in a real historical catastrophe — the same blueprint
+90 Gone with the Wind :: Sweeping period epic of love and loss
+90 Atonement :: Tragic period romance torn apart by history
+90 The English Patient :: Lush, tragic romance across a historical epic
+80 Doctor Zhivago :: Romance against a revolution
+80 Romeo + Juliet :: DiCaprio's other doomed young love
+80 The Notebook * :: Cross-class romance told in flashback by an elderly narrator
+80 Legends of the Fall :: Sweeping period melodrama
+65 Somewhere in Time :: Time-crossed tragic love
+65 The Great Gatsby * :: DiCaprio in another lavish, tragic romance
+65 A Walk to Remember :: Tearjerker romance
+65 Me Before You :: Tearjerker romance
+45 Cast Away :: Survival against the sea
+45 The Day After Tomorrow :: Disaster spectacle
+45 Avatar :: James Cameron blockbuster
+30 Dirty Dancing :: Cross-class romance
+
+## movie_jurassic_park | easy | universe=movie | ref=Jurassic Park | v=1
+prompt: Name a movie most like Jurassic Park.
+hint: Creatures, science gone wrong and survival.
+dims: premise, creature, tone, director
+why: Jurassic Park is a science-gone-wrong creature adventure. Its sequels match exactly; King Kong and The Land Before Time share the giant-creature wonder; Jaws shares Spielberg's suspense.
+100 The Lost World: Jurassic Park :: Direct sequel — same island, same dinosaurs
+100 Jurassic World * :: Same park, reopened
+90 King Kong :: Expedition to an island of giant creatures
+80 Godzilla :: Giant creature disaster
+80 The Land Before Time :: Dinosaur adventure
+80 Jaws * :: Spielberg creature suspense
+65 Rampage :: Science-made giant beasts
+65 The Meg :: Prehistoric predator returns
+65 Jumanji :: Adventure with dangerous animals
+45 The Good Dinosaur :: Dinosaur adventure
+45 Indiana Jones and the Raiders of the Lost Ark :: Spielberg adventure
+30 Pacific Rim :: Giant monsters
+
+## movie_matrix | hard | universe=movie | ref=The Matrix | v=1
+prompt: Name a movie most like The Matrix.
+hint: Simulated reality, chosen-one action and philosophy.
+dims: premise, themes, action style
+why: The Matrix is a cyberpunk action film about a hidden simulated reality. Dark City and The Thirteenth Floor share the "world is fake" twist; Inception shares layered realities.
+100 Dark City :: Humans trapped in an engineered false reality, released the year before
+100 The Thirteenth Floor :: Simulated worlds within worlds
+90 Inception * :: Layered dream realities and heist action
+90 eXistenZ :: Virtual reality blurs with reality
+80 Ghost in the Shell :: Cyberpunk identity and networks
+80 Equilibrium :: Gun-kata dystopia
+80 Total Recall :: Implanted memories, what's real?
+80 The Truman Show :: A man discovers his world is staged
+65 Tron :: Trapped inside a computer world
+65 Blade Runner :: Cyberpunk questions of what's real
+65 Ready Player One :: Virtual world adventure
+65 Minority Report :: Philosophical sci-fi action
+45 Terminator 2: Judgment Day * :: Machines versus humanity
+45 John Wick * :: Keanu Reeves action
+30 Star Wars :: Chosen-one sci-fi
+
+## movie_harry_potter | easy | universe=movie | ref=Harry Potter and the Philosopher's Stone | v=1
+prompt: Name a movie most like Harry Potter.
+hint: Young hero discovers a hidden magical world.
+dims: premise, audience, genre, tone
+why: Harry Potter follows a child discovering a secret magical world and school. Fantastic Beasts shares its world; Percy Jackson copies the chosen-kid-goes-to-hidden-school formula.
+100 Fantastic Beasts and Where to Find Them :: Same wizarding world
+100 Percy Jackson & the Olympians: The Lightning Thief :: Kid learns he's magical, goes to a hidden school, fights an ancient evil
+90 The Chronicles of Narnia: The Lion, the Witch and the Wardrobe :: Children enter a magical world
+90 The Golden Compass :: Young heroine in a magical alternate world
+80 The Lord of the Rings: The Fellowship of the Ring * :: Epic fantasy against a dark lord
+80 The Hobbit: An Unexpected Journey :: Fantasy adventure
+65 Willy Wonka & the Chocolate Factory :: Child enters a whimsical world
+65 Matilda :: Child with special powers vs. cruel adults
+65 Hook :: Child-like fantasy adventure
+65 The Hunger Games * :: Young-adult franchise
+45 Star Wars :: Chosen one versus dark lord
+45 Twilight :: Young-adult supernatural franchise
+30 The Princess Bride :: Fairy-tale adventure
+
+## movie_home_alone | easy | universe=movie | ref=Home Alone | v=1
+prompt: Name a movie most like Home Alone.
+hint: Kid outwits adults in family-comedy slapstick.
+dims: premise, audience, humor, setting
+why: Home Alone is a family slapstick comedy where a resourceful child defeats bumbling crooks. Its sequel is identical; Baby's Day Out and Dennis the Menace reuse the formula.
+100 Home Alone 2: Lost in New York * :: Same kid, same burglars, same traps
+90 Baby's Day Out :: Same writer; tiny hero outwits bumbling kidnappers
+90 Dennis the Menace :: Same writer; mischievous kid torments a grown-up
+80 Problem Child :: Chaotic kid versus adults
+80 Uncle Buck :: Same writer-director's family comedy
+65 Elf * :: Christmas family comedy
+65 The Santa Clause :: Christmas family comedy
+65 Cheaper by the Dozen :: Family chaos comedy
+45 Mrs. Doubtfire :: Family comedy
+45 The Goonies :: Kids versus crooks adventure
+30 Jumanji :: Kid-led family adventure
+
+## movie_hangover | easy | universe=movie | ref=The Hangover | v=1
+prompt: Name a movie most like The Hangover.
+hint: Wild night, missing memories, R-rated buddy comedy.
+dims: premise, humor, rating, ensemble
+why: The Hangover is an R-rated comedy about friends piecing together a disastrous night. Rough Night and Project X share the wild-party premise; Old School and Due Date share the cast and director.
+100 Rough Night :: Bachelorette weekend gone wrong — the gender-flipped Hangover
+90 Project X :: A party spirals into legendary disaster
+90 Due Date :: Same director; chaotic road-trip comedy
+80 Old School :: Same director; grown men behaving badly
+80 Harold & Kumar Go to White Castle :: Buddies' disastrous night
+80 Game Night :: Friends' wild night goes wrong
+65 Superbad * :: Teen version of a wild night
+65 Wedding Crashers :: R-rated buddy comedy
+65 Bridesmaids * :: R-rated wedding-party comedy
+65 This Is the End :: Party ensemble comedy
+45 Step Brothers :: R-rated man-child comedy
+45 Neighbors :: Party comedy
+45 We're the Millers :: R-rated road-trip comedy
+30 Dumb and Dumber :: Buddy comedy
+
+## movie_interstellar | hard | universe=movie | ref=Interstellar | v=1
+prompt: Name a movie most like Interstellar.
+hint: Hard-ish science fiction about space travel and human stakes.
+dims: genre, themes, scale, tone
+why: Interstellar is an emotional, science-heavy space voyage about time and family. 2001 and Contact share the cosmic awe; Ad Astra and Sunshine share the mission-to-save-humanity drama.
+100 Contact :: Science, faith and a parent-child bond across the cosmos
+90 2001: A Space Odyssey :: Cosmic, philosophical space voyage
+90 Ad Astra :: Father-son journey to the outer solar system
+90 Sunshine :: Crew on a mission to save Earth
+80 The Martian * :: Science-driven space survival
+80 Arrival :: Time, language and parenthood
+80 Gravity * :: Visceral space survival
+65 Inception :: Same director, layered time
+65 Solaris :: Philosophical space drama
+65 First Man :: Real space mission drama
+65 Apollo 13 :: Space mission in peril
+45 Event Horizon :: Deep-space voyage gone wrong
+45 Moon :: Lonely space mission
+30 Star Wars :: Space adventure
+
+## movie_finding_nemo | easy | universe=movie | ref=Finding Nemo | v=1
+prompt: Name a movie most like Finding Nemo.
+hint: Animated ocean adventure about family.
+dims: setting, story, audience, studio
+why: Finding Nemo is a Pixar ocean quest about a parent searching for a child. Finding Dory is its sequel; Shark Tale and The Little Mermaid share the animated undersea world.
+100 Finding Dory * :: Sequel with the same characters and ocean
+90 Shark Tale :: Animated undersea comedy
+80 The Little Mermaid :: Animated undersea adventure
+80 Moana :: Animated ocean voyage
+80 Luca :: Animated sea-creature adventure
+65 Ponyo :: Animated sea-creature fable
+65 Toy Story * :: Pixar quest to get home
+65 Up :: Pixar parent-child adventure
+65 The Good Dinosaur :: Pixar journey home
+45 The Lion King :: Animated parent-child story
+45 Madagascar :: Animated animal adventure
+30 Aladdin :: Animated adventure
+
+## movie_lion_king | easy | universe=movie | ref=The Lion King | v=1
+prompt: Name a movie most like The Lion King.
+hint: Animated animal epic about growing into your destiny.
+dims: story, characters, audience, studio
+why: The Lion King is an animated coming-of-age epic about a young heir in the animal kingdom. Brother Bear and The Jungle Book share the animal-world journey; The Prince of Egypt shares the epic scale.
+100 Brother Bear :: Animated Disney animal epic of growing up and responsibility
+90 The Jungle Book * :: A young hero raised among animals
+90 Bambi :: Young animal grows into its place in nature
+80 Spirit: Stallion of the Cimarron :: Animated animal epic
+80 The Land Before Time :: Young animals' journey after loss
+80 Balto :: Animated animal hero
+65 The Fox and the Hound :: Disney animal drama
+65 The Prince of Egypt :: Epic animated destiny
+65 Kung Fu Panda :: Animal destined for greatness
+65 Madagascar :: Animated savanna animals
+45 Zootopia * :: Animated animal society
+45 Tarzan :: Raised in the wild
+30 Finding Nemo :: Animated parent-child story
+
+## movie_dark_knight | medium | universe=movie | ref=The Dark Knight | v=1
+prompt: Name a movie most like The Dark Knight.
+hint: Grounded, serious superhero crime saga.
+dims: tone, genre, director, story
+why: The Dark Knight is a grounded crime epic disguised as a superhero film. Its trilogy siblings match exactly; The Batman shares the hero and tone; Heat inspired its crime-thriller style.
+100 The Dark Knight Rises * :: Same trilogy, same Batman, same tone
+100 Batman Begins :: First film of the same trilogy
+90 The Batman :: Grounded, detective-noir Batman
+80 Joker :: Gritty Gotham villain study
+80 Heat :: The crime epic that shaped its style
+80 Logan :: Serious, grounded superhero drama
+65 Watchmen :: Dark superhero deconstruction
+65 Captain America: The Winter Soldier :: Superhero political thriller
+65 The Departed :: Crime thriller
+65 Man of Steel :: Serious superhero reboot
+45 Iron Man * :: Superhero blockbuster
+45 Spider-Man :: Superhero blockbuster
+30 Inception :: Same director
+
+## movie_toy_story | easy | universe=movie | ref=Toy Story | v=1
+prompt: Name a movie most like Toy Story.
+hint: Animated buddy adventure with hidden lives.
+dims: premise, studio, humor, audience
+why: Toy Story is a Pixar buddy adventure about the secret life of toys. Monsters, Inc. and Inside Out share the hidden-world concept; Night at the Museum is a live-action twin.
+100 Monsters, Inc. * :: Pixar buddy comedy about a hidden world behind kids' lives
+90 Night at the Museum :: Objects come alive when no one's watching
+90 Inside Out :: Pixar's hidden world inside a child
+80 A Bug's Life :: Pixar adventure in a miniature world
+80 Cars :: Pixar buddy adventure
+80 Wreck-It Ralph :: Characters living hidden lives inside games
+65 Up :: Pixar buddy adventure
+65 Shrek * :: Animated buddy comedy
+65 Honey, I Shrunk the Kids :: Adventure in a giant household world
+45 Finding Nemo :: Pixar quest
+45 Despicable Me :: Animated comedy
+30 Big :: Toys and childhood

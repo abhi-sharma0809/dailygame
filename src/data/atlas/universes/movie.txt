@@ -1,0 +1,257 @@
+@universe movie | noun=movie | plural=movies
+# Franchise names resolve to the first/defining film unless listed separately.
+2001: A Space Odyssey ; 2001 a space odyssey ; 2001
+10 Things I Hate About You
+21 Jump Street
+A Bug's Life ; a bugs life
+A Quiet Place
+A Star Is Born
+A Walk to Remember
+Aladdin
+Alien ; aliens
+Arrival
+Atlantis: The Lost Empire ; atlantis
+Avatar
+Avengers: Endgame ; endgame ; avengers endgame
+Back to the Future ; bttf
+Bad Moms
+Bad Santa
+Batman Begins
+Batman (1989) ; batman 1989 ; tim burton batman
+Beauty and the Beast
+Big
+Blade Runner ; blade runner 2049
+Bridesmaids
+Brokeback Mountain
+Captain America: The Winter Soldier ; winter soldier
+Cars
+Casablanca
+Casino Royale
+Cast Away ; castaway
+Coco
+Contact
+Crazy, Stupid, Love ; crazy stupid love
+Dark City
+Deadpool
+Despicable Me
+Die Hard
+Dodgeball ; dodgeball: a true underdog story
+Dumb and Dumber
+Dune
+E.T. the Extra-Terrestrial ; et ; e.t.
+Edge of Tomorrow
+Elf
+Eternal Sunshine of the Spotless Mind ; eternal sunshine
+Fantastic Beasts and Where to Find Them ; fantastic beasts
+Fight Club
+Finding Dory
+Finding Nemo ; nemo
+Forrest Gump
+Free Guy
+Frozen
+Gattaca
+Ghostbusters
+Gladiator
+Godzilla
+Gone with the Wind
+Gravity
+Grown Ups
+Harry Potter and the Philosopher's Stone ; harry potter ; harry potter and the sorcerers stone ; sorcerers stone ; philosophers stone
+Heat
+Hercules
+Home Alone
+Home Alone 2: Lost in New York ; home alone 2
+Honey, I Shrunk the Kids ; honey i shrunk the kids
+Hook
+Ice Age
+Inception
+Independence Day
+Inside Out
+Interstellar
+Iron Man
+It
+Jaws
+John Wick
+Jumanji
+Jurassic Park
+Jurassic World
+Kindergarten Cop
+King Kong
+Kung Fu Panda
+La La Land
+Les Misérables ; les miserables
+Lilo & Stitch ; lilo and stitch
+Logan
+Madagascar
+Mad Max: Fury Road ; fury road ; mad max
+Man of Steel
+Mean Girls
+Memento
+Men in Black
+Minority Report
+Moana
+Monsters, Inc. ; monsters inc
+Moon
+Mulan
+Neighbors
+Night at the Museum
+Notting Hill
+Oblivion
+Old School
+Ordinary People
+Pacific Rim
+Pearl Harbor
+Percy Jackson & the Olympians: The Lightning Thief ; percy jackson ; the lightning thief
+Pirates of the Caribbean: The Curse of the Black Pearl ; pirates of the caribbean ; curse of the black pearl
+Pocahontas
+Predator
+Pretty Woman
+Project X
+Pulp Fiction
+Ratatouille
+Ready Player One
+Romeo + Juliet ; romeo and juliet ; romeo juliet
+Rocky
+Saving Private Ryan
+Scott Pilgrim vs. the World ; scott pilgrim
+Shark Tale
+Shrek
+Signs
+Solaris
+Spider-Man ; spiderman ; spider man
+Spider-Man: Into the Spider-Verse ; into the spider-verse ; spider-verse ; spiderverse
+Spirited Away
+Star Wars ; a new hope ; star wars: a new hope
+Step Brothers
+Superbad
+Superman (1978) ; superman 1978 ; superman
+Tangled
+Tarzan
+Terminator 2: Judgment Day ; terminator 2 ; t2
+The Avengers ; avengers
+The Batman
+The Bourne Identity ; bourne identity ; bourne
+The Chronicles of Narnia: The Lion, the Witch and the Wardrobe ; narnia ; chronicles of narnia
+The Dark Knight ; dark knight
+The Dark Knight Rises ; dark knight rises
+The Day After Tomorrow
+The Departed
+The Fault in Our Stars ; fault in our stars
+The Godfather ; godfather
+The Golden Compass
+The Good Dinosaur
+The Goonies ; goonies
+The Great Gatsby ; great gatsby
+The Hangover ; hangover
+The Hobbit: An Unexpected Journey ; the hobbit ; hobbit
+The Hunger Games ; hunger games
+The Incredibles ; incredibles
+The Jungle Book ; jungle book
+The Land Before Time ; land before time
+The Lion King ; lion king
+The Little Mermaid ; little mermaid
+The Lord of the Rings: The Fellowship of the Ring ; lord of the rings ; lotr ; the fellowship of the ring ; fellowship of the ring
+The Lost World: Jurassic Park ; the lost world
+The Martian ; martian
+The Matrix ; matrix
+The Notebook ; notebook
+The Prestige
+The Princess Bride ; princess bride
+The Santa Clause ; santa clause
+The Shawshank Redemption ; shawshank
+The Silence of the Lambs ; silence of the lambs
+The Sixth Sense ; sixth sense
+The Terminator
+The Thirteenth Floor ; thirteenth floor
+The Truman Show ; truman show
+The Wizard of Oz ; wizard of oz
+Thor
+Titanic
+Total Recall
+Toy Story
+Tropic Thunder
+Twilight
+Up
+WALL-E ; wall e ; walle
+Wedding Crashers
+Willy Wonka & the Chocolate Factory ; willy wonka ; charlie and the chocolate factory
+Zootopia ; zootropolis
+Brother Bear
+Balto
+Bambi
+The Fox and the Hound ; fox and the hound
+The Prince of Egypt ; prince of egypt
+Spirit: Stallion of the Cimarron ; spirit
+Watership Down
+Big Hero 6
+Wreck-It Ralph ; wreck it ralph
+Encanto
+Luca
+Soul
+Onward
+Brave
+Ponyo
+My Neighbor Totoro ; totoro
+Howl's Moving Castle ; howls moving castle
+How to Train Your Dragon
+Avatar: The Way of Water ; the way of water
+Joker
+Watchmen
+Sin City
+V for Vendetta
+Kick-Ass ; kick ass
+Unbreakable
+Equilibrium
+eXistenZ ; existenz
+Ghost in the Shell
+Tron ; tron legacy
+The Fifth Element ; fifth element
+Sunshine
+Ad Astra
+First Man
+Apollo 13
+The Abyss
+Event Horizon
+Planet of the Apes ; rise of the planet of the apes
+Westworld (1973) ; westworld 1973
+Cloverfield
+Rampage
+The Meg ; meg
+Jumanji: Welcome to the Jungle ; welcome to the jungle
+Romancing the Stone
+Indiana Jones and the Raiders of the Lost Ark ; raiders of the lost ark ; indiana jones
+The Mummy
+Atonement
+Doctor Zhivago
+The English Patient
+Legends of the Fall
+Somewhere in Time
+Me Before You
+The Vow
+Dear John
+Love Story
+Ghost
+Dirty Dancing
+Grease
+Crazy Rich Asians
+The Proposal
+Knocked Up
+Pineapple Express
+This Is the End
+Harold & Kumar Go to White Castle ; harold and kumar
+Due Date
+Horrible Bosses
+Rough Night
+Game Night
+We're the Millers ; were the millers
+Trading Places
+Uncle Buck
+Problem Child
+Baby's Day Out ; babys day out
+Dennis the Menace
+Cheaper by the Dozen
+Paddington
+Matilda
+Mrs. Doubtfire ; mrs doubtfire
+The Parent Trap ; parent trap
+Gremlins

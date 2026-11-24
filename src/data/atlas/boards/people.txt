@@ -1,0 +1,138 @@
+@category people | label=Celebrities & Public Figures
+
+## person_reynolds | medium | universe=person | ref=Ryan Reynolds | v=1
+prompt: Name a celebrity most like Ryan Reynolds.
+hint: Judge on public persona and body of work — screen roles, comedic style and public brand.
+dims: on-screen persona, genre of work, comedic style, public brand
+why: Ryan Reynolds is known for fast, self-deprecating, sarcastic comedy in action blockbusters, plus a playful public brand. Paul Rudd and Chris Pratt share the charming funny-leading-man-in-superhero-films lane.
+notes: Based only on professional work and public persona.
+100 Paul Rudd :: Charming, quippy comedy star who also leads a superhero franchise
+100 Chris Pratt * :: Comedic actor turned action-blockbuster lead with a goofy charm
+90 Jason Sudeikis :: Affable comedic leading man
+90 Hugh Jackman :: Deadpool co-star and fellow franchise superhero
+80 Dwayne Johnson * :: Self-aware action-comedy star with a big personal brand
+80 Seth Rogen :: Comedy star known for self-deprecating humor
+80 Kevin Hart :: Action-comedy star and frequent co-lead
+80 John Krasinski :: Funny everyman turned action lead
+65 Ryan Gosling :: Canadian leading man with deadpan comedy
+65 Chris Evans :: Superhero leading man
+65 Mark Wahlberg :: Action-comedy star
+65 Jim Carrey :: Rubber-faced comedy star
+45 Tom Holland :: Superhero lead
+45 Will Ferrell :: Comedy star
+30 Brad Pitt :: Hollywood leading man
+
+## person_swift | easy | universe=person | ref=Taylor Swift | v=1
+prompt: Name a celebrity most like Taylor Swift.
+hint: Music, songwriting style and career path.
+dims: genre, songwriting, career arc, fanbase
+why: Taylor Swift is a confessional singer-songwriter who moved from country to stadium pop, with a devoted fanbase. Olivia Rodrigo and Gracie Abrams share the confessional pop-songwriting lane.
+100 Olivia Rodrigo * :: Confessional pop singer-songwriter of heartbreak anthems
+90 Sabrina Carpenter :: Pop singer-songwriter and Eras-tour opener
+90 Gracie Abrams :: Confessional singer-songwriter and Eras-tour opener
+90 Shania Twain :: Country-to-pop crossover superstar
+80 Phoebe Bridgers :: Confessional singer-songwriter and collaborator
+80 Kelly Clarkson :: Pop-rock vocalist with country crossover
+80 Carrie Underwood :: Country superstar
+80 Ed Sheeran * :: Stadium-filling singer-songwriter and collaborator
+65 Adele :: Heartbreak-driven superstar songwriter
+65 Katy Perry :: Pop superstar
+65 Selena Gomez :: Pop star and close friend
+65 Lana Del Rey :: Songwriter and collaborator
+45 Beyoncé * :: Global stadium superstar
+45 Billie Eilish :: Pop superstar
+30 Harry Styles :: Pop superstar
+
+## person_rock | easy | universe=person | ref=Dwayne Johnson | v=1
+prompt: Name a celebrity most like Dwayne Johnson.
+hint: Career path, screen persona and public brand.
+dims: career path, screen persona, physique, brand
+why: Dwayne Johnson went from pro wrestling to action-comedy stardom with a charismatic, family-friendly brand. John Cena followed the same path almost exactly.
+100 John Cena * :: Pro wrestler turned action-comedy movie star
+90 Dave Bautista :: Pro wrestler turned movie star
+80 Vin Diesel :: Fast & Furious co-star and action lead
+80 Jason Momoa :: Big, charismatic action star
+80 Kevin Hart :: Frequent comedy co-star
+80 Arnold Schwarzenegger * :: Muscle-bound action star turned comedy
+65 Sylvester Stallone :: Action icon
+65 Jason Statham :: Action star and co-star
+65 Terry Crews :: Muscle-bound actor with comic charm
+65 Roman Reigns :: Wrestler and cousin
+45 Ryan Reynolds :: Action-comedy co-star
+45 Chris Hemsworth :: Action blockbuster star
+30 Tom Cruise :: Action star
+
+## person_zendaya | hard | universe=person | ref=Zendaya | v=1
+prompt: Name a celebrity most like Zendaya.
+hint: Career path and current work.
+dims: career path, genre of roles, fashion profile
+why: Zendaya rose from Disney Channel to acclaimed drama and blockbusters, with a major fashion profile. Selena Gomez and Miley Cyrus shared the Disney start; Florence Pugh and Jenna Ortega share the current career lane.
+100 Jenna Ortega :: Disney-to-acclaimed-lead young actor with a fashion profile
+90 Tom Holland :: Spider-Man co-star in the same franchise
+90 Florence Pugh :: Dune co-star and acclaimed young lead
+90 Timothée Chalamet :: Dune co-star and Gen-Z film star
+80 Selena Gomez * :: Disney Channel star turned actor and fashion figure
+80 Sydney Sweeney :: Euphoria co-star
+80 Millie Bobby Brown :: Young streaming-era star
+80 Anya Taylor-Joy :: Acclaimed young lead and fashion icon
+65 Miley Cyrus :: Disney Channel to pop star
+65 Hailee Steinfeld :: Young actor-singer
+45 Beyoncé :: Fashion and music icon
+45 Rihanna :: Fashion icon
+30 Taylor Swift * :: Global star
+
+## person_ramsay | easy | universe=person | ref=Gordon Ramsay | v=1
+prompt: Name a celebrity most like Gordon Ramsay.
+hint: Professional persona — celebrity chefs and TV formats.
+dims: profession, TV persona, style
+why: Gordon Ramsay is a Michelin-starred chef famous for fiery TV cooking competitions. Marco Pierre White trained him and shares the intensity; Bobby Flay shares the TV-chef competitor role.
+100 Marco Pierre White :: Fiery Michelin chef and Ramsay's former mentor
+90 Bobby Flay :: Competitive celebrity chef on TV
+90 Jamie Oliver * :: British celebrity chef with TV shows and restaurants
+80 Guy Fieri * :: Celebrity chef with a loud TV persona
+80 Paul Hollywood :: Exacting TV baking judge
+80 Wolfgang Puck :: Celebrity chef and restaurateur
+80 Anthony Bourdain :: Outspoken chef and TV host
+65 Heston Blumenthal :: Michelin chef on TV
+65 Simon Cowell :: Brutally honest TV judge
+65 Nigella Lawson :: British TV cook
+65 Emeril Lagasse :: TV chef
+45 Martha Stewart :: Food media personality
+45 Ina Garten :: TV cook
+30 David Chang :: Chef and restaurateur
+
+## person_beyonce | easy | universe=person | ref=Beyoncé | v=1
+prompt: Name a celebrity most like Beyoncé.
+hint: Music, performance style and career.
+dims: genre, performance, career, influence
+why: Beyoncé is a powerhouse vocalist and performer who rose from a girl group to global superstardom, with genre-spanning albums and elaborate stage shows.
+100 Rihanna * :: Global R&B-pop superstar and business mogul
+90 Jennifer Lopez :: Singer-performer and dancer with a business empire
+90 Lady Gaga :: Theatrical, genre-spanning pop superstar
+80 Ariana Grande :: Powerhouse vocalist and pop star
+80 Nicki Minaj :: Hip-hop superstar and collaborator
+80 Christina Aguilera :: Powerhouse pop vocalist
+80 Doja Cat :: Genre-spanning performer
+65 Taylor Swift * :: Global stadium superstar
+65 Lizzo :: Vocalist and performer
+65 Britney Spears :: Pop performer
+45 Adele :: Powerhouse vocalist
+45 SZA :: R&B star
+30 Drake :: Global superstar
+
+## person_keanu | hard | universe=person | ref=Keanu Reeves | v=1
+prompt: Name a celebrity most like Keanu Reeves.
+hint: Screen roles and public reputation.
+dims: action roles, public persona, career
+why: Keanu Reeves is an action icon (The Matrix, John Wick) famous for an understated, kind public persona.
+100 Tom Hanks :: Beloved, understated star with a reputation for kindness
+90 Pedro Pascal :: Understated action star with a warm public persona
+90 Jason Statham :: Action star of stylish fight films
+80 Hugh Jackman :: Action franchise star known for kindness
+80 Tom Cruise * :: Action star who does his own stunts
+80 Daniel Craig :: Action icon
+65 Vin Diesel :: Action franchise lead
+65 Bradley Cooper :: Leading man
+45 Will Smith :: Sci-fi action star
+45 Brad Pitt :: Leading man
+30 Dwayne Johnson * :: Action star

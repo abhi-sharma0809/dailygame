@@ -1,0 +1,214 @@
+@category tv | label=TV & Entertainment
+
+## tv_friends | easy | universe=tv | ref=Friends | v=1
+prompt: Name a TV show most like Friends.
+hint: Ensemble cast, hangout spot, romance arcs and laugh-track comedy.
+dims: premise, ensemble, format, tone, setting
+why: Friends is a multi-camera sitcom about six twentysomething friends in New York, built around a hangout spot and long-running romances. HIMYM copies nearly every element; Seinfeld shares the city, friend group and format but not the warmth.
+100 How I Met Your Mother :: NYC friend group, a regular bar hangout, will-they-won't-they romance — the closest copy
+90 Seinfeld * :: NYC friends, multi-cam, same era — but famously cynical and romance-free
+90 New Girl :: Roommate friend group, romance arcs, warm hangout comedy
+90 Happy Endings :: Six friends, rapid banter, couples and exes in one group
+80 The Big Bang Theory * :: Multi-cam friend-group sitcom across the hall
+80 Coupling :: British comedy about six friends dating
+80 Will & Grace :: NYC friends, multi-cam, same era and network
+80 That '70s Show :: Friend group with a regular hangout and romances
+65 Sex and the City :: Four friends dating in New York — but drama-comedy
+65 Cheers :: Hangout-spot ensemble sitcom
+65 Frasier :: Same network and era of multi-cam comedy
+65 Community :: Friend group in a study room
+45 The Office * :: Ensemble workplace comedy, documentary style
+45 Parks and Recreation :: Ensemble workplace comedy
+45 Brooklyn Nine-Nine :: Ensemble workplace comedy
+45 Modern Family :: Ensemble family comedy
+30 Gilmore Girls :: Warm, talky comedy-drama
+30 Two and a Half Men :: Multi-cam sitcom
+
+## tv_office | easy | universe=tv | ref=The Office | v=1
+prompt: Name a TV show most like The Office.
+hint: Mockumentary format, workplace cringe and ensemble cast.
+dims: format, setting, comedic style, ensemble
+why: The Office (US) is a single-camera mockumentary workplace comedy built on awkward bosses and talking heads. Its own UK original is identical in DNA; Parks and Rec is its direct sibling.
+100 The Office (UK) :: The original — same format, same boss, same cringe
+100 Parks and Recreation * :: Made by the same team in the same mockumentary format
+90 Abbott Elementary :: Mockumentary workplace ensemble with talking heads
+90 Superstore :: Workplace ensemble from the same creative circle
+80 Brooklyn Nine-Nine * :: Workplace ensemble comedy from the Parks team
+80 Modern Family :: Mockumentary-style talking heads
+80 What We Do in the Shadows :: Mockumentary with documentary crew
+65 Silicon Valley :: Workplace cringe comedy
+65 The IT Crowd :: Office-based comedy
+65 Veep :: Cringe comedy around a hapless boss
+65 Curb Your Enthusiasm :: Awkward cringe comedy
+45 Community :: Single-camera ensemble comedy
+45 30 Rock :: Workplace comedy
+45 Arrested Development :: Narrated single-cam comedy
+30 Friends :: Ensemble sitcom
+30 Scrubs :: Workplace comedy
+
+## tv_breaking_bad | easy | universe=tv | ref=Breaking Bad | v=1
+prompt: Name a TV show most like Breaking Bad.
+hint: Ordinary person, criminal empire, moral collapse.
+dims: premise, protagonist arc, tone, genre
+why: Breaking Bad follows an ordinary family man building a drug empire and losing himself. Ozark copies the premise almost exactly; Better Call Saul shares its world.
+100 Ozark :: Ordinary family man sucked into cartel crime to protect his family
+100 Better Call Saul * :: Same universe, same creators, another man's slow moral slide
+90 Weeds :: Suburban parent turns drug dealer
+80 Narcos :: The drug trade and its kingpins
+80 The Sopranos :: Crime boss with a family and a conscience
+80 Fargo :: Ordinary people spiralling into crime
+65 Dexter :: Antihero hiding a dark double life
+65 Sons of Anarchy :: Crime family drama
+65 The Wire :: Drug-trade crime drama
+65 Peaky Blinders :: Rise of a crime family
+45 Mad Men :: Prestige antihero drama
+30 The Walking Dead :: Dark survival drama
+30 Prison Break :: Crime drama
+
+## tv_stranger_things | easy | universe=tv | ref=Stranger Things | v=1
+prompt: Name a TV show most like Stranger Things.
+hint: Kids on bikes, the supernatural and 1980s nostalgia.
+dims: premise, era, tone, cast age
+why: Stranger Things mixes small-town kids, 1980s nostalgia and a supernatural threat. Dark is its closest sibling; Gravity Falls and Locke & Key share the kids-versus-the-uncanny core.
+100 Dark :: Small-town disappearances, a time-twisting mystery, kids and families at its heart
+90 Gravity Falls :: Kids uncovering a supernatural small town
+90 Locke & Key :: Kids versus the supernatural after moving to a mysterious town
+80 Are You Afraid of the Dark? :: Kids telling supernatural stories
+80 The X-Files * :: Government conspiracies and the supernatural
+80 Twin Peaks :: Small-town mystery turned supernatural
+65 Wednesday * :: Teen hero investigating the supernatural
+65 The Umbrella Academy :: Super-powered kids, family drama, apocalypse
+65 Freaks and Geeks :: Early-80s teen friendships
+65 Goosebumps :: Kid-friendly horror
+45 The Haunting of Hill House :: Netflix horror about a family
+45 Lost :: Mystery box with supernatural turns
+45 Supernatural :: Monsters of the week
+30 Black Mirror :: Tech-flavored speculative TV
+30 The Wonder Years :: Coming-of-age nostalgia
+
+## tv_simpsons | easy | universe=tv | ref=The Simpsons | v=1
+prompt: Name a TV show most like The Simpsons.
+hint: Animated family sitcom for grown-ups.
+dims: format, premise, tone, audience
+why: The Simpsons is the template for the animated adult family sitcom with a lovable oaf of a dad. Family Guy and Bob's Burgers follow the same formula.
+100 Family Guy * :: Animated family sitcom with an oafish dad, a smart kid and cutaway gags
+90 Bob's Burgers :: Animated family sitcom about a hapless dad and his kids
+90 King of the Hill :: Animated family sitcom, made by Simpsons alumni
+90 American Dad! :: Animated family sitcom with a blundering dad
+80 Futurama * :: Same creator, same humor, but a sci-fi workplace
+80 The Cleveland Show :: Animated family sitcom
+65 South Park :: Animated satire of American life
+65 Rick and Morty :: Animated adult family comedy
+45 Malcolm in the Middle :: Chaotic live-action family sitcom
+45 Everybody Loves Raymond :: Live-action family sitcom
+30 BoJack Horseman :: Animated adult comedy
+30 Bluey :: Animated family comedy for kids
+
+## tv_seinfeld | hard | universe=tv | ref=Seinfeld | v=1
+prompt: Name a TV show most like Seinfeld.
+hint: Neurotic friends, tiny problems, no hugging, no learning.
+dims: humor style, premise, cast, creator
+why: Seinfeld is a "show about nothing" with selfish New Yorkers who never learn. Curb Your Enthusiasm is Larry David's direct follow-up; It's Always Sunny is its meaner heir.
+100 Curb Your Enthusiasm :: Same co-creator, same petty social rules and awkwardness
+90 It's Always Sunny in Philadelphia :: Awful friends who never learn
+80 Friends * :: NYC friend group, same era and format
+80 Arrested Development :: Selfish characters and intricate running gags
+80 Veep :: Ruthlessly selfish characters
+65 How I Met Your Mother :: NYC friend group sitcom
+65 Broad City :: NYC friends with absurd small problems
+65 The Office :: Cringe-based comedy
+45 Everybody Loves Raymond :: Family sitcom
+45 Frasier :: Neurotic comedy
+30 Cheers :: Hangout sitcom
+
+## tv_got | easy | universe=tv | ref=Game of Thrones | v=1
+prompt: Name a TV show most like Game of Thrones.
+hint: Political fantasy epic with dynasties and betrayals.
+dims: genre, scale, politics, setting
+why: Game of Thrones is a sprawling political fantasy. House of the Dragon is its prequel; The Witcher and The Rings of Power share the epic-fantasy genre; Vikings and Rome share the brutal dynastic politics.
+100 House of the Dragon * :: Same world, same houses, same dragons and betrayals
+90 The Witcher :: Gritty fantasy with warring kingdoms and monsters
+90 The Rings of Power :: High-fantasy epic with kingdoms
+80 Vikings :: Brutal historical power struggles
+80 The Last Kingdom ; last kingdom :: Saxon-and-Danes power struggles
+80 Rome :: HBO epic of dynastic betrayals
+65 Spartacus :: Bloody historical epic
+65 The Crown :: Dynasty and succession drama
+65 His Dark Materials :: Fantasy drama
+45 Succession * :: Dynastic power struggle in modern dress
+45 Outlander :: Historical romance with violence
+45 Bridgerton :: Period drama
+30 The Mandalorian :: Genre epic
+30 Lost :: Big ensemble drama
+
+## tv_sopranos | hard | universe=tv | ref=The Sopranos | v=1
+prompt: Name a TV show most like The Sopranos.
+hint: Prestige crime drama with a family man at its center.
+dims: premise, protagonist, tone, network
+why: The Sopranos is the HBO mob drama about a crime boss balancing two families. Boardwalk Empire continues its creators' gangster world; Breaking Bad and Peaky Blinders follow antihero crime families.
+100 Boardwalk Empire :: HBO gangster drama from Sopranos writers
+90 Peaky Blinders :: A crime family ruled by a troubled boss
+90 Breaking Bad * :: Family man turned crime boss
+80 Ozark :: Family entangled with organized crime
+80 Sons of Anarchy :: Crime "family" drama
+80 Narcos :: Kingpin crime drama
+80 The Wire :: HBO crime drama
+65 Mad Men :: Troubled antihero in prestige TV
+65 Succession :: Family empire drama
+45 Fargo :: Crime anthology
+45 Dexter :: Antihero with a secret
+30 Yellowstone :: Family empire drama
+
+## tv_b99 | easy | universe=tv | ref=Brooklyn Nine-Nine | v=1
+prompt: Name a TV show most like Brooklyn Nine-Nine.
+hint: Workplace ensemble comedy with a goofy hero.
+dims: format, setting, tone, creators
+why: B99 is a warm workplace sitcom set in a police precinct, from the Parks and Recreation team. Parks and Superstore share its creators and tone; police comedies share the setting.
+100 Parks and Recreation * :: Same creators, same warm workplace ensemble
+90 Superstore :: Warm workplace ensemble comedy
+90 The Good Place :: Same creator, same upbeat ensemble
+90 Abbott Elementary :: Warm public-service workplace comedy
+80 The Office * :: Workplace ensemble comedy
+80 Night Court :: Precinct-adjacent workplace comedy
+65 Community :: Ensemble comedy
+65 New Girl :: Goofy ensemble comedy
+65 Reno 911! ; reno 911 :: Police comedy
+45 Castle :: Police procedural with comedy
+45 Psych :: Comedic crime-solving
+30 Law & Order :: Police procedural
+30 Friends :: Ensemble sitcom
+
+## tv_walking_dead | medium | universe=tv | ref=The Walking Dead | v=1
+prompt: Name a TV show most like The Walking Dead.
+hint: Survivors, zombies and the collapse of society.
+dims: genre, premise, tone
+why: The Walking Dead follows survivors of a zombie apocalypse. Fear the Walking Dead is its spin-off; Z Nation and Black Summer share the undead apocalypse; The Last of Us adds a near-identical survival road story.
+100 Fear the Walking Dead :: Same apocalypse, same walkers
+100 The Last of Us * :: Infected-ruled wasteland and survivor drama
+90 Z Nation :: Zombie apocalypse road series
+90 Black Summer :: Zombie outbreak survival
+80 Kingdom :: Zombie plague in historical Korea
+80 iZombie :: Zombie series (with a comedic twist)
+80 Ash vs Evil Dead :: Undead horror
+65 The 100 :: Post-apocalyptic survivors
+65 Revolution :: Post-collapse survival
+65 The Strain :: Vampire outbreak
+45 Lost :: Survivors stranded together
+45 Game of Thrones * :: Brutal ensemble survival drama (with an undead army)
+30 Stranger Things :: Supernatural horror
+
+## tv_black_mirror | hard | universe=tv | ref=Black Mirror | v=1
+prompt: Name a TV show most like Black Mirror.
+hint: Speculative anthology about technology's dark side.
+dims: format, genre, theme
+why: Black Mirror is a dark, technology-focused anthology. The Twilight Zone is its direct ancestor.
+100 The Twilight Zone * :: The original speculative anthology with twist endings
+90 Love, Death & Robots ; love death and robots :: Sci-fi anthology
+80 Electric Dreams ; philip k dicks electric dreams :: Sci-fi anthology
+80 Westworld :: Dark AI and technology drama
+80 Severance :: Unsettling workplace sci-fi
+65 Mr. Robot :: Dark tech thriller
+65 The Outer Limits ; outer limits :: Sci-fi anthology
+45 American Horror Story :: Horror anthology
+45 Fargo :: Anthology format
+30 Stranger Things :: Dark speculative fiction

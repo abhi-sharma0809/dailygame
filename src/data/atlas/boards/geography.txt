@@ -1,0 +1,218 @@
+@category geography | label=Countries & Geography
+
+## country_japan | medium | universe=country | ref=Japan | v=1
+prompt: Name a country most like Japan.
+hint: Compare geography, economy, history and way of life — every country is its own place.
+dims: island geography, economic profile, regional history, urban life
+why: Japan is a densely populated, mountainous island democracy in East Asia with a high-tech economy and an ageing population. South Korea and Taiwan share the region, economic path and urban density; island democracies further away share fewer traits.
+notes: Similarity here is about measurable country traits, never about people being interchangeable.
+100 South Korea * :: East Asian neighbor with a high-tech export economy, dense cities and shared regional history
+90 Taiwan :: Mountainous East Asian island democracy with a high-tech economy
+80 China * :: Neighbor with deep shared cultural history, but a vast continental country
+80 Singapore :: Dense, orderly, high-income Asian economy
+65 United Kingdom :: Densely populated island monarchy and former industrial power
+65 New Zealand :: Mountainous, earthquake-prone island nation
+65 Germany :: Precision manufacturing powerhouse with an ageing population
+45 Philippines :: Pacific archipelago in the same typhoon belt
+45 Indonesia :: Volcanic island nation
+45 Iceland :: Volcanic island nation
+30 Italy :: Mountainous, ageing, food-proud country
+30 Switzerland :: Mountainous, punctual, high-income
+
+## country_australia | easy | universe=country | ref=Australia | v=1
+prompt: Name a country most like Australia.
+hint: Think geography, history, language and lifestyle.
+dims: history, language, geography, climate, lifestyle
+why: Australia is a vast, sparsely populated English-speaking federation with a British colonial history, a coastal urban population and a sunny outdoor lifestyle. New Zealand shares the most; Canada and the US share the settler-federation history at continental scale.
+100 New Zealand * :: Neighbor with shared history, language, Commonwealth ties and outdoor lifestyle
+90 Canada :: Vast, sparsely populated English-speaking federation and Commonwealth member
+80 United States * :: Continental English-speaking federation with a settler history
+80 South Africa :: Southern-hemisphere Commonwealth country with a similar climate and sporting culture
+65 United Kingdom :: Shared language, monarchy and institutions
+65 Ireland :: English-speaking with close cultural ties
+45 Argentina :: Southern-hemisphere country of vast interior plains
+45 Chile :: Southern-hemisphere, long coastline, mining economy
+45 Brazil :: Vast continental country with famous beaches
+30 Indonesia :: Close neighbor
+30 Papua New Guinea :: Close neighbor and former territory
+
+## country_italy | easy | universe=country | ref=Italy | v=1
+prompt: Name a country most like Italy.
+hint: Geography, language family, history and lifestyle.
+dims: Mediterranean geography, Romance language, history, cuisine culture
+why: Italy is a Mediterranean peninsula with a Romance language, Roman and Catholic history and a celebrated food culture. Spain and Greece share the climate and coast; France and Portugal share language roots.
+100 Spain * :: Mediterranean, Romance-speaking, Catholic heritage and a celebrated regional cuisine
+90 Greece * :: Mediterranean peninsula with ancient classical history
+90 Portugal :: Southern European, Romance-speaking, Catholic heritage
+90 France :: Romance-speaking neighbor with a famous food culture
+80 Malta :: Mediterranean island with Italian-influenced history
+80 San Marino :: Microstate surrounded by Italy
+80 Croatia :: Adriatic coastline facing Italy
+65 Vatican City :: Enclave inside Rome
+65 Romania :: Romance-language country
+65 Cyprus :: Mediterranean island
+45 Türkiye :: Mediterranean coast and ancient history
+45 Argentina :: Large Italian-descended population
+30 Switzerland :: Neighbor with an Italian-speaking region
+
+## country_brazil | hard | universe=country | ref=Brazil | v=1
+prompt: Name a country most like Brazil.
+hint: Size, region, language and history.
+dims: size, language, colonial history, geography, economy
+why: Brazil is South America's giant: Portuguese-speaking, tropical, with huge rainforests and a large, diverse population. Neighbors share the continent; Portugal shares the language; other continental giants share the scale.
+100 Argentina * :: Large South American neighbor with shared football and regional ties
+90 Colombia :: Tropical South American country with Amazon rainforest
+90 Mexico :: Large Latin American federation and regional power
+80 Portugal :: Shared language and colonial history
+80 Venezuela :: Tropical Amazonian neighbor
+80 Peru :: Amazonian South American neighbor
+65 Uruguay :: Neighbor with shared football culture
+65 Angola :: Portuguese-speaking with shared colonial history
+65 India :: Huge, diverse, fast-growing economy
+45 Indonesia :: Vast, tropical, rainforest country
+45 United States :: Continental-scale country
+30 Spain :: Iberian colonial history
+
+## country_switzerland | medium | universe=country | ref=Switzerland | v=1
+prompt: Name a country most like Switzerland.
+hint: Alps, neutrality, languages and wealth.
+dims: Alpine geography, neutrality, multilingualism, economy
+why: Switzerland is a small, landlocked, Alpine, multilingual and famously neutral federation with a wealthy finance-and-precision economy. Austria and Liechtenstein share the Alps and German language; Luxembourg shares the small, wealthy, multilingual profile.
+100 Austria * :: Alpine, German-speaking, neutral, landlocked
+100 Liechtenstein :: Tiny Alpine neighbor sharing currency and close ties
+90 Luxembourg :: Small, wealthy, multilingual landlocked financial center
+80 Andorra :: Small, mountainous, landlocked
+80 Monaco :: Small and very wealthy
+65 Norway :: Wealthy, mountainous, outside the EU
+65 Sweden :: Wealthy, long-time neutral
+65 Belgium :: Multilingual federation
+65 Germany :: German-speaking neighbor
+45 Singapore :: Small, wealthy finance hub
+45 Slovenia :: Alpine country
+30 Nepal :: Mountainous and landlocked
+
+## country_canada | easy | universe=country | ref=Canada | v=1
+prompt: Name a country most like Canada.
+hint: Size, climate, language and political history.
+dims: geography, climate, history, language, politics
+why: Canada is a vast, cold, sparsely populated, bilingual Commonwealth federation sharing a continent with the US.
+100 United States * :: Shares the continent, language, culture and the world's longest border
+90 Australia :: Vast, sparsely populated Commonwealth federation
+80 New Zealand :: English-speaking Commonwealth country
+80 Norway :: Northern, cold, resource-rich
+80 Russia :: Enormous northern country of forests and tundra
+65 Sweden :: Northern, cold, high-welfare
+65 Finland :: Forested northern country
+65 United Kingdom :: Shared monarchy and institutions
+65 France :: Shared French language
+45 Iceland :: Northern and cold
+45 Greenland :: Arctic neighbor
+30 Ireland :: English-speaking
+
+## country_egypt | hard | universe=country | ref=Egypt | v=1
+prompt: Name a country most like Egypt.
+hint: Ancient civilization, desert geography, language and region.
+dims: ancient history, desert geography, language, region
+why: Egypt is a populous, Arabic-speaking North African country centered on the Nile, with one of the world's oldest civilizations.
+100 Sudan :: Nile-valley neighbor with shared ancient history (Nubia) and desert landscape
+90 Libya :: North African, Arabic-speaking, Saharan neighbor
+90 Morocco * :: North African, Arabic-speaking, desert tourism destination
+90 Tunisia :: North African, Arabic-speaking with ancient ruins
+80 Jordan :: Arabic-speaking desert country with famous ancient monuments
+80 Iraq :: Another cradle of ancient civilization along great rivers
+80 Algeria :: Saharan, Arabic-speaking neighbor
+65 Saudi Arabia :: Arabic-speaking desert country
+65 Syria :: Ancient Middle Eastern civilization
+65 Israel :: Neighbor with shared ancient history
+45 Greece :: Ancient civilization on the Mediterranean
+45 Mexico :: Pyramids of an ancient civilization
+45 Peru :: Monuments of an ancient civilization
+30 India :: Ancient civilization along great rivers
+
+## country_south_korea | medium | universe=country | ref=South Korea | v=1
+prompt: Name a country most like South Korea.
+hint: Region, economy, history and modern culture.
+dims: region, economy, history, culture exports
+why: South Korea is a dense, high-tech East Asian democracy with a globally popular culture industry.
+100 Japan * :: East Asian neighbor with a high-tech economy, dense cities and pop-culture exports
+90 Taiwan :: East Asian high-tech democracy
+80 North Korea :: Shared language and pre-1945 history, but a radically different state
+80 China :: Neighbor with deep shared cultural history
+80 Singapore :: Dense, high-income Asian economy
+65 Vietnam :: East Asian cultural sphere
+65 Germany :: Manufacturing export powerhouse, once divided
+45 Philippines :: Asian neighbor
+45 United States :: Close ally with pop-culture reach
+30 Thailand :: Asian neighbor
+
+## country_mexico | hard | universe=country | ref=Mexico | v=1
+prompt: Name a country most like Mexico.
+hint: Language, region, history and size.
+dims: language, region, colonial history, size, geography
+why: Mexico is a large, Spanish-speaking federation in North America with Indigenous and colonial heritage.
+100 Guatemala :: Neighbor sharing Maya heritage, Spanish language and colonial history
+90 Colombia :: Large Spanish-speaking Latin American country
+90 Spain :: Shared language and colonial history
+90 Peru :: Spanish-speaking with ancient civilizations
+80 Argentina :: Large Spanish-speaking federation
+80 Brazil :: Large Latin American federation
+80 Cuba :: Spanish-speaking Caribbean neighbor
+65 Belize :: Neighbor with Maya heritage
+65 Chile :: Spanish-speaking Latin American country
+45 United States * :: Neighbor with deep economic and cultural ties
+45 Philippines :: Shared Spanish colonial history
+30 Egypt :: Famous pyramids
+
+## city_paris | easy | universe=city | ref=Paris | v=1
+prompt: Name a city most like Paris.
+hint: Grand capital, culture, architecture and romance.
+dims: architecture, role as capital, culture, river setting
+why: Paris is a grand European capital of boulevards, museums, cafés and a riverside skyline. Vienna and Budapest share its imperial-capital grandeur; Rome and London share its cultural weight.
+100 Vienna :: Imperial capital of grand boulevards, palaces, cafés and music
+90 Budapest :: Riverside imperial capital of grand boulevards
+90 Rome * :: Romantic capital of art and history
+90 London * :: Rival European capital of culture on a river
+80 Brussels :: French-speaking capital with Belle Époque streets
+80 Montreal :: French-speaking city with café culture
+80 Prague :: Romantic riverside European capital
+80 Madrid :: Grand European capital of museums and boulevards
+65 Barcelona :: Architecture and café culture
+65 Lyon :: French city of gastronomy
+65 Florence :: Art capital
+45 New York City :: Global cultural capital
+45 Venice :: Romantic destination
+30 Las Vegas :: Has a replica Eiffel Tower
+
+## city_new_york | easy | universe=city | ref=New York City | v=1
+prompt: Name a city most like New York.
+hint: Global megacity, skyscrapers and nonstop pace.
+dims: scale, skyline, global role, pace
+why: New York is a dense, multicultural, skyscraper megacity and global finance capital.
+100 Chicago * :: Dense American skyscraper city and financial hub
+100 London * :: Fellow global finance and culture capital
+90 Tokyo :: Huge, dense global megacity
+90 Hong Kong :: Vertical, dense finance center
+80 Shanghai :: Skyscraper megacity and finance hub
+80 Toronto :: North American multicultural skyscraper city
+80 Singapore :: Dense global finance hub
+65 Los Angeles :: America's other giant city
+65 São Paulo :: Huge, dense megacity
+45 Boston :: Northeastern US city
+45 Philadelphia :: Northeastern US city
+30 Las Vegas :: Famous American city
+
+## city_venice | hard | universe=city | ref=Venice | v=1
+prompt: Name a city most like Venice.
+hint: Canals, history and romance.
+dims: canals, history, architecture, tourism
+why: Venice is a historic city of canals, bridges and romance. Amsterdam and Bruges share the canal-city life.
+100 Amsterdam * :: Canal city of bridges and historic merchant houses
+100 Bruges :: Medieval canal city
+90 St. Petersburg :: The "Venice of the North" built on canals
+80 Stockholm :: City on islands and waterways
+80 Copenhagen :: Harborside canals
+65 Florence :: Italian Renaissance city
+65 Dubrovnik :: Historic seaside walled city
+45 Rome :: Italian historic city
+45 Paris :: Romantic destination
+30 Las Vegas :: Has a Venetian-themed resort

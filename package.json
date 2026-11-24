@@ -1,0 +1,43 @@
+{
+  "name": "kinship",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "KINSHIP \u2014 a daily game of connections. Everything has something in common.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate": "vite-node scripts/validate-atlas.ts",
+    "simulate": "vite-node scripts/simulate-players.ts",
+    "e2e": "vite-node scripts/e2e-journey.ts e2e-shots",
+    "qa": "npm run typecheck && npm run test && npm run validate && npm run simulate"
+  },
+  "dependencies": {
+    "framer-motion": "11.11.17",
+    "lucide-react": "0.460.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.0.1",
+    "@testing-library/user-event": "14.5.2",
+    "@types/node": "20.17.6",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.3",
+    "autoprefixer": "10.4.20",
+    "jsdom": "25.0.1",
+    "postcss": "8.4.49",
+    "puppeteer-core": "23.8.0",
+    "tailwindcss": "3.4.15",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3",
+    "vite": "5.4.11",
+    "vitest": "2.1.5"
+  }
+}

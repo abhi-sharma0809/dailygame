@@ -1,0 +1,273 @@
+@universe animal | noun=animal | plural=animals
+# Every line is one valid answer: Name ; alias ; alias  #tags
+# Generic group names (bear, whale…) are included because players use them.
+Aardvark ; antbear  #mammal
+Aardwolf  #mammal
+Albatross ; wandering albatross  #bird
+Alligator ; american alligator ; gator  #reptile
+Alpaca  #mammal
+Anaconda ; green anaconda  #reptile
+Anglerfish ; angler fish  #fish
+Ant  #insect
+Anteater ; giant anteater  #mammal
+Antelope  #mammal
+Ape  #mammal
+Arctic fox ; polar fox ; white fox  #mammal
+Arctic hare  #mammal
+Armadillo  #mammal
+Axolotl ; mexican walking fish  #amphibian
+Aye-aye ; aye aye  #mammal
+Baboon  #mammal
+Badger ; european badger ; honey badger  #mammal
+Bald eagle  #bird
+Bandicoot  #mammal
+Barn owl  #bird
+Barracuda  #fish
+Bat ; fruit bat ; flying fox bat  #mammal
+Bear  #mammal
+Beaver  #mammal
+Bee ; honeybee ; honey bee ; bumblebee  #insect
+Beetle  #insect
+Beluga ; beluga whale ; white whale  #mammal
+Binturong ; bearcat  #mammal
+Bison ; american bison  #mammal
+Black bear ; american black bear ; asiatic black bear ; moon bear  #mammal
+Black panther ; panther  #mammal
+Blue whale  #mammal
+Boa constrictor ; boa  #reptile
+Bobcat  #mammal
+Bonobo ; pygmy chimpanzee  #mammal
+Brown bear ; grizzly bear ; grizzly ; kodiak bear  #mammal
+Budgerigar ; budgie ; parakeet  #bird
+Buffalo ; water buffalo ; cape buffalo ; african buffalo  #mammal
+Bull ; cow ; cattle ; ox  #mammal
+Bullfrog  #amphibian
+Butterfly  #insect
+Caiman ; cayman  #reptile
+Camel ; dromedary ; bactrian camel  #mammal
+Capuchin monkey ; capuchin  #mammal
+Capybara  #mammal
+Caracal  #mammal
+Caribou ; reindeer  #mammal
+Cassowary  #bird
+Cat ; house cat ; domestic cat ; kitten  #mammal
+Caterpillar  #insect
+Catfish  #fish
+Centipede  #invertebrate
+Chameleon  #reptile
+Cheetah  #mammal
+Chicken ; hen ; rooster  #bird
+Chimpanzee ; chimp  #mammal
+Chinchilla  #mammal
+Chipmunk  #mammal
+Clownfish ; clown fish ; anemonefish  #fish
+Cobra ; king cobra  #reptile
+Cockatoo  #bird
+Cockroach ; roach  #insect
+Condor ; andean condor  #bird
+Coyote  #mammal
+Crab  #invertebrate
+Crane ; whooping crane  #bird
+Cricket  #insect
+Crocodile ; croc ; saltwater crocodile ; nile crocodile  #reptile
+Crow ; raven  #bird
+Cuttlefish  #invertebrate
+Deer ; red deer ; white-tailed deer ; stag ; fawn  #mammal
+Dhole ; asiatic wild dog  #mammal
+Dingo  #mammal
+Dog ; domestic dog ; puppy  #mammal
+Dolphin ; bottlenose dolphin  #mammal
+Donkey ; mule ; burro  #mammal
+Dove ; pigeon  #bird
+Dragonfly  #insect
+Duck ; mallard  #bird
+Dugong  #mammal
+Eagle ; golden eagle  #bird
+Eel ; moray eel  #fish
+Elephant ; african elephant ; asian elephant  #mammal
+Elephant seal  #mammal
+Elk ; wapiti  #mammal
+Emperor penguin  #bird
+Emu  #bird
+Ermine ; stoat  #mammal
+Falcon ; peregrine falcon  #bird
+Fennec fox ; fennec  #mammal
+Ferret  #mammal
+Firefly ; lightning bug  #insect
+Flamingo  #bird
+Flying squirrel  #mammal
+Fox ; red fox  #mammal
+Frog ; tree frog  #amphibian
+Fruit fly  #insect
+Galapagos tortoise ; giant tortoise ; galápagos tortoise  #reptile
+Gazelle  #mammal
+Gecko  #reptile
+Gerbil  #mammal
+Gharial ; gavial  #reptile
+Giant panda ; panda ; panda bear  #mammal
+Gibbon  #mammal
+Gila monster  #reptile
+Giraffe  #mammal
+Gnu ; wildebeest  #mammal
+Goat  #mammal
+Goldfish  #fish
+Goose  #bird
+Gorilla  #mammal
+Grasshopper  #insect
+Great white shark ; white shark ; great white  #fish
+Guinea pig ; cavy  #mammal
+Hamster  #mammal
+Hare  #mammal
+Harpy eagle  #bird
+Hawk  #bird
+Hedgehog  #mammal
+Heron  #bird
+Hippopotamus ; hippo  #mammal
+Horse ; pony ; stallion ; mare  #mammal
+Hummingbird  #bird
+Humpback whale  #mammal
+Hyena ; spotted hyena ; hyaena  #mammal
+Human ; humans ; person ; people ; homo sapiens  #mammal
+Ibex  #mammal
+Iguana  #reptile
+Impala  #mammal
+Jackal  #mammal
+Jaguar  #mammal
+Jellyfish  #invertebrate
+Kangaroo ; red kangaroo  #mammal
+Kingfisher  #bird
+King penguin  #bird
+Kinkajou  #mammal
+Kiwi ; kiwi bird  #bird
+Koala ; koala bear  #mammal
+Komodo dragon  #reptile
+Kookaburra  #bird
+Ladybug ; ladybird  #insect
+Lemur ; ring-tailed lemur  #mammal
+Leopard  #mammal
+Snow leopard ; ounce  #mammal
+Leopard seal  #mammal
+Liger  #mammal
+Lion ; lioness  #mammal
+Lizard  #reptile
+Llama  #mammal
+Lobster  #invertebrate
+Lynx  #mammal
+Macaw  #bird
+Magpie  #bird
+Manatee ; sea cow  #mammal
+Mandrill  #mammal
+Manta ray ; manta  #fish
+Marmot ; groundhog ; woodchuck  #mammal
+Meerkat  #mammal
+Mole  #mammal
+Mongoose  #mammal
+Monitor lizard  #reptile
+Monkey  #mammal
+Moose  #mammal
+Mosquito  #insect
+Moth  #insect
+Mountain goat  #mammal
+Mountain lion ; cougar ; puma  #mammal
+Mouse ; mice  #mammal
+Musk ox ; muskox  #mammal
+Narwhal  #mammal
+Newt  #amphibian
+Nightingale  #bird
+Ocelot  #mammal
+Octopus  #invertebrate
+Okapi  #mammal
+Opossum ; possum  #mammal
+Orangutan ; orang-utan  #mammal
+Orca ; killer whale  #mammal
+Ostrich  #bird
+Otter ; river otter  #mammal
+Owl ; great horned owl ; eagle owl  #bird
+Oyster  #invertebrate
+Pangolin  #mammal
+Parrot ; african grey  #bird
+Peacock ; peafowl  #bird
+Pelican  #bird
+Penguin  #bird
+Pig ; hog ; boar ; wild boar ; piglet  #mammal
+Pika  #mammal
+Piranha  #fish
+Platypus ; duck-billed platypus  #mammal
+Polar bear  #mammal
+Porcupine  #mammal
+Porpoise  #mammal
+Prairie dog  #mammal
+Praying mantis ; mantis  #insect
+Pronghorn  #mammal
+Pufferfish ; puffer fish ; blowfish  #fish
+Puffin  #bird
+Python  #reptile
+Quokka  #mammal
+Rabbit ; bunny  #mammal
+Raccoon ; racoon  #mammal
+Raccoon dog ; tanuki  #mammal
+Rat  #mammal
+Rattlesnake  #reptile
+Red panda ; lesser panda ; firefox  #mammal
+Rhea  #bird
+Rhinoceros ; rhino  #mammal
+Robin  #bird
+Salamander  #amphibian
+Salmon  #fish
+Scorpion  #invertebrate
+Sea lion  #mammal
+Sea otter  #mammal
+Sea turtle ; green turtle ; leatherback  #reptile
+Seahorse ; sea horse  #fish
+Seal ; harbor seal  #mammal
+Serval  #mammal
+Shark  #fish
+Sheep ; lamb ; ram  #mammal
+Shrimp ; prawn  #invertebrate
+Skunk  #mammal
+Sloth ; three-toed sloth  #mammal
+Sloth bear  #mammal
+Slug  #invertebrate
+Snail  #invertebrate
+Snake  #reptile
+Snapping turtle  #reptile
+Snowy owl  #bird
+Sparrow  #bird
+Spectacled bear ; andean bear  #mammal
+Spider ; tarantula  #invertebrate
+Squid ; giant squid  #invertebrate
+Squirrel  #mammal
+Starfish ; sea star  #invertebrate
+Stingray ; ray  #fish
+Stork  #bird
+Sugar glider  #mammal
+Sun bear  #mammal
+Swan  #bird
+Swordfish  #fish
+Tapir  #mammal
+Tarsier  #mammal
+Tasmanian devil  #mammal
+Termite  #insect
+Tiger ; bengal tiger ; siberian tiger  #mammal
+Toad  #amphibian
+Tortoise  #reptile
+Toucan  #bird
+Tree kangaroo  #mammal
+Tuna  #fish
+Turkey  #bird
+Turtle  #reptile
+Vampire bat  #mammal
+Vulture  #bird
+Walrus  #mammal
+Warthog  #mammal
+Wasp ; hornet  #insect
+Weasel  #mammal
+Whale  #mammal
+Whale shark  #fish
+Wolf ; gray wolf ; grey wolf ; timber wolf  #mammal
+Wolverine  #mammal
+Wombat  #mammal
+Woodpecker  #bird
+Worm ; earthworm  #invertebrate
+Yak  #mammal
+Zebra  #mammal

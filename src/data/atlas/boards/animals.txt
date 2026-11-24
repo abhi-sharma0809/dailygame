@@ -1,0 +1,243 @@
+@category animals | label=Animals & Nature
+
+## animal_panda | easy | universe=animal | ref=Giant panda | v=1
+prompt: Name an animal most like a panda.
+hint: Think appearance, family tree and lifestyle — not just black-and-white fur.
+dims: physical resemblance, family tree, diet, lifestyle
+why: The giant panda is a bear that lives like no other bear: a slow, solitary bamboo specialist with a wrist-bone "thumb". The red panda matches its name, diet and that thumb; true bears share its family and build.
+notes: Taxonomy per IUCN/standard references; giant panda = Ursidae, red panda = Ailuridae (convergent).
+100 Red panda :: Shares the name, the bamboo diet and the same bony "false thumb" for gripping stems
+90 Spectacled bear :: A fellow bear and the only other one that lives mostly on plants
+90 Bear * :: The giant panda is a bear — same family, same heavy build
+80 Sun bear :: Small Asian forest bear with a stocky, round-eared panda frame
+80 Black bear :: Same family; the Asiatic black bear shares the panda's mountain forests
+80 Sloth bear :: Shaggy Asian bear that specializes in one food, like the panda
+80 Brown bear :: Same family and body plan, but an omnivorous hunter
+80 Polar bear :: Same family and build; a pure carnivore instead of a vegetarian
+65 Koala * :: Iconic, slow, single-plant specialist that spends its day eating and sleeping
+45 Raccoon :: Masked face and round ears, but a different family (and closer to the red panda)
+45 Binturong :: The "bearcat": shaggy, slow-moving and bearlike, yet a civet relative
+45 Wombat :: Stocky, round-faced plant eater with a similar teddy-bear silhouette
+45 Skunk :: Bold black-and-white coat, but otherwise very different
+30 Sloth :: Shares the slow, sleepy, plant-powered lifestyle
+30 Zebra :: Black-and-white is the only real link
+30 Orca :: Black-and-white is the only real link
+
+## animal_fox | easy | universe=animal | ref=Fox | v=1
+prompt: Name an animal most like a fox.
+hint: Other foxes don't count — think size, family tree and how it hunts.
+dims: family tree, size, hunting style, appearance
+exclude: Arctic fox, Fennec fox
+why: The red fox is a small, solitary, opportunistic canid. Jackals and coyotes are the closest match in size, diet and lifestyle; bigger pack canids are family but live differently.
+100 Jackal :: Small, lone, opportunistic dog-family scavenger-hunter — the fox's closest lookalike
+100 Coyote * :: Same adaptable, solitary, trickster lifestyle across the same habitats
+90 Raccoon dog :: A fox-sized canid that looks remarkably fox-like
+80 Dingo :: Wild dog of similar build, though larger and more social
+80 Dhole :: Red-coated wild dog of Asia
+80 Wolf * :: Same family, but a big pack hunter rather than a lone opportunist
+80 Dog :: Same family and anatomy
+65 Red panda :: Russet coat and bushy tail — nicknamed the "firefox"
+45 Cat :: Small nocturnal hunter that stalks and pounces like a fox
+45 Lynx :: Stalking predator of similar northern habitats
+45 Bobcat :: Fox-sized lone predator of North America
+30 Raccoon :: Clever nocturnal opportunist of the same suburbs
+30 Weasel :: Small, cunning hunter
+
+## animal_dolphin | easy | universe=animal | ref=Dolphin | v=1
+prompt: Name an animal most like a dolphin.
+hint: Body plan, family tree, intelligence and how it lives in the sea.
+dims: family tree, body shape, intelligence, social life
+why: Dolphins are small toothed whales. Porpoises are their near-identical cousins and the orca is technically the largest dolphin; other whales share the family, while sharks only share the shape.
+100 Porpoise :: Small toothed whale that looks and lives almost exactly like a dolphin
+90 Orca :: Technically the largest member of the dolphin family
+90 Beluga :: Small, sociable, vocal toothed whale
+80 Narwhal :: Toothed-whale cousin of the beluga
+80 Whale * :: Dolphins are small whales — same order
+80 Humpback whale :: Whale relative famous for songs and acrobatics
+65 Sea lion :: Playful, trainable, intelligent marine mammal
+65 Seal :: Marine mammal that hunts fish underwater
+45 Shark * :: Same streamlined shape and dorsal fin, but a fish
+45 Manatee :: Fully aquatic marine mammal, but a slow grazer
+45 Dugong :: Fully aquatic marine mammal, but a slow grazer
+45 Octopus :: Celebrated for intelligence, but an invertebrate
+30 Tuna :: Fast, streamlined open-ocean swimmer
+30 Swordfish :: Fast, streamlined open-ocean swimmer
+
+## animal_wolf | easy | universe=animal | ref=Wolf | v=1
+prompt: Name an animal most like a wolf.
+hint: Family tree, pack life and appearance all count.
+dims: family tree, social structure, appearance, hunting style
+why: The domestic dog descends from wolves; wild dogs like dingoes, dholes and coyotes share both the family and much of the lifestyle.
+100 Dog * :: Domesticated descendant of the wolf — still the same species by most counts
+90 Coyote :: Close wild relative that looks like a smaller wolf
+90 Dingo :: Wild canid descended from ancient domestic dogs
+90 Dhole :: Pack-hunting wild dog of Asian forests
+80 Jackal :: Wild canid relative, smaller and more solitary
+80 Fox * :: Same family, but a small solitary hunter
+65 Hyena :: Doglike pack hunter of the savanna — though related to cats, not dogs
+65 Raccoon dog :: Canid relative with a stocky build
+45 Lion :: Hunts cooperatively in family groups
+45 Wolverine :: Shares the name and the cold northern forests
+45 Arctic fox :: Canid of the far north
+30 Bear :: Fellow apex predator of northern forests
+30 Tiger :: Fellow apex predator, but a solitary cat
+
+## animal_penguin | easy | universe=animal | ref=Penguin | v=1
+prompt: Name an animal most like a penguin.
+hint: Other penguins don't count. Think build, lifestyle and family tree.
+dims: body plan, lifestyle, habitat, family tree
+exclude: Emperor penguin, King penguin
+why: The puffin is the northern lookalike — an upright, black-and-white seabird that "flies" underwater. Albatrosses and their kin are the penguin's nearest relatives.
+100 Puffin * :: Upright, black-and-white seabird that dives and "flies" underwater — the northern penguin
+90 Albatross :: Among the penguin's closest living relatives
+80 Cormorant :: Diving seabird that swims after fish
+65 Pelican :: Fish-eating seabird of the coast
+65 Seal :: Shares cold waters, ice floes and a fish diet
+65 Sea lion :: Waddles on land, torpedoes through water
+45 Duck * :: Waddling water bird, but a dabbler rather than a diver
+45 Goose :: Waddling water bird
+45 Swan :: Water bird
+45 Ostrich :: Fellow flightless bird
+45 Emu :: Fellow flightless bird
+45 Kiwi :: Fellow flightless bird
+30 Orca :: Black-and-white tuxedo — and a penguin predator
+30 Seagull ; gull :: Coastal seabird
+
+## animal_tiger | easy | universe=animal | ref=Tiger | v=1
+prompt: Name an animal most like a tiger.
+hint: Big cats are the obvious place to start — which is closest?
+dims: family tree, size, hunting style, appearance
+why: Tigers belong to the big cats (Panthera). The lion matches its size and power; the snow leopard is its closest genetic relative; the liger is literally half tiger.
+100 Lion * :: The other giant Panthera cat — same size, power and roar
+90 Liger :: Half tiger, half lion
+90 Snow leopard :: The tiger's closest living relative genetically
+90 Jaguar :: Powerful Panthera cat that also loves water
+90 Leopard :: Panthera cat with a patterned coat
+80 Black panther :: A melanistic leopard or jaguar
+80 Mountain lion :: Large solitary stalking cat
+80 Cheetah :: Big spotted cat, though built for speed, not power
+65 Lynx :: Medium wild cat
+65 Serval :: Medium wild cat
+65 Ocelot :: Medium wild cat
+65 Cat * :: Same family — a tiger is a very large cat
+45 Zebra :: Stripes
+45 Bear :: Fellow apex predator of Asian forests
+30 Wolf :: Fellow apex predator
+
+## animal_owl | hard | universe=animal | ref=Owl | v=1
+prompt: Name an animal most like an owl.
+hint: Other owls don't count. Think birds of prey and night hunters.
+dims: lifestyle, hunting style, family tree, appearance
+exclude: Barn owl, Snowy owl
+why: Owls are silent birds of prey. Hawks, falcons and eagles share the hooked beak, talons and hunting life; bats and nightjars share the night shift.
+100 Hawk * :: Bird of prey with the same hooked beak, talons and hunting life
+90 Falcon :: Bird of prey that hunts with keen eyesight
+90 Eagle * :: Large bird of prey
+80 Harpy eagle :: Bird of prey with an owl-like facial ruff
+80 Vulture :: Raptor relative
+80 Kestrel :: Small bird of prey that hovers and hunts rodents
+65 Bat :: Silent night hunter of the skies
+65 Nightjar :: Nocturnal bird with cryptic plumage
+45 Tarsier :: Huge eyes, nocturnal, swivelling head
+45 Cat :: Night-time mouse hunter with forward-facing eyes
+45 Parrot :: Forward-facing face and curved beak
+30 Crow :: Clever, familiar bird
+30 Lemur :: Big-eyed night creature
+
+## animal_monkey | easy | universe=animal | ref=Monkey | v=1
+prompt: Name an animal most like a monkey.
+hint: Kinds of monkey don't count. Think primates and tree life.
+dims: family tree, anatomy, behavior, habitat
+exclude: Baboon, Capuchin monkey, Mandrill
+why: Monkeys are primates; apes are their nearest relatives. Small, swinging, tree-living apes like gibbons are the closest overall match.
+100 Gibbon :: Small, agile, tree-swinging ape
+100 Chimpanzee * :: Ape relative with hands, faces and playful behavior like a monkey's
+90 Bonobo :: Ape relative close to the chimpanzee
+90 Lemur :: Primate relative that lives in trees
+90 Orangutan :: Tree-living great ape
+80 Gorilla * :: Great ape relative
+80 Tarsier :: Small tree-dwelling primate
+80 Human :: Also a primate
+65 Ape :: The broader group that includes monkeys' closest relatives
+45 Kinkajou :: Tree-dweller with a gripping tail
+45 Sloth :: Lives its life in the canopy
+45 Raccoon :: Nimble hands and mischievous habits
+45 Squirrel :: Acrobatic tree climber
+30 Koala :: Tree-dweller
+
+## animal_crocodile | hard | universe=animal | ref=Crocodile | v=1
+prompt: Name an animal most like a crocodile.
+hint: Family tree, build and ambush hunting.
+dims: family tree, body plan, hunting style, habitat
+why: Crocodiles are crocodilians. Alligators, caimans and gharials are the same group; big monitor lizards share the armored, ambush-predator build.
+100 Alligator * :: Fellow crocodilian — the classic lookalike
+100 Caiman :: Fellow crocodilian of Central and South America
+90 Gharial :: Narrow-snouted crocodilian
+80 Komodo dragon :: Huge reptilian ambush predator
+65 Monitor lizard :: Large predatory lizard
+65 Iguana :: Scaly reptile
+65 Lizard * :: Scaly reptile with the same four-legged plan
+45 Snapping turtle :: Ambush-biting reptile of rivers
+45 Turtle :: Reptile of rivers
+45 Snake :: Reptile predator
+45 Hippopotamus :: Huge, dangerous river ambusher
+30 Shark :: Feared ambush predator with many teeth
+30 Salamander :: Four-legged, tailed, water-loving
+
+## animal_horse | easy | universe=animal | ref=Horse | v=1
+prompt: Name an animal most like a horse.
+hint: Family tree, build and what people use it for.
+dims: family tree, anatomy, domestic role, appearance
+why: Horses are equids. Donkeys and zebras are the same genus; other hoofed riding and pack animals share the role but not the family.
+100 Zebra * :: Same genus — a striped wild horse
+100 Donkey * :: Same genus, domesticated for the same jobs
+80 Camel :: Ridden and used as a pack animal
+80 Llama :: Pack animal
+80 Tapir :: Odd-toed relative of the horse
+65 Rhinoceros :: Odd-toed relative of the horse
+65 Okapi :: Has zebra-like stripes, but related to giraffes
+65 Deer :: Swift, grazing, hoofed animal
+65 Elk :: Large hoofed grazer
+65 Moose :: Large hoofed animal
+45 Gazelle :: Fast hoofed grazer
+45 Bull :: Large domesticated hoofed farm animal
+45 Giraffe :: Tall hoofed grazer
+30 Dog :: Domesticated companion and working animal
+
+## animal_shark | medium | universe=animal | ref=Shark | v=1
+prompt: Name an animal most like a shark.
+hint: Kinds of shark don't count. Family tree and predatory lifestyle.
+dims: family tree, body plan, predatory lifestyle
+exclude: Great white shark, Whale shark
+why: Sharks are cartilaginous fish; rays are their closest relatives. Fast predatory fish and toothed whales share the hunting life and shape.
+100 Stingray :: The shark's closest relative — cartilaginous fish with the same skeleton
+100 Manta ray :: Cartilaginous cousin of the shark
+90 Barracuda :: Fast, torpedo-shaped predatory fish with fearsome teeth
+80 Swordfish :: Fast open-ocean predator
+80 Tuna :: Fast open-ocean fish
+80 Orca :: Apex ocean predator
+65 Dolphin * :: Same streamlined shape and dorsal fin
+65 Piranha :: Toothy predatory fish
+65 Eel :: Predatory fish
+45 Crocodile :: Ancient, toothy ambush predator
+45 Whale :: Big ocean animal
+30 Octopus :: Ocean predator
+
+## animal_giraffe | hard | universe=animal | ref=Giraffe | v=1
+prompt: Name an animal most like a giraffe.
+hint: Family tree and that famous silhouette.
+dims: family tree, body plan, diet, habitat
+why: The okapi is the giraffe's only living relative. Other tall browsers of the savanna share its lifestyle.
+100 Okapi :: The giraffe's only living relative
+90 Camel :: Long legs and neck, browses from tall plants
+80 Llama :: Long-necked grazer
+80 Alpaca :: Long-necked grazer
+80 Moose :: Tall, long-legged browser
+65 Gazelle :: Savanna neighbor
+65 Antelope :: Savanna neighbor
+65 Deer :: Hoofed browser
+45 Zebra * :: Savanna neighbor with a patterned coat
+45 Elephant * :: Savanna browser that eats leaves from trees
+45 Ostrich :: Long-necked, long-legged savanna resident
+30 Horse :: Hoofed animal
+30 Dinosaur ; brachiosaurus ; sauropod :: Long-necked giant

@@ -1,0 +1,187 @@
+@category games | label=Video Games
+
+## game_minecraft | easy | universe=game | ref=Minecraft | v=1
+prompt: Name a video game most like Minecraft.
+hint: Sandbox building, survival, crafting and exploration.
+dims: core loop, genre, freedom, art style
+why: Minecraft is an open-ended voxel sandbox about mining, crafting, building and surviving. Terraria is its 2D twin; Lego Fortnite and Dragon Quest Builders copy the block-building survival loop.
+100 Terraria * :: Mine, craft, build and survive in a procedurally generated world — in 2D
+100 Lego Fortnite :: Block-building survival sandbox with crafting
+90 Dragon Quest Builders :: Voxel crafting-and-building adventure
+90 Valheim :: Survival crafting and base-building in a procedural world
+80 Roblox * :: Block-built creative sandbox platform
+80 Don't Starve :: Survival crafting
+80 Ark: Survival Evolved :: Survival crafting with base-building
+80 Rust :: Survival crafting and building
+65 Stardew Valley :: Gather, craft and build at your own pace
+65 Subnautica :: Exploration and survival crafting
+65 No Man's Sky :: Procedural worlds to explore and build on
+65 The Forest :: Survival crafting
+45 Garry's Mod :: Physics sandbox
+45 The Sims :: Open-ended building
+30 Fortnite * :: Building mechanic in a shooter
+
+## game_fortnite | easy | universe=game | ref=Fortnite | v=1
+prompt: Name a video game most like Fortnite.
+hint: Battle royale, cartoon style, free-to-play live service.
+dims: genre, art style, business model, audience
+why: Fortnite is a cartoony free-to-play battle royale shooter with constant seasonal events. Apex and PUBG share the genre; Fall Guys and Free Fire share the audience and format.
+100 Apex Legends * :: Free-to-play battle royale shooter with seasons and characters
+100 PlayerUnknown's Battlegrounds * :: The battle royale that inspired Fortnite
+90 Free Fire :: Free-to-play mobile battle royale
+90 Call of Duty :: Includes the Warzone battle royale
+80 Splitgate :: Free-to-play arena shooter
+80 Overwatch :: Colorful hero shooter
+80 Fall Guys :: Last-player-standing party royale
+65 Valorant :: Free-to-play competitive shooter
+65 The Finals :: Destructible free-to-play shooter
+65 Rocket League :: Free-to-play competitive live service
+45 Minecraft * :: Building and crafting
+45 Roblox :: Huge young audience and live events
+30 Among Us :: Multiplayer social game
+
+## game_mario_kart | easy | universe=game | ref=Mario Kart | v=1
+prompt: Name a video game most like Mario Kart.
+hint: Kart racing with items and mascots.
+dims: genre, mechanics, characters, tone
+why: Mario Kart is the mascot kart racer with items and chaotic tracks. Crash Team Racing and Diddy Kong Racing follow its formula exactly.
+100 Crash Team Racing * :: Mascot kart racer with power-ups
+100 Diddy Kong Racing :: Nintendo mascot kart racer
+90 Sonic & All-Stars Racing :: Mascot kart racer
+90 Kart Rider :: Arcade kart racer
+80 Mario Party * :: Mario party chaos
+80 Super Smash Bros. :: Nintendo crossover party game
+65 Rocket League :: Arcade vehicle sports
+65 Trackmania :: Arcade racing
+65 Burnout :: Arcade racing
+45 Need for Speed :: Racing
+45 Forza Horizon :: Racing
+30 Gran Turismo :: Simulation racing
+
+## game_zelda | hard | universe=game | ref=The Legend of Zelda | v=1
+prompt: Name a video game most like The Legend of Zelda.
+hint: Action-adventure exploration, dungeons and puzzles.
+dims: genre, structure, tone, combat
+why: Zelda is the action-adventure template: explore an overworld, solve dungeon puzzles, collect tools. Okami and Tunic follow it closely; Genshin and Immortals borrow its open-world feel.
+100 Okami :: Zelda-like action-adventure with dungeons and tools
+100 Tunic :: Isometric action-adventure love letter to classic Zelda
+90 Immortals Fenyx Rising :: Open-world adventure modeled on Breath of the Wild
+90 Genshin Impact * :: Open-world adventure in a Breath of the Wild style
+80 Death's Door :: Action-adventure with dungeons
+80 Hyrule Warriors :: Same world, action spin-off
+80 Darksiders :: Action-adventure with dungeons and tools
+65 Elden Ring * :: Open-world adventure
+65 Hollow Knight :: Exploration with ability gates
+65 Kingdom Hearts :: Action RPG adventure
+45 Skyrim :: Fantasy open world
+45 Super Mario Bros. :: Nintendo classic
+30 Final Fantasy :: Fantasy RPG
+
+## game_pokemon | easy | universe=game | ref=Pokémon | v=1
+prompt: Name a video game most like Pokémon.
+hint: Catch, train and battle creatures.
+dims: core loop, genre, audience
+why: Pokémon is about catching and battling monsters in turn-based RPG fights. Temtem and Digimon copy the formula outright.
+100 Temtem :: Creature-collecting, turn-based battles — openly Pokémon-like
+100 Digimon :: Collect and battle digital monsters
+90 Cassette Beasts :: Creature-collecting RPG
+90 Yo-kai Watch :: Collect and battle spirit creatures
+90 Monster Sanctuary :: Monster-collecting RPG
+80 Palworld * :: Catch creatures with spheres
+80 Nexomon :: Monster-taming RPG
+80 Pokémon Go :: Pokémon catching on your phone
+65 Ni no Kuni :: Monster-taming RPG
+65 Dragon Quest :: Turn-based RPG with monster recruiting
+45 Animal Crossing :: Collect creatures
+45 Final Fantasy :: Turn-based RPG
+30 Mario Kart :: Nintendo game
+
+## game_cod | easy | universe=game | ref=Call of Duty | v=1
+prompt: Name a video game most like Call of Duty.
+hint: Military first-person shooter.
+dims: genre, setting, multiplayer, pacing
+why: Call of Duty is a fast, military first-person shooter. Battlefield is its direct rival; Medal of Honor shares its roots.
+100 Battlefield * :: Military FPS rival
+100 Medal of Honor :: The military FPS series CoD's creators came from
+90 Rainbow Six Siege :: Tactical military shooter
+90 Counter-Strike :: Competitive military shooter
+80 Halo * :: Console first-person shooter
+80 Titanfall :: Fast-paced FPS
+80 Escape from Tarkov :: Military shooter
+65 Apex Legends :: First-person battle royale
+65 Valorant :: Competitive shooter
+65 Doom :: First-person shooter
+45 Fortnite :: Shooter
+45 Overwatch :: Shooter
+30 Grand Theft Auto V :: Guns and action
+
+## game_animal_crossing | medium | universe=game | ref=Animal Crossing | v=1
+prompt: Name a video game most like Animal Crossing.
+hint: Cozy life sim, village, neighbors.
+dims: pace, genre, social sim, tone
+why: Animal Crossing is a cozy village life sim of decorating, collecting and befriending neighbors. Stardew Valley and Dreamlight Valley match its gentle rhythm.
+100 Stardew Valley * :: Cozy village life sim with neighbors and seasons
+100 Disney Dreamlight Valley :: Cozy village sim with characters to befriend
+90 Story of Seasons :: Farming-village life sim
+90 Cozy Grove :: Daily-check-in island life sim
+90 Palia :: Cozy village life MMO
+80 My Time at Portia :: Village life sim
+80 Coral Island :: Island village life sim
+80 Tomodachi Life :: Quirky life sim
+65 The Sims * :: Life simulation
+65 Fae Farm :: Cozy farming life sim
+65 Hay Day :: Cozy farming
+45 Minecraft :: Peaceful building
+45 Nintendogs :: Cute pets to care for
+30 Pokémon :: Collecting creatures
+
+## game_among_us | hard | universe=game | ref=Among Us | v=1
+prompt: Name a video game most like Among Us.
+hint: Hidden traitors and social deduction.
+dims: core mechanic, social, multiplayer
+why: Among Us is a social-deduction game: find the impostor. Goose Goose Duck clones it; Town of Salem and Project Winter share the deduction loop.
+100 Goose Goose Duck :: Hidden-role social deduction — nearly identical
+90 Town of Salem :: Online social deduction
+90 Project Winter :: Survival game with hidden traitors
+90 Werewolf :: The classic party game of hidden roles
+80 Dead by Daylight :: Asymmetric multiplayer hunt
+65 Fall Guys * :: Simple, silly multiplayer party game
+65 Phasmophobia :: Co-op team game with voice chat
+65 Lethal Company :: Co-op party horror
+45 Roblox :: Social multiplayer
+45 Fortnite :: Last-player-standing multiplayer
+30 Minecraft :: Multiplayer
+
+## game_gta | medium | universe=game | ref=Grand Theft Auto V | v=1
+prompt: Name a video game most like GTA V.
+hint: Open-world crime sandbox.
+dims: genre, setting, freedom, tone
+why: GTA V is an open-world crime sandbox satire. Saints Row and Sleeping Dogs share the genre; Red Dead shares its developer and design.
+100 Saints Row * :: Open-world crime sandbox
+100 Sleeping Dogs :: Open-world crime action in Hong Kong
+90 Mafia :: Open-world crime story
+90 Watch Dogs :: Open-world crime sandbox
+90 Red Dead Redemption 2 * :: Same studio's open-world western
+80 L.A. Noire :: Open-world crime drama
+80 Just Cause :: Open-world chaos
+80 Cyberpunk 2077 :: Open-world city with crime
+65 Far Cry :: Open-world shooter
+65 Mafia II :: Open-world crime
+45 Assassin's Creed :: Open-world action
+45 Fortnite :: Action sandbox
+30 Need for Speed :: Car chases
+
+## game_tetris | hard | universe=game | ref=Tetris | v=1
+prompt: Name a video game most like Tetris.
+hint: Falling pieces and puzzle clearing.
+dims: genre, mechanics, pace
+why: Tetris is a falling-block puzzle game. Puyo Puyo and Dr. Mario share the falling-piece clear; Candy Crush shares the matching puzzle loop.
+100 Puyo Puyo ; puyo :: Falling-piece puzzle, clear by matching
+100 Dr. Mario ; dr mario :: Falling-capsule puzzle
+90 Lumines :: Falling-block rhythm puzzle
+80 Candy Crush * :: Tile-matching puzzle
+80 Bejeweled :: Tile-matching puzzle
+65 Pac-Man :: Arcade classic
+65 Angry Birds :: Simple mobile puzzle
+45 Portal :: Puzzle game
+30 Minecraft :: Blocks

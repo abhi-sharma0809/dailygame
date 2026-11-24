@@ -1,0 +1,125 @@
+@universe sport | noun=sport | plural=sports
+American football ; football (american) ; gridiron ; nfl
+Archery
+Arm wrestling
+Australian rules football ; aussie rules ; afl ; footy
+Badminton
+Bandy
+Baseball
+Basketball
+Beach volleyball
+Biathlon
+BMX ; bmx racing
+Bobsleigh ; bobsled
+Bodybuilding
+Bowling ; ten-pin bowling ; tenpin bowling
+Boxing
+Brazilian jiu-jitsu ; bjj ; jiu jitsu ; jiu-jitsu
+Canoeing ; kayaking ; canoe
+Capoeira
+Cheerleading
+Chess
+Climbing ; rock climbing ; bouldering
+Cricket
+Croquet
+Cross-country skiing ; cross country skiing ; nordic skiing
+Curling
+Cycling ; road cycling ; track cycling
+Darts
+Disc golf ; frisbee golf
+Diving
+Dodgeball
+Dressage ; equestrian ; horse riding ; show jumping
+Esports ; e-sports
+Fencing
+Field hockey
+Figure skating ; ice skating
+Floorball
+Footgolf
+Futsal
+Gaelic football
+Golf
+Gymnastics
+Handball ; team handball
+Hurling
+Ice hockey ; hockey ; nhl
+Jai alai
+Judo
+Kabaddi
+Karate
+Kendo
+Kickball
+Kickboxing
+Korfball
+Lacrosse
+Luge
+Marathon ; running ; long-distance running
+Mini golf ; minigolf ; putt-putt
+Mixed martial arts ; mma ; ufc
+Motocross
+Muay Thai
+Netball
+Paddle tennis ; padel ; paddle
+Paintball
+Parkour
+Pickleball
+Polo
+Pool ; billiards ; snooker ; eight-ball
+Racquetball
+Ringette
+Roller derby
+Roller hockey ; inline hockey
+Rounders
+Rowing ; crew
+Rugby league
+Rugby union ; rugby
+Sailing
+Sepak takraw
+Shooting
+Skateboarding
+Skeleton
+Ski jumping
+Skiing ; alpine skiing ; downhill skiing
+Snowboarding
+Soccer ; football ; association football ; futbol
+Softball
+Speed skating
+Squash
+Stickball
+Sumo ; sumo wrestling
+Surfing
+Swimming
+Synchronized swimming ; artistic swimming
+Table tennis ; ping pong ; ping-pong
+Taekwondo
+Tennis
+Track and field ; athletics ; track
+Triathlon
+Ultimate frisbee ; ultimate
+Volleyball
+Water polo
+Weightlifting ; powerlifting
+Wheelchair basketball
+Windsurfing
+Wrestling ; freestyle wrestling ; greco-roman wrestling
+Formula 1 ; f1 ; formula one ; motor racing ; car racing
+NASCAR ; stock car racing
+Horse racing
+Kitesurfing
+Wakeboarding
+Bocce ; boules ; petanque ; pétanque
+Lawn bowls ; bowls
+Shuffleboard
+Cornhole
+Teqball
+Footvolley
+Beach soccer
+Water skiing
+Camogie
+Sledge hockey ; para ice hockey
+Platform tennis
+Real tennis
+Pelota
+Tug of war
+Strongman
+Fistball
