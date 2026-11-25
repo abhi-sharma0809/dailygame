@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 import { StrengthGlyph } from '../components/connection';
+import { DailyCommunityCount } from '../components/DailyCommunityCount';
 import { JourneyWorld } from '../components/Journey/JourneyWorld';
 import { PixelIcon } from '../components/PixelIcon';
 import { DEST } from '../components/Journey/world';
@@ -95,7 +96,7 @@ export function Results({ id }: { id: string }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Recap s={s} journeyScore={journeyScore} streak={s.mode === 'daily' ? computeStats(data, today).streak.current : 0} reducedMotion={reducedMotion} />
+            <Recap s={s} journeyScore={journeyScore} isToday={s.dateKey === today} streak={s.mode === 'daily' ? computeStats(data, today).streak.current : 0} reducedMotion={reducedMotion} />
             <VoyageLog rounds={s.rounds} reducedMotion={reducedMotion} daily={s.mode === 'daily'} />
           </motion.main>
         )}
@@ -106,7 +107,7 @@ export function Results({ id }: { id: string }) {
 
 /* ------------------------------------------------------------ achievement plate */
 
-function Recap({ s, journeyScore, streak, reducedMotion }: { s: SessionSummary; journeyScore: number; streak: number; reducedMotion: boolean }) {
+function Recap({ s, journeyScore, isToday, streak, reducedMotion }: { s: SessionSummary; journeyScore: number; isToday: boolean; streak: number; reducedMotion: boolean }) {
   const [shared, setShared] = useState<'' | 'Shared' | 'Copied!'>('');
   const di = destinationIndex(journeyScore);
   const dest = DESTINATIONS[di];
@@ -162,6 +163,7 @@ function Recap({ s, journeyScore, streak, reducedMotion }: { s: SessionSummary; 
           <span className="flex items-center gap-1.5"><span className="text-gold-deep">✦</span><span><b className="readout">{perfect}</b> perfect connection{perfect === 1 ? '' : 's'}</span></span>
           <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rotate-45 bg-ink/70" /><span><b className="readout">{answered}</b> of 7 answered</span></span>
           {streak > 0 && <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rotate-45 bg-gold-deep" /><span><b className="readout">{streak}</b>-day streak</span></span>}
+          {s.dateKey && <DailyCommunityCount dateKey={s.dateKey} today={isToday} className="sm:ml-auto" />}
         </div>
       </div>
       <div className="ink-console flex flex-wrap items-center gap-x-3 gap-y-4 px-3 pb-4 pt-3.5 sm:gap-x-4 sm:px-3.5">

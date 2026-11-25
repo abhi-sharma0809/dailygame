@@ -170,6 +170,15 @@
   /* a tile's call to action, in the button type */
   .tile-cta { @apply inline-flex items-center gap-1.5 font-pixel text-[14px] font-semibold tracking-[0.03em]; }
 
+  /* a stamped traveller count on the journal plate — decorative, not a control */
+  .explorer-stamp {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap px-2 py-[3px] font-pixel text-[11.5px] tracking-[0.02em] text-ink-soft;
+    --edge: rgba(38, 50, 58, 0.35);
+    background: rgba(38, 50, 58, 0.06);
+    box-shadow: 0 -1.5px 0 0 var(--edge), -1.5px 0 0 0 var(--edge), 1.5px 0 0 0 var(--edge), 0 1.5px 0 0 var(--edge);
+  }
+  .explorer-stamp b { @apply text-ink; }
+
   /* the sound switch: a square track and a square knob */
   .px-switch {
     --px: 2px;

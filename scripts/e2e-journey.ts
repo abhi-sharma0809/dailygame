@@ -7,7 +7,7 @@
  * after every answer checks that the airship came to rest exactly where the
  * accumulated score puts it. Also checks: the one-time intro, resuming an
  * unfinished quest, the completed-today home, one attempt per day, the
- * Archives, refresh-resume, retired routes, SIMMLY branding, mobile layout and
+ * Archives, the (simulated) daily explorer count, refresh-resume, retired routes, SIMMLY branding, mobile layout and
  * console errors. Screenshots every stage.
  */
 import fs from 'node:fs';
@@ -15,6 +15,7 @@ import path from 'node:path';
 import puppeteer, { type Page } from 'puppeteer-core';
 import { scoreToX } from '../src/components/Journey/world';
 import { QUESTION_BY_ID } from '../src/data/atlas';
+import { dailyExplorerCount } from '../src/game/community';
 import { buildQuestion } from '../src/game/engine/questions';
 import { addDays, dailyQuestionIds, dateKey } from '../src/game/selection';
 
@@ -203,6 +204,28 @@ const qs = ids.map((id) => buildQuestion(QUESTION_BY_ID.get(id)!));
   check(!(await text(p)).match(/Another journey|Challenge a friend|By category/), 'results offer no retired modes');
   check(!/\bAI\b/.test(await text(p)), 'results never mention AI');
   check(Object.keys(stored.achievements ?? {}).includes('perfect-pair'), 'PERFECT PAIR earned');
+  // the community stamp: a simulated count seeded by the quest date — stable across refreshes and browsers
+  const explorers = (q: Page) => q.$eval('[data-explorers]', (e) => Number((e as HTMLElement).dataset.explorers)).catch(() => NaN);
+  const ex = await explorers(p);
+  check(ex === dailyExplorerCount(today) && ex >= 15000 && ex <= 30000, `results show today’s explorer count (${ex})`);
+  check(/explorers today/.test(await text(p)), 'the count reads “explorers today”');
+  check(await p.$eval('[data-explorers]', (e) => !e.closest('button, a')), 'the count is a decoration, not a control');
+  await p.reload({ waitUntil: 'networkidle0' });
+  await p.waitForFunction(() => !!document.querySelector('[data-explorers]'), { timeout: 15000 });
+  check((await explorers(p)) === ex, 'the count survives a refresh');
+  {
+    const ctx = await browser.createBrowserContext();
+    const p2 = await ctx.newPage();
+    await p2.setViewport({ width: 1440, height: 900 });
+    await p2.goto(URL, { waitUntil: 'networkidle0' });
+    await p2.evaluate((v: string) => localStorage.setItem('simmly:player', v), JSON.stringify(stored));
+    await p2.goto(URL + `results/${stored.dailies[today].sessionId}`, { waitUntil: 'networkidle0' });
+    await p2.waitForFunction(() => !!document.querySelector('[data-explorers]'), { timeout: 15000 });
+    check((await explorers(p2)) === ex, 'a separate browser session shows the same count');
+    await ctx.close();
+  }
+  check(dailyExplorerCount(addDays(today, -1)) !== ex, 'yesterday’s quest has a different count');
+
   check((stored.unranked ?? []).length >= 1, 'unranked answer saved for curation');
   // Share score: what reaches the native share sheet, and the clipboard fallback where there is none
   const shareShape = /^SIMMLY \| [A-Z]+ \d{1,2}\n\n(🏆|🚀|⛵|🧭) \d{1,3} \/ 700\n(🌟|🟨|🟩|🟦|🟪|⬜|⬛){7}$/u;
@@ -297,6 +320,8 @@ const qs = ids.map((id) => buildQuestion(QUESTION_BY_ID.get(id)!));
   check(Math.abs(mpos.ship - scoreToX(mq.ranked[0].points)) < 0.6, 'mobile: ship rests at the score');
   check((await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)) <= 1, 'no horizontal scroll on mobile play');
   await p.goto(URL + `results/${stored.dailies[today].sessionId}`, { waitUntil: 'networkidle0' }); await sleep(5500); await shot(p, '25-mobile-results');
+  check((await explorers(p)) === ex, 'mobile: results show the explorer count');
+  check((await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)) <= 1, 'no horizontal scroll on mobile results');
 
   check(errors.length === 0, `no console/page errors${errors.length ? ': ' + errors.slice(0, 3).join(' | ') : ''}`);
   await browser.close();
